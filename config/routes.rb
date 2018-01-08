@@ -4,7 +4,4 @@ Rails.application.routes.draw do
   end
   resources :surveys, only: [:index, :show]
   resource :session, only: [:new, :create, :destroy]
-
-
-
 end

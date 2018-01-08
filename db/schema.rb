@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180108182615) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "messages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,8 +28,14 @@ ActiveRecord::Schema.define(version: 20180108182615) do
     t.string "option_b"
   end
 
-# Could not dump table "results" because of following StandardError
-#   Unknown type 'hstore' for column 'answers'
+  create_table "results", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "survey_id"
+    t.string "answers", default: [], array: true
+    t.integer "match_id"
+  end
 
   create_table "surveys", force: :cascade do |t|
     t.string "name"
