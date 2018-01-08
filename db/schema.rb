@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108173551) do
+ActiveRecord::Schema.define(version: 20180108182615) do
 
   create_table "messages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 20180108173551) do
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "survey_id"
+    t.string "option_a"
+    t.string "option_b"
   end
 
-  create_table "results", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "results" because of following StandardError
+#   Unknown type 'hstore' for column 'answers'
 
   create_table "surveys", force: :cascade do |t|
     t.string "name"
