@@ -6,43 +6,50 @@ document.addEventListener("DOMContentLoaded", function() {
   var questionCounter = 0
   var results = []
   var imageHolder = document.createElement('div')
-  button.addEventListener('click', function(event){
-    event.preventDefault()
 
-      imageHolder.innerHTML = ""
-      $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + value[questionCounter] + "&rating=g" ,
-        method: 'GET',
-        dataType: 'json'
 
-      }).done(function(data){
-        var image1 = document.createElement('img')
-        image1.className = "left"
-        image1.src = data["data"][Math.floor(Math.random()*data["data"].length)]["images"]["fixed_height_still"]["url"];
-        image1.addEventListener('click', choose)
-        $.ajax({
-          url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + value[questionCounter] + "&rating=g" ,
-          method: 'GET',
-          dataType: 'json'
-        }).done(function(data2){
-          var image2 = document.createElement('img')
-          image2.className = "right"
-          image2.src = data2["data"][Math.floor(Math.random()*data["data"].length)]["images"]["fixed_height_still"]["url"];
-          image2.addEventListener('click', choose)
-          imageHolder.append(image1)
-          imageHolder.append(image2)
-          document.body.append(imageHolder)
-
-        })
-
-  })
   var choose = function makeSelection(){
   // shovels the user's choice into a results array
     results.push(this.className);
     questionCounter ++
     // if the user has made all choices, he is redirected away from the survey page
-    if (questionCounter > key.length)
-    window.location.replace('/surveys');
+    if (questionCounter < key.length){
+      pictureMaker()
+    } else {
+      window.location.replace('http://google.com')
     }
+  }
+
+  var pictureMaker = function loadPictures(){
+    imageHolder.innerHTML = ""
+    $.ajax({
+      url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + key[questionCounter] + "&rating=g" ,
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(data1){
+      var image1 = document.createElement('img')
+      image1.className = "left"
+      image1.src = data1["data"][Math.floor(Math.random()*data1["data"].length)]["images"]["fixed_height_still"]["url"];
+      image1.addEventListener('click', choose)
+      $.ajax({
+        url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + value[questionCounter] + "&rating=g" ,
+        method: 'GET',
+        dataType: 'json'
+      }).done(function(data2){
+        var image2 = document.createElement('img')
+        image2.className = "right"
+        image2.src = data2["data"][Math.floor(Math.random()*data2["data"].length)]["images"]["fixed_height_still"]["url"];
+        image2.addEventListener('click', choose)
+        imageHolder.append(image1)
+        imageHolder.append(image2)
+        document.body.append(imageHolder)
+      })
+    })
+  }
+
+  button.addEventListener('click', function(event){
+    event.preventDefault()
+    pictureMaker()
+  });
 
 });
