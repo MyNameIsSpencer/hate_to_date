@@ -3,19 +3,19 @@
 <script>
 var key = []
 var value = []
-var rails_env = "<%=ENV["PokeGif_Key"]%>"
+var giphyKey = "<%=ENV["Giphy_Key"]%>"
 </script>
 
 <% @results.each_with_index do |(k,v),i| %>
 
-<script>
-  key['<%=i%>'] = '<%=k%>'
-  value['<%=i%>'] = '<%=v%>'
-</script>
-  <%end  %>
+  <script>
+    key['<%=i%>'] = '<%=k%>'
+    value['<%=i%>'] = '<%=v%>'
+  </script>
+<%end  %>
 
 <button type="submit" name="start_survey">Start Survey</button>
 <br>
 
-<%= @results.keys %>
+<%=@results.keys %>
 <%=@results.values%>

@@ -6771,3 +6771,34 @@ Processing by SurveysController#show as HTML
 Completed 200 OK in 44ms (Views: 34.4ms | ActiveRecord: 2.1ms)
 
 
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 12:56:31 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 401ms (Views: 349.9ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-09 13:00:16 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 41ms (Views: 33.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-09 13:00:18 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.9ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 63ms (Views: 48.9ms | ActiveRecord: 2.2ms)
+
+
