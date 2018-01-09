@@ -43,6 +43,5 @@ document.addEventListener("DOMContentLoaded", function() {
     if (questionCounter > key.length)
     window.location.replace('/surveys');
     }
-  }
 
 });
