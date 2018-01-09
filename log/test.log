@@ -165,3 +165,1375 @@ UserTest: test_user_must_include_password_on_create
 ---------------------------------------------------
   [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.091276', '2018-01-09 00:32:36.091276', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.091276', '2018-01-09 00:32:36.091276', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:32:36.110969', '2018-01-09 00:32:36.110969', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:32:36.110969', '2018-01-09 00:32:36.110969', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:32:36.126298', '2018-01-09 00:32:36.126298', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:32:36.126298', '2018-01-09 00:32:36.126298', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.139209', '2018-01-09 00:32:36.139209', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.139209', '2018-01-09 00:32:36.139209', 298486374)[0m
+  [1m[36mFixture Delete (1.6ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.152382', '2018-01-09 00:32:36.152382', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:36.152382', '2018-01-09 00:32:36.152382', 298486374)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:32:36.195242"], ["updated_at", "2018-01-09 00:32:36.195242"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.355661', '2018-01-09 00:32:57.355661', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.355661', '2018-01-09 00:32:57.355661', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:32:57.373435', '2018-01-09 00:32:57.373435', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:32:57.373435', '2018-01-09 00:32:57.373435', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:32:57.392283', '2018-01-09 00:32:57.392283', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:32:57.392283', '2018-01-09 00:32:57.392283', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.405072', '2018-01-09 00:32:57.405072', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.405072', '2018-01-09 00:32:57.405072', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.418468', '2018-01-09 00:32:57.418468', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:32:57.418468', '2018-01-09 00:32:57.418468', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:32:57.457966"], ["updated_at", "2018-01-09 00:32:57.457966"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.234423', '2018-01-09 00:33:18.234423', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.234423', '2018-01-09 00:33:18.234423', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:18.251615', '2018-01-09 00:33:18.251615', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:18.251615', '2018-01-09 00:33:18.251615', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:18.271604', '2018-01-09 00:33:18.271604', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:18.271604', '2018-01-09 00:33:18.271604', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.284894', '2018-01-09 00:33:18.284894', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.284894', '2018-01-09 00:33:18.284894', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.298826', '2018-01-09 00:33:18.298826', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:18.298826', '2018-01-09 00:33:18.298826', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:33:18.332897"], ["updated_at", "2018-01-09 00:33:18.332897"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettyma@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.386196', '2018-01-09 00:33:36.386196', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.386196', '2018-01-09 00:33:36.386196', 298486374)[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:36.403944', '2018-01-09 00:33:36.403944', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:36.403944', '2018-01-09 00:33:36.403944', 298486374)[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:36.421724', '2018-01-09 00:33:36.421724', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:36.421724', '2018-01-09 00:33:36.421724', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.435609', '2018-01-09 00:33:36.435609', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.435609', '2018-01-09 00:33:36.435609', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.449219', '2018-01-09 00:33:36.449219', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:36.449219', '2018-01-09 00:33:36.449219', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:33:36.482999"], ["updated_at", "2018-01-09 00:33:36.482999"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.368875', '2018-01-09 00:33:47.368875', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.368875', '2018-01-09 00:33:47.368875', 298486374)[0m
+  [1m[36mFixture Delete (0.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:47.387925', '2018-01-09 00:33:47.387925', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:33:47.387925', '2018-01-09 00:33:47.387925', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:47.404267', '2018-01-09 00:33:47.404267', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:33:47.404267', '2018-01-09 00:33:47.404267', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.417041', '2018-01-09 00:33:47.417041', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.417041', '2018-01-09 00:33:47.417041', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.430613', '2018-01-09 00:33:47.430613', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:33:47.430613', '2018-01-09 00:33:47.430613', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:33:47.462628"], ["updated_at", "2018-01-09 00:33:47.462628"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettyma@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (164.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hatedate_test"[0m
+  [1m[35m (531.7ms)[0m  [1m[35mCREATE DATABASE "hatedate_test" ENCODING = 'utf8'[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "survey_id" integer, "option_a" character varying, "option_b" character varying)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "results" CASCADE[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "results" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "survey_id" integer, "answers" character varying[] DEFAULT '{}', "match_id" integer)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "surveys" CASCADE[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "surveys" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "password_digest" character varying, "fsa" character varying, "gender" character varying DEFAULT 'undefined', "orientation" character varying DEFAULT 'undefined', "looking_for" character varying DEFAULT 'undefined', "phone" integer, "privacy" boolean DEFAULT 'f')[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180108234020)[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180108164254),
+(20180108180209),
+(20180108182615),
+(20180108173551),
+(20180108164248),
+(20180108163702),
+(20180108164226),
+(20180108181823),
+(20180108162159),
+(20180108162831);
+
+[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-01-09 00:39:00.753343"], ["updated_at", "2018-01-09 00:39:00.753343"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSurvey Load (1.2ms)[0m  [1m[34mSELECT "surveys".* FROM "surveys"[0m
+  [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claud@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Andreanne Dicki"], ["email", "claud@yahoo.com"], ["created_at", "2018-01-09 00:39:01.389442"], ["updated_at", "2018-01-09 00:39:01.389442"], ["password_digest", "$2a$04$zCxp8Q8mzTZidWPF.8qU..cw8k5kecHCtIjUUoL5GoLxBzWbEGKCu"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "maximilian.williamson@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Edmond Deckow"], ["email", "maximilian.williamson@yahoo.com"], ["created_at", "2018-01-09 00:39:01.396965"], ["updated_at", "2018-01-09 00:39:01.396965"], ["password_digest", "$2a$04$r.GG7Kg.xjqFeCM42.munOdqSXo4W.X/eYGewkvXf1gqXczXxPAk."], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sadye@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Monserrat Dicki I"], ["email", "sadye@yahoo.com"], ["created_at", "2018-01-09 00:39:01.404408"], ["updated_at", "2018-01-09 00:39:01.404408"], ["password_digest", "$2a$04$tBzjA.Sl9V1PDqUp4cLmEef3fEyVeXnxQkaQ6.SNUxZpGn8jJaC4S"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "virgie@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Braxton Mohr"], ["email", "virgie@yahoo.com"], ["created_at", "2018-01-09 00:39:01.411310"], ["updated_at", "2018-01-09 00:39:01.411310"], ["password_digest", "$2a$04$FJJuyc/tYinpOIxDrn3owenIuV5D/k2GFpAIIRkeykr88nFcLR3V6"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rebeka.collier@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jess Will"], ["email", "rebeka.collier@gmail.com"], ["created_at", "2018-01-09 00:39:01.417307"], ["updated_at", "2018-01-09 00:39:01.417307"], ["password_digest", "$2a$04$YuUmG7xykzdfUAOgy.T9bucF/SvaRj6cSONyLAeFK0gFjqO64ghxK"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nichole_lang@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Miss Marquise Kerluke"], ["email", "nichole_lang@gmail.com"], ["created_at", "2018-01-09 00:39:01.423558"], ["updated_at", "2018-01-09 00:39:01.423558"], ["password_digest", "$2a$04$mNYfIYTPDXQ.Lp4ruaNw8OBxuz/EY8x8V208.j3vufVXs8GjtpNxa"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "misael@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Petra Kshlerin"], ["email", "misael@hotmail.com"], ["created_at", "2018-01-09 00:39:01.429863"], ["updated_at", "2018-01-09 00:39:01.429863"], ["password_digest", "$2a$04$U8tGvXkROyFlb8oy8j3gpOfJSXrX5i5X7dMKZ2gUnLZy042y1ZHQm"], ["phone", 1234567890]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shaun@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Anissa Bradtke"], ["email", "shaun@hotmail.com"], ["created_at", "2018-01-09 00:39:01.436162"], ["updated_at", "2018-01-09 00:39:01.436162"], ["password_digest", "$2a$04$cPuOrP99QGSpUacd.BJsneGjVgCavxWivl.PBv2fiP3m6TQ93HVoq"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ted@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Brennon Swaniawski Jr."], ["email", "ted@yahoo.com"], ["created_at", "2018-01-09 00:39:01.442932"], ["updated_at", "2018-01-09 00:39:01.442932"], ["password_digest", "$2a$04$Y.uihm.gnvalqz/sSRh3suUeuf1m4qZS/sN7RvHWtrdLpATpUJ3Y."], ["phone", 1234567890]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jules.morar@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Luisa Macejkovic"], ["email", "jules.morar@gmail.com"], ["created_at", "2018-01-09 00:39:01.449708"], ["updated_at", "2018-01-09 00:39:01.449708"], ["password_digest", "$2a$04$DWni.HZ1kOb/kxcS09bS..KRyK.zpP/6JQJ.4dHetvKHAlZoOHxf2"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elwyn@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Conner Lesch"], ["email", "elwyn@hotmail.com"], ["created_at", "2018-01-09 00:39:01.456014"], ["updated_at", "2018-01-09 00:39:01.456014"], ["password_digest", "$2a$04$RigTpPuFhI90fPOV9mjKiOkJ8DAQu8vY2OfAgUkN/repvJzwfBF/K"], ["phone", 1234567890]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "myah@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tyree Rice DDS"], ["email", "myah@gmail.com"], ["created_at", "2018-01-09 00:39:01.462049"], ["updated_at", "2018-01-09 00:39:01.462049"], ["password_digest", "$2a$04$QbOVreL/XTApkNOPPvdmBu1NIyWWZTDvSXtZLw115/QABd.5meS.u"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ethelyn.aufderhar@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Aurore Pacocha"], ["email", "ethelyn.aufderhar@gmail.com"], ["created_at", "2018-01-09 00:39:01.468764"], ["updated_at", "2018-01-09 00:39:01.468764"], ["password_digest", "$2a$04$wzs1FtK.z8d/NZ7LBxPYauCUHllVeXdI7rZq6qom12pHiCIQNOt/G"], ["phone", 1234567890]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "king@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bobbie Pfannerstill"], ["email", "king@gmail.com"], ["created_at", "2018-01-09 00:39:01.474785"], ["updated_at", "2018-01-09 00:39:01.474785"], ["password_digest", "$2a$04$PWo.X73aCpFaDqqwKnThdeYvQYMmN4rAifZUw0o9ohu/T9R4o4GCi"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jalyn@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Adrianna Little"], ["email", "jalyn@yahoo.com"], ["created_at", "2018-01-09 00:39:01.480844"], ["updated_at", "2018-01-09 00:39:01.480844"], ["password_digest", "$2a$04$E03wwGV7DhOabhXb7dQyDuqxlez2Ei4vKDYlQG0J0CjWs4aoka/Wu"], ["phone", 1234567890]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "garnett@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lelah Hirthe"], ["email", "garnett@gmail.com"], ["created_at", "2018-01-09 00:39:01.487122"], ["updated_at", "2018-01-09 00:39:01.487122"], ["password_digest", "$2a$04$.3zSLnMc0m8yGKULSj28MeXU.GcDfBAmkYSTVZ680uhL1i45JLDUO"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gracie_ernser@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Luella Kertzmann III"], ["email", "gracie_ernser@gmail.com"], ["created_at", "2018-01-09 00:39:01.493876"], ["updated_at", "2018-01-09 00:39:01.493876"], ["password_digest", "$2a$04$BHzZkbQgTmdugXhI984Ze.dqZd6tsKCn7CPddAr7R9eUuYK.IFf6e"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "iva_nienow@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Breana Weimann"], ["email", "iva_nienow@yahoo.com"], ["created_at", "2018-01-09 00:39:01.499949"], ["updated_at", "2018-01-09 00:39:01.499949"], ["password_digest", "$2a$04$SJOhcrIgox5akz6W6Znq1.Q59k/VJS70.fxAHnOZEScHl69fqkhRK"], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eloisa@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alize Kuphal III"], ["email", "eloisa@hotmail.com"], ["created_at", "2018-01-09 00:39:01.506267"], ["updated_at", "2018-01-09 00:39:01.506267"], ["password_digest", "$2a$04$BrZP1NkHuWPt9IAT9OI3l.fO2zhW0tNSNBawZ6mCAzsSdlCHbROe."], ["phone", 1234567890]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "madisyn@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jovany Bogisich"], ["email", "madisyn@gmail.com"], ["created_at", "2018-01-09 00:39:01.512839"], ["updated_at", "2018-01-09 00:39:01.512839"], ["password_digest", "$2a$04$pJP1TvLo41r9INY.OE3DTeqdTS7Fmb21N4ij24HmHLo1S9DEp98sG"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Pets"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Pets"], ["created_at", "2018-01-09 00:39:01.523323"], ["updated_at", "2018-01-09 00:39:01.523323"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Toys"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Toys"], ["created_at", "2018-01-09 00:39:01.528024"], ["updated_at", "2018-01-09 00:39:01.528024"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Sports"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sports"], ["created_at", "2018-01-09 00:39:01.532489"], ["updated_at", "2018-01-09 00:39:01.532489"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Movies"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Movies"], ["created_at", "2018-01-09 00:39:01.537313"], ["updated_at", "2018-01-09 00:39:01.537313"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "People"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "People"], ["created_at", "2018-01-09 00:39:01.542618"], ["updated_at", "2018-01-09 00:39:01.542618"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.570436"], ["updated_at", "2018-01-09 00:39:01.570436"], ["survey_id", 3], ["option_a", "Carol Willick"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.7ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.583488"], ["updated_at", "2018-01-09 00:39:01.583488"], ["survey_id", 3], ["option_a", "Emily Waltham"], ["option_b", "Central Perk"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.596957"], ["updated_at", "2018-01-09 00:39:01.596957"], ["survey_id", 3], ["option_a", "Miss Chanandler Bong"], ["option_b", "Central Perk"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.605692"], ["updated_at", "2018-01-09 00:39:01.605692"], ["survey_id", 5], ["option_a", "Joey Tribbiani"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.614606"], ["updated_at", "2018-01-09 00:39:01.614606"], ["survey_id", 2], ["option_a", "Joey Tribbiani"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.623423"], ["updated_at", "2018-01-09 00:39:01.623423"], ["survey_id", 3], ["option_a", "Monica Geller"], ["option_b", "Central Perk"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.631916"], ["updated_at", "2018-01-09 00:39:01.631916"], ["survey_id", 3], ["option_a", "Rachel Green"], ["option_b", "15 Yemen Road, Yemen"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.640426"], ["updated_at", "2018-01-09 00:39:01.640426"], ["survey_id", 4], ["option_a", "Chandler Bing"], ["option_b", "Ralph Lauren"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.648917"], ["updated_at", "2018-01-09 00:39:01.648917"], ["survey_id", 4], ["option_a", "Phoebe Buffay"], ["option_b", "15 Yemen Road, Yemen"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.658269"], ["updated_at", "2018-01-09 00:39:01.658269"], ["survey_id", 5], ["option_a", "Phoebe Buffay"], ["option_b", "Ralph Lauren"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.667448"], ["updated_at", "2018-01-09 00:39:01.667448"], ["survey_id", 5], ["option_a", "Miss Chanandler Bong"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.677281"], ["updated_at", "2018-01-09 00:39:01.677281"], ["survey_id", 2], ["option_a", "Chandler Bing"], ["option_b", "Javu"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.690069"], ["updated_at", "2018-01-09 00:39:01.690069"], ["survey_id", 3], ["option_a", "Monica Geller"], ["option_b", "15 Yemen Road, Yemen"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.702652"], ["updated_at", "2018-01-09 00:39:01.702652"], ["survey_id", 2], ["option_a", "Rachel Green"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.711255"], ["updated_at", "2018-01-09 00:39:01.711255"], ["survey_id", 3], ["option_a", "Carol Willick"], ["option_b", "Javu"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.719924"], ["updated_at", "2018-01-09 00:39:01.719924"], ["survey_id", 3], ["option_a", "Emily Waltham"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.728293"], ["updated_at", "2018-01-09 00:39:01.728293"], ["survey_id", 1], ["option_a", "Emily Waltham"], ["option_b", "Central Perk"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.737254"], ["updated_at", "2018-01-09 00:39:01.737254"], ["survey_id", 4], ["option_a", "Janice Goralnik"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.7ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.746632"], ["updated_at", "2018-01-09 00:39:01.746632"], ["survey_id", 2], ["option_a", "Ross Geller"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.755461"], ["updated_at", "2018-01-09 00:39:01.755461"], ["survey_id", 1], ["option_a", "Carol Willick"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.764050"], ["updated_at", "2018-01-09 00:39:01.764050"], ["survey_id", 1], ["option_a", "Joey Tribbiani"], ["option_b", "Javu"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.772854"], ["updated_at", "2018-01-09 00:39:01.772854"], ["survey_id", 3], ["option_a", "Ross Geller"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.781643"], ["updated_at", "2018-01-09 00:39:01.781643"], ["survey_id", 5], ["option_a", "Emily Waltham"], ["option_b", "Javu"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.790606"], ["updated_at", "2018-01-09 00:39:01.790606"], ["survey_id", 2], ["option_a", "Gunther"], ["option_b", "Central Perk"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.799107"], ["updated_at", "2018-01-09 00:39:01.799107"], ["survey_id", 5], ["option_a", "Miss Chanandler Bong"], ["option_b", "Javu"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.807910"], ["updated_at", "2018-01-09 00:39:01.807910"], ["survey_id", 1], ["option_a", "Phoebe Buffay"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.816370"], ["updated_at", "2018-01-09 00:39:01.816370"], ["survey_id", 3], ["option_a", "Chandler Bing"], ["option_b", "Central Perk"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.825956"], ["updated_at", "2018-01-09 00:39:01.825956"], ["survey_id", 1], ["option_a", "Gunther"], ["option_b", "Central Perk"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.835345"], ["updated_at", "2018-01-09 00:39:01.835345"], ["survey_id", 2], ["option_a", "Joey Tribbiani"], ["option_b", "Central Perk"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:01.844349"], ["updated_at", "2018-01-09 00:39:01.844349"], ["survey_id", 5], ["option_a", "Emily Waltham"], ["option_b", "Javu"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (156.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hatedate_test"[0m
+  [1m[35m (457.0ms)[0m  [1m[35mCREATE DATABASE "hatedate_test" ENCODING = 'utf8'[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "survey_id" integer, "option_a" character varying, "option_b" character varying)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "results" CASCADE[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "results" ("id" bigserial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "survey_id" integer, "answers" character varying[] DEFAULT '{}', "match_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "surveys" CASCADE[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "surveys" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "password_digest" character varying, "fsa" character varying, "gender" character varying DEFAULT 'undefined', "orientation" character varying DEFAULT 'undefined', "looking_for" character varying DEFAULT 'undefined', "phone" integer, "privacy" boolean DEFAULT 'f')[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180108234020)[0m
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180108164254),
+(20180108180209),
+(20180108182615),
+(20180108173551),
+(20180108164248),
+(20180108163702),
+(20180108164226),
+(20180108181823),
+(20180108162159),
+(20180108162831);
+
+[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-01-09 00:39:11.024522"], ["updated_at", "2018-01-09 00:39:11.024522"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSurvey Load (1.4ms)[0m  [1m[34mSELECT "surveys".* FROM "surveys"[0m
+  [1m[36mQuestion Load (1.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marques.considine@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Evie Schimmel"], ["email", "marques.considine@gmail.com"], ["created_at", "2018-01-09 00:39:11.690042"], ["updated_at", "2018-01-09 00:39:11.690042"], ["password_digest", "$2a$04$k3tlAbQyqnu3Iz0.vScvrO.kv04.IyNreTHld9TV7yNe6ZmeVIdky"], ["phone", 1234567890]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kayli@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lillian Miller PhD"], ["email", "kayli@gmail.com"], ["created_at", "2018-01-09 00:39:11.702207"], ["updated_at", "2018-01-09 00:39:11.702207"], ["password_digest", "$2a$04$3UFhTcs4yStyDY0v8G7U4OrBr1jbCbLIII2i9lmhZOeDNnoxj1tIS"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "meta@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lionel Satterfield"], ["email", "meta@hotmail.com"], ["created_at", "2018-01-09 00:39:11.712661"], ["updated_at", "2018-01-09 00:39:11.712661"], ["password_digest", "$2a$04$yoCCgnyJwIol9nU3scemkuIwFB1xqdWl5lCIylzaLIxEWyZ781y.a"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lori.bogisich@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Delbert O'Reilly DDS"], ["email", "lori.bogisich@gmail.com"], ["created_at", "2018-01-09 00:39:11.723073"], ["updated_at", "2018-01-09 00:39:11.723073"], ["password_digest", "$2a$04$VeA8QBKEX7foGQvCOSJ/7OCSf.0YvBSlVovH4IotkLkF5qBBS/KmO"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eloy@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alf Ritchie"], ["email", "eloy@yahoo.com"], ["created_at", "2018-01-09 00:39:11.733782"], ["updated_at", "2018-01-09 00:39:11.733782"], ["password_digest", "$2a$04$ZvH9gCJhKJcE0j0fb8RN6OmkQiYnn5SlNUHjkAyC9758mDeBhuLdG"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kaylee@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wilson Shields"], ["email", "kaylee@yahoo.com"], ["created_at", "2018-01-09 00:39:11.744042"], ["updated_at", "2018-01-09 00:39:11.744042"], ["password_digest", "$2a$04$NKhdppDtyBgbRbXkynfk6uvaPkym6ZjCU.7IKyiBBuSLu1dGkRZpW"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joany@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fanny Hudson"], ["email", "joany@yahoo.com"], ["created_at", "2018-01-09 00:39:11.754726"], ["updated_at", "2018-01-09 00:39:11.754726"], ["password_digest", "$2a$04$nl32z8SNdh0oPvsnTmHdguCNVes4BiWEwovnTCOwsYUsDN.i14ZUC"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kobe@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jo Streich PhD"], ["email", "kobe@hotmail.com"], ["created_at", "2018-01-09 00:39:11.765042"], ["updated_at", "2018-01-09 00:39:11.765042"], ["password_digest", "$2a$04$MuxokL5vkW1Lb57zxtAjTOgmjYjqnuGNSvyvpaMUnsnSLeOS84mdq"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jose_kunze@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Katherine Muller"], ["email", "jose_kunze@hotmail.com"], ["created_at", "2018-01-09 00:39:11.775817"], ["updated_at", "2018-01-09 00:39:11.775817"], ["password_digest", "$2a$04$Zzo6BvYeLbf7wVboXyNgTOO90ndkHAnZCa7xrYje84BR6BNl6S5Nu"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "opal.yundt@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mikayla Rohan"], ["email", "opal.yundt@yahoo.com"], ["created_at", "2018-01-09 00:39:11.786255"], ["updated_at", "2018-01-09 00:39:11.786255"], ["password_digest", "$2a$04$J1CVUls4l2nV09Cumtoj8.ZV.jDNEfiD4J1HBWqg9eZs/VENAoPiO"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cicero@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Demario Hessel DDS"], ["email", "cicero@yahoo.com"], ["created_at", "2018-01-09 00:39:11.796984"], ["updated_at", "2018-01-09 00:39:11.796984"], ["password_digest", "$2a$04$8gbgjgKs01FYJ8NIc.I/jOrwhq5HAYAXsY5baue9ZdjAVABMzTdjW"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "davon@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Francesco Little"], ["email", "davon@yahoo.com"], ["created_at", "2018-01-09 00:39:11.807275"], ["updated_at", "2018-01-09 00:39:11.807275"], ["password_digest", "$2a$04$.To3xG/qOO.ZYKVEhzxeCeiTsZWG4ZDgXvvSXztp0hDrLuCVIFz8K"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "prince_kozey@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ahmed King Jr."], ["email", "prince_kozey@gmail.com"], ["created_at", "2018-01-09 00:39:11.817543"], ["updated_at", "2018-01-09 00:39:11.817543"], ["password_digest", "$2a$04$fekzGeJYFThNGYvpPXBKpOHGZ5opQ.jfgKlNVDgKYi49sQQUs9vHa"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "makenzie@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Edd Treutel"], ["email", "makenzie@yahoo.com"], ["created_at", "2018-01-09 00:39:11.827811"], ["updated_at", "2018-01-09 00:39:11.827811"], ["password_digest", "$2a$04$/HOPzNPl3iQxwygZJBh7Yuw2W5f.3jZv/x85ZrQJVdmy15lKp7MFC"], ["phone", 1234567890]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tevin.schulist@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Chanel Block"], ["email", "tevin.schulist@gmail.com"], ["created_at", "2018-01-09 00:39:11.838372"], ["updated_at", "2018-01-09 00:39:11.838372"], ["password_digest", "$2a$04$.qaPpYv.M7U4kZ0LTqUn..LEKzqMSs.NnVo2sJueL6qI3w5ZiXvC2"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jaylin_graham@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Haleigh Little"], ["email", "jaylin_graham@yahoo.com"], ["created_at", "2018-01-09 00:39:11.848582"], ["updated_at", "2018-01-09 00:39:11.848582"], ["password_digest", "$2a$04$GzUor7ALEY9P0eiBTtTSs.pJqigAHAPuax1qiL3wDv2iLBy47LjHa"], ["phone", 1234567890]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "judah.miller@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kattie Mohr"], ["email", "judah.miller@yahoo.com"], ["created_at", "2018-01-09 00:39:11.858978"], ["updated_at", "2018-01-09 00:39:11.858978"], ["password_digest", "$2a$04$T8D3nz790VEqnZk3KZNkYOgvUWsHaF6ptVU7BwOKhXimo0MCDEtQa"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dexter.klein@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Richard Grady"], ["email", "dexter.klein@hotmail.com"], ["created_at", "2018-01-09 00:39:11.869488"], ["updated_at", "2018-01-09 00:39:11.869488"], ["password_digest", "$2a$04$9st648P.mbbEHfD3kDnejuPZP0JOw0KHgHVFpc3h9qNXIv4M7tD0."], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ferne@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Rudy Wiza"], ["email", "ferne@yahoo.com"], ["created_at", "2018-01-09 00:39:11.880039"], ["updated_at", "2018-01-09 00:39:11.880039"], ["password_digest", "$2a$04$Vnda.TuDLzDU77SLzv1nE.Zp665.Bf7xf0j3cp/MMoN1UUQl4QEEW"], ["phone", 1234567890]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "isai.schiller@hotmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Noemy Parisian"], ["email", "isai.schiller@hotmail.com"], ["created_at", "2018-01-09 00:39:11.890115"], ["updated_at", "2018-01-09 00:39:11.890115"], ["password_digest", "$2a$04$0UO4j27Jzh3db5gRkmu.4ONtMwiiuJVyTg6pIvStEyFPjMg1bkXcu"], ["phone", 1234567890]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Pets"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Pets"], ["created_at", "2018-01-09 00:39:11.902315"], ["updated_at", "2018-01-09 00:39:11.902315"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Toys"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Toys"], ["created_at", "2018-01-09 00:39:11.906838"], ["updated_at", "2018-01-09 00:39:11.906838"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Sports"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Sports"], ["created_at", "2018-01-09 00:39:11.911278"], ["updated_at", "2018-01-09 00:39:11.911278"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "Movies"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Movies"], ["created_at", "2018-01-09 00:39:11.915644"], ["updated_at", "2018-01-09 00:39:11.915644"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "surveys" WHERE "surveys"."name" = $1 LIMIT $2[0m  [["name", "People"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "People"], ["created_at", "2018-01-09 00:39:11.919931"], ["updated_at", "2018-01-09 00:39:11.919931"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.941605"], ["updated_at", "2018-01-09 00:39:11.941605"], ["survey_id", 5], ["option_a", "Richard Burke"], ["option_b", "Javu"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.947755"], ["updated_at", "2018-01-09 00:39:11.947755"], ["survey_id", 1], ["option_a", "Emily Waltham"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.953630"], ["updated_at", "2018-01-09 00:39:11.953630"], ["survey_id", 5], ["option_a", "Rachel Green"], ["option_b", "Javu"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.959093"], ["updated_at", "2018-01-09 00:39:11.959093"], ["survey_id", 4], ["option_a", "Miss Chanandler Bong"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.964999"], ["updated_at", "2018-01-09 00:39:11.964999"], ["survey_id", 4], ["option_a", "Richard Burke"], ["option_b", "Ralph Lauren"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.970494"], ["updated_at", "2018-01-09 00:39:11.970494"], ["survey_id", 1], ["option_a", "Joey Tribbiani"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.976328"], ["updated_at", "2018-01-09 00:39:11.976328"], ["survey_id", 2], ["option_a", "Phoebe Buffay"], ["option_b", "Central Perk"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.982013"], ["updated_at", "2018-01-09 00:39:11.982013"], ["survey_id", 1], ["option_a", "Miss Chanandler Bong"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.988046"], ["updated_at", "2018-01-09 00:39:11.988046"], ["survey_id", 1], ["option_a", "Carol Willick"], ["option_b", "Ralph Lauren"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.993770"], ["updated_at", "2018-01-09 00:39:11.993770"], ["survey_id", 4], ["option_a", "Ross Geller"], ["option_b", "Javu"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:11.998948"], ["updated_at", "2018-01-09 00:39:11.998948"], ["survey_id", 5], ["option_a", "Ross Geller"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.004338"], ["updated_at", "2018-01-09 00:39:12.004338"], ["survey_id", 4], ["option_a", "Richard Burke"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.010166"], ["updated_at", "2018-01-09 00:39:12.010166"], ["survey_id", 1], ["option_a", "Miss Chanandler Bong"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.015648"], ["updated_at", "2018-01-09 00:39:12.015648"], ["survey_id", 3], ["option_a", "Rachel Green"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.021226"], ["updated_at", "2018-01-09 00:39:12.021226"], ["survey_id", 5], ["option_a", "Gunther"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.026553"], ["updated_at", "2018-01-09 00:39:12.026553"], ["survey_id", 3], ["option_a", "Carol Willick"], ["option_b", "Javu"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.032044"], ["updated_at", "2018-01-09 00:39:12.032044"], ["survey_id", 4], ["option_a", "Janice Goralnik"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.037911"], ["updated_at", "2018-01-09 00:39:12.037911"], ["survey_id", 1], ["option_a", "Joey Tribbiani"], ["option_b", "Javu"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.044582"], ["updated_at", "2018-01-09 00:39:12.044582"], ["survey_id", 4], ["option_a", "Ross Geller"], ["option_b", "Days of Our Lives"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.049809"], ["updated_at", "2018-01-09 00:39:12.049809"], ["survey_id", 4], ["option_a", "Janice Goralnik"], ["option_b", "Central Perk"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.055128"], ["updated_at", "2018-01-09 00:39:12.055128"], ["survey_id", 2], ["option_a", "Phoebe Buffay"], ["option_b", "Central Perk"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.060791"], ["updated_at", "2018-01-09 00:39:12.060791"], ["survey_id", 1], ["option_a", "Miss Chanandler Bong"], ["option_b", "New York Museum of Prehistoric History"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.066078"], ["updated_at", "2018-01-09 00:39:12.066078"], ["survey_id", 4], ["option_a", "Monica Geller"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.071308"], ["updated_at", "2018-01-09 00:39:12.071308"], ["survey_id", 4], ["option_a", "Richard Burke"], ["option_b", "Javu"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.077220"], ["updated_at", "2018-01-09 00:39:12.077220"], ["survey_id", 5], ["option_a", "Emily Waltham"], ["option_b", "Central Perk"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.083184"], ["updated_at", "2018-01-09 00:39:12.083184"], ["survey_id", 1], ["option_a", "Chandler Bing"], ["option_b", "Central Perk"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.088983"], ["updated_at", "2018-01-09 00:39:12.088983"], ["survey_id", 1], ["option_a", "Gunther"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.094267"], ["updated_at", "2018-01-09 00:39:12.094267"], ["survey_id", 1], ["option_a", "Gunther"], ["option_b", "945 Grove St Apt. 20"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.100085"], ["updated_at", "2018-01-09 00:39:12.100085"], ["survey_id", 3], ["option_a", "Ross Geller"], ["option_b", "Central Perk"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "surveys"."id" FROM "surveys"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "survey_id", "option_a", "option_b") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 00:39:12.105312"], ["updated_at", "2018-01-09 00:39:12.105312"], ["survey_id", 5], ["option_a", "Monica Geller"], ["option_b", "Ralph Lauren"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.593429', '2018-01-09 00:39:16.593429', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.593429', '2018-01-09 00:39:16.593429', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:39:16.613489', '2018-01-09 00:39:16.613489', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:39:16.613489', '2018-01-09 00:39:16.613489', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:39:16.627852', '2018-01-09 00:39:16.627852', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:39:16.627852', '2018-01-09 00:39:16.627852', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.640394', '2018-01-09 00:39:16.640394', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.640394', '2018-01-09 00:39:16.640394', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.652670', '2018-01-09 00:39:16.652670', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:39:16.652670', '2018-01-09 00:39:16.652670', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:39:16.683712"], ["updated_at", "2018-01-09 00:39:16.683712"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettyma@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.678852', '2018-01-09 00:42:38.678852', 980190962)[0m
+  [1m[36mFixture Insert (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.678852', '2018-01-09 00:42:38.678852', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:42:38.696536', '2018-01-09 00:42:38.696536', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:42:38.696536', '2018-01-09 00:42:38.696536', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:42:38.712800', '2018-01-09 00:42:38.712800', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:42:38.712800', '2018-01-09 00:42:38.712800', 298486374)[0m
+  [1m[36mFixture Delete (1.1ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.724957', '2018-01-09 00:42:38.724957', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.724957', '2018-01-09 00:42:38.724957', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.741070', '2018-01-09 00:42:38.741070', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:42:38.741070', '2018-01-09 00:42:38.741070', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:33.990013', '2018-01-09 00:45:33.990013', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:33.990013', '2018-01-09 00:45:33.990013', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:45:34.006229', '2018-01-09 00:45:34.006229', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:45:34.006229', '2018-01-09 00:45:34.006229', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:45:34.020184', '2018-01-09 00:45:34.020184', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:45:34.020184', '2018-01-09 00:45:34.020184', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:34.032605', '2018-01-09 00:45:34.032605', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:34.032605', '2018-01-09 00:45:34.032605', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:34.044809', '2018-01-09 00:45:34.044809', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:34.044809', '2018-01-09 00:45:34.044809', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 00:45:34.076671"], ["updated_at", "2018-01-09 00:45:34.076671"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.269509', '2018-01-09 00:45:50.269509', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.269509', '2018-01-09 00:45:50.269509', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:45:50.287586', '2018-01-09 00:45:50.287586', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 00:45:50.287586', '2018-01-09 00:45:50.287586', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:45:50.301168', '2018-01-09 00:45:50.301168', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 00:45:50.301168', '2018-01-09 00:45:50.301168', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.313324', '2018-01-09 00:45:50.313324', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.313324', '2018-01-09 00:45:50.313324', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.325516', '2018-01-09 00:45:50.325516', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 00:45:50.325516', '2018-01-09 00:45:50.325516', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (1.0ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.661736', '2018-01-09 01:19:10.661736', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.661736', '2018-01-09 01:19:10.661736', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:19:10.681738', '2018-01-09 01:19:10.681738', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:19:10.681738', '2018-01-09 01:19:10.681738', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:19:10.695274', '2018-01-09 01:19:10.695274', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:19:10.695274', '2018-01-09 01:19:10.695274', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.708722', '2018-01-09 01:19:10.708722', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.708722', '2018-01-09 01:19:10.708722', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.720897', '2018-01-09 01:19:10.720897', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:10.720897', '2018-01-09 01:19:10.720897', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:19:10.751989"], ["updated_at", "2018-01-09 01:19:10.751989"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (1.2ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.564146', '2018-01-09 01:19:30.564146', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.564146', '2018-01-09 01:19:30.564146', 298486374)[0m
+  [1m[36mFixture Delete (0.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:19:30.581880', '2018-01-09 01:19:30.581880', 980190962)[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:19:30.581880', '2018-01-09 01:19:30.581880', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:19:30.598357', '2018-01-09 01:19:30.598357', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:19:30.598357', '2018-01-09 01:19:30.598357', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.610805', '2018-01-09 01:19:30.610805', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.610805', '2018-01-09 01:19:30.610805', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.623113', '2018-01-09 01:19:30.623113', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:19:30.623113', '2018-01-09 01:19:30.623113', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UserTest: test_email_must_be_unique
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:19:31.146654"], ["updated_at", "2018-01-09 01:19:31.146654"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.543083', '2018-01-09 01:24:05.543083', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.543083', '2018-01-09 01:24:05.543083', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:24:05.560315', '2018-01-09 01:24:05.560315', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:24:05.560315', '2018-01-09 01:24:05.560315', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:24:05.576321', '2018-01-09 01:24:05.576321', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:24:05.576321', '2018-01-09 01:24:05.576321', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.588157', '2018-01-09 01:24:05.588157', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.588157', '2018-01-09 01:24:05.588157', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.600269', '2018-01-09 01:24:05.600269', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:05.600269', '2018-01-09 01:24:05.600269', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+UserTest: test_email_must_be_unique_assertion
+---------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:24:05.636264"], ["updated_at", "2018-01-09 01:24:05.636264"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:24:05.643890"], ["updated_at", "2018-01-09 01:24:05.643890"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.860080', '2018-01-09 01:24:30.860080', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.860080', '2018-01-09 01:24:30.860080', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:24:30.878793', '2018-01-09 01:24:30.878793', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:24:30.878793', '2018-01-09 01:24:30.878793', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:24:30.892827', '2018-01-09 01:24:30.892827', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:24:30.892827', '2018-01-09 01:24:30.892827', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.904866', '2018-01-09 01:24:30.904866', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.904866', '2018-01-09 01:24:30.904866', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.917448', '2018-01-09 01:24:30.917448', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:24:30.917448', '2018-01-09 01:24:30.917448', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:24:31.449172"], ["updated_at", "2018-01-09 01:24:31.449172"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.755890', '2018-01-09 01:26:25.755890', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.755890', '2018-01-09 01:26:25.755890', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:26:25.776065', '2018-01-09 01:26:25.776065', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:26:25.776065', '2018-01-09 01:26:25.776065', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:26:25.790093', '2018-01-09 01:26:25.790093', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:26:25.790093', '2018-01-09 01:26:25.790093', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.802440', '2018-01-09 01:26:25.802440', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.802440', '2018-01-09 01:26:25.802440', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.815272', '2018-01-09 01:26:25.815272', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:26:25.815272', '2018-01-09 01:26:25.815272', 298486374)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:26:26.359666"], ["updated_at", "2018-01-09 01:26:26.359666"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.893628', '2018-01-09 01:35:07.893628', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.893628', '2018-01-09 01:35:07.893628', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:35:07.909350', '2018-01-09 01:35:07.909350', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:35:07.909350', '2018-01-09 01:35:07.909350', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:35:07.922913', '2018-01-09 01:35:07.922913', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:35:07.922913', '2018-01-09 01:35:07.922913', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.935120', '2018-01-09 01:35:07.935120', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.935120', '2018-01-09 01:35:07.935120', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.947290', '2018-01-09 01:35:07.947290', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:07.947290', '2018-01-09 01:35:07.947290', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:35:08.458349"], ["updated_at", "2018-01-09 01:35:08.458349"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.9ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:45.960887', '2018-01-09 01:35:45.960887', 980190962)[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:45.960887', '2018-01-09 01:35:45.960887', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:35:45.977857', '2018-01-09 01:35:45.977857', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:35:45.977857', '2018-01-09 01:35:45.977857', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:35:45.992969', '2018-01-09 01:35:45.992969', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:35:45.992969', '2018-01-09 01:35:45.992969', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:46.005239', '2018-01-09 01:35:46.005239', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:46.005239', '2018-01-09 01:35:46.005239', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:46.017295', '2018-01-09 01:35:46.017295', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:35:46.017295', '2018-01-09 01:35:46.017295', 298486374)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:35:46.504359"], ["updated_at", "2018-01-09 01:35:46.504359"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.070834', '2018-01-09 01:36:29.070834', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.070834', '2018-01-09 01:36:29.070834', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:36:29.087337', '2018-01-09 01:36:29.087337', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:36:29.087337', '2018-01-09 01:36:29.087337', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:36:29.102603', '2018-01-09 01:36:29.102603', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:36:29.102603', '2018-01-09 01:36:29.102603', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.115458', '2018-01-09 01:36:29.115458', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.115458', '2018-01-09 01:36:29.115458', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.127863', '2018-01-09 01:36:29.127863', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:29.127863', '2018-01-09 01:36:29.127863', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:36:29.639761"], ["updated_at", "2018-01-09 01:36:29.639761"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "messages" DISABLE TRIGGER ALL;ALTER TABLE "questions" DISABLE TRIGGER ALL;ALTER TABLE "results" DISABLE TRIGGER ALL;ALTER TABLE "surveys" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "messages"[0m
+  [1m[36mFixture Insert (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.237680', '2018-01-09 01:36:43.237680', 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.237680', '2018-01-09 01:36:43.237680', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:36:43.255471', '2018-01-09 01:36:43.255471', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-01-09 01:36:43.255471', '2018-01-09 01:36:43.255471', 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM "surveys"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:36:43.271016', '2018-01-09 01:36:43.271016', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "surveys" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2018-01-09 01:36:43.271016', '2018-01-09 01:36:43.271016', 298486374)[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "questions"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.283668', '2018-01-09 01:36:43.283668', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.283668', '2018-01-09 01:36:43.283668', 298486374)[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "results"[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.297153', '2018-01-09 01:36:43.297153', 980190962)[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "id") VALUES ('2018-01-09 01:36:43.297153', '2018-01-09 01:36:43.297153', 298486374)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ENABLE TRIGGER ALL;ALTER TABLE "questions" ENABLE TRIGGER ALL;ALTER TABLE "results" ENABLE TRIGGER ALL;ALTER TABLE "surveys" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_email_must_be_unique_refute_negative
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "fsa", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Johndo"], ["email", "bettymaker@gmail.com"], ["created_at", "2018-01-09 01:36:43.330247"], ["updated_at", "2018-01-09 01:36:43.330247"], ["password_digest", "password"], ["fsa", "M3A"], ["phone", 1112223334]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettymaker@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "heytherebuddy@gggmailer.co"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_password_must_be_at_least_4_characters_long
+----------------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_user_must_include_password_on_create
+---------------------------------------------------
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herecomes@john.ny"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
