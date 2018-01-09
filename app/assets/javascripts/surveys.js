@@ -4,19 +4,26 @@
 document.addEventListener("DOMContentLoaded", function() {
   var button = document.querySelector('button')
   var questionCounter = 0
-  var results = []
+  var result = []
   var imageHolder = document.createElement('div')
 
 
   var choose = function makeSelection(){
   // shovels the user's choice into a results array
-    results.push(this.className);
+    result.push(this.className);
     questionCounter ++
     // if the user has made all choices, he is redirected away from the survey page
     if (questionCounter < key.length){
       pictureMaker()
     } else {
-      window.location.replace('http://google.com')
+      $.ajax({
+      method: "POST",
+      url: "/users/results",
+      data: { results: { user_id: current_user, survey_id: survey_id, answers: result } },
+    }).done(function(data){
+        window.location.replace('http://google.com')
+    })
+
     }
   }
 
