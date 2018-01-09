@@ -9099,3 +9099,489 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 94ms (Views: 92.9ms | ActiveRecord: 0.0ms)
 
 
+Started POST "/users" for 127.0.0.1 at 2018-01-09 16:38:45 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xALJ3Q2PUk+GZz5UUGDUz1mHXX6nxPPuXh6Y6JSlhTdAmQBX4KDcfTwbwI+ox7amgxFYpKwvcof4zoJ3+EushA==", "user"=>{"name"=>"hello", "email"=>"hello@notreal.com", "privacy"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hello@notreal.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "hello"], ["email", "hello@notreal.com"], ["created_at", "2018-01-09 21:38:45.979619"], ["updated_at", "2018-01-09 21:38:45.979619"], ["password_digest", "$2a$10$JmPu.XLLcgSPsfClO6VGQu.e10S9YpOY.d1SAuE9Ye1B9/e4QWhLW"]]
+  [1m[35m (31.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hello@notreal.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 125ms (ActiveRecord: 32.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 16:38:46 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 31ms (Views: 29.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:39:58 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2018-01-09 16:40:02 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 29ms (Views: 25.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2018-01-09 16:43:17 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 41ms (Views: 38.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:43:19 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for true:TrueClass):
+    12:   </div>
+    13:   <div class="field">
+    14:     <%= f.label :make_profile_public %>
+    15:     <%= f.check_box(:privacy, checked_value = true, unchecked_value = false) %>
+    16:   </div>
+    17:   <div class="field">
+    18:     <%= f.label :password %>
+  
+app/views/users/new.html.erb:15:in `block in _app_views_users_new_html_erb__1923236803496103361_69876779155180'
+app/views/users/new.html.erb:4:in `_app_views_users_new_html_erb__1923236803496103361_69876779155180'
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:44:52 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-01-09 16:45:06 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HyVz9AUQAetxxXw9XRrMGA+0dzuoWzbxEVhUPGlYu82bvrp+6D+P2cu5gualva5x1SJy4aOwt5i3iE6jBbaSfg==", "user"=>{"name"=>"blah", "email"=>"blah@blah.bla", "privacy"=>"true", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blah@blah.bla"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "blah"], ["email", "blah@blah.bla"], ["created_at", "2018-01-09 21:45:06.469254"], ["updated_at", "2018-01-09 21:45:06.469254"], ["password_digest", "$2a$10$hqhifkFsS0Ja7Si1kGmHLOfr1vWhT2aHyTRHnZ3u0BZJbLZRZqojS"]]
+  [1m[35m (34.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blah@blah.bla"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 129ms (ActiveRecord: 36.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 16:45:06 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 23], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:45:31 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 50ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:46:47 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 59ms (Views: 29.8ms | ActiveRecord: 5.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-01-09 16:47:04 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+j3xORw9LqWBadgel5UjzSFX4WZ3UY6aXMKHjMA08NZ+pjiz8RKglzsVJsVvMkGk+8HkvHy6D/P6Ep0TrNrZZQ==", "user"=>{"name"=>"ds", "email"=>"gksepre@password.com", "privacy"=>"true", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gksepre@password.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "privacy") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "ds"], ["email", "gksepre@password.com"], ["created_at", "2018-01-09 21:47:04.786369"], ["updated_at", "2018-01-09 21:47:04.786369"], ["password_digest", "$2a$10$1OP4TAdkR3Tik0A1VFUQ6e8jKspid6wz/DkKrUHfoClLqh78SxIhC"], ["privacy", "t"]]
+  [1m[35m (37.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gksepre@password.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 130ms (ActiveRecord: 39.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 16:47:04 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 24], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 31ms (Views: 27.7ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:50:59 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (38.1ms)
+Completed 200 OK in 74ms (Views: 72.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:56:07 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 37ms (Views: 36.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 16:58:09 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 32ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-01-09 17:14:37 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KWEcSe4ilfCZ+XD8sg8cdUBvSVk3a2u9XujpCVqax1qt+tXDAw0bwiOFjidKqH4cmvlMgzyA6tT4OPOWNnTu6Q==", "user"=>{"name"=>"spencer", "email"=>"s@hi.com", "phone"=>"1234567890", "privacy"=>"true", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "s@hi.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone", "privacy") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "spencer"], ["email", "s@hi.com"], ["created_at", "2018-01-09 22:14:37.591214"], ["updated_at", "2018-01-09 22:14:37.591214"], ["password_digest", "$2a$10$l7OIH19aNBXEHuWGUrUlqOp8C6f6D94G8B2l6l/8Qo3fzQG5sb9za"], ["phone", 1234567890], ["privacy", "t"]]
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "s@hi.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 118ms (ActiveRecord: 12.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:14:37 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 29ms (Views: 24.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/surveys/1/" for 127.0.0.1 at 2018-01-09 17:14:43 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 70ms (Views: 29.9ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-09 17:14:54 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"25", "survey_id"=>"1", "answers"=>["left", "left", "left", "left"]}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 22:14:54.887757"], ["updated_at", "2018-01-09 22:14:54.887757"], ["user_id", 25], ["survey_id", 1], ["answers", "{left,left,left,left}"]]
+  [1m[35m (23.4ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 73ms (ActiveRecord: 26.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:14:54 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.8ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 52ms (Views: 49.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:29:59 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 65ms (Views: 39.0ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:30:00 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 39ms (Views: 36.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:30:06 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 40ms (Views: 36.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2018-01-09 17:30:08 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:30:10 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:30:12 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:30:14 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:30:52 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 41ms (Views: 37.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:30:54 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 48ms (Views: 44.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:31:01 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:31:03 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.6ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 34ms (Views: 31.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:31:16 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 25], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2018-01-09 17:31:23 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Pf7vbcaWKA+UU0JdcWPyPGJtQLFZUVI3UrryFqJtkfu5ZSbnK7mmPS4vvIaJxJBVuPtFa1K60170auiJzoO4SA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:31:23 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 24ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-01-09 17:31:26 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-01-09 17:31:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IFiaPRYhR9/aq2mOevGY8hi0z36rL/yxrpFXw5h5+iGkw1O3+w7J7WDXl1WCVvqbwiLKpKDEfdgIQU1c9JfTkg==", "email"=>"hi@notreal.com", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hi@notreal.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 90ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:31:34 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 32.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:31:36 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 21], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 50ms (Views: 46.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2018-01-09 17:31:39 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 37ms (Views: 36.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/surveys/1/" for 127.0.0.1 at 2018-01-09 17:31:43 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 64ms (Views: 29.1ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-09 17:31:48 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"21", "survey_id"=>"1", "answers"=>["left", "left", "left", "left"]}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 22:31:48.683043"], ["updated_at", "2018-01-09 22:31:48.683043"], ["user_id", 21], ["survey_id", 1], ["answers", "{left,left,left,left}"]]
+  [1m[35m (66.0ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 105ms (ActiveRecord: 67.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:31:48 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.6ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 21], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Started DELETE "/logout" for 127.0.0.1 at 2018-01-09 17:32:32 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+AfWJr8mc/uyQW1ULIuWkqNG+bzk4I4hQfnASrAM6Bt8nB+sUgn9yQg9k4/ULPT7edD8Zu8LD0jnKdrV3OLBqA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:32:33 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-01-09 17:32:34 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-01-09 17:32:40 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kcPHAB+oc1DBYKIjRmMzvC+fnF/wdgCPU+khd/67S60VWA6K8of9YnscXPi+xFHV9QmZhfudgeb1OTvoklViHg==", "email"=>"hi@notreal.com", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hi@notreal.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 87ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:32:40 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:32:52 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2018-01-09 17:32:53 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 17:32:55 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 21], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 44ms (Views: 41.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2018-01-09 17:32:56 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zvPobWbpQo05Wc6AjqeJj3HjtXAkFxFxi1yqMxd+eERKaCHni8bMv4MlMFt2AOvmq3Wwqi/8kBgtjLCse5BR9w=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-09 17:32:56 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 25ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-09 17:32:58 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-01-09 17:33:01 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.0ms)
+
+
