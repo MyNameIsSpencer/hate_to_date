@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
       url: "/users/results",
       data: { results: { user_id: current_user, survey_id: survey_id, answers: result } },
     }).done(function(data){
-        window.location.replace('http://google.com')
+        window.location.replace('/users')
     })
 
     }
