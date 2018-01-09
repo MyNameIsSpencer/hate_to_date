@@ -9110,3 +9110,70 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 44ms (Views: 38.5ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-09 16:04:31 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 923ms (Views: 869.0ms | ActiveRecord: 17.0ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-09 16:04:41 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"2", "survey_id"=>"2", "answers"=>["right", "left", "left", "right", "left", "right", "left"]}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 21:04:42.002564"], ["updated_at", "2018-01-09 21:04:42.002564"], ["user_id", 2], ["survey_id", 2], ["answers", "{right,left,left,right,left,right,left}"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 129ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/surveys/users" for 127.0.0.1 at 2018-01-09 16:04:42 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"users"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=users):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-09 16:05:19 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 322ms (Views: 307.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-09 16:05:23 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"2", "survey_id"=>"4", "answers"=>["left", "right", "right", "right"]}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-09 21:05:23.667820"], ["updated_at", "2018-01-09 21:05:23.667820"], ["user_id", 2], ["survey_id", 4], ["answers", "{left,right,right,right}"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 117ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-09 16:05:23 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 31ms (Views: 27.4ms | ActiveRecord: 0.7ms)
+
+
