@@ -6418,6 +6418,7 @@ Processing by SurveysController#show as HTML
 Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 0.8ms)
 
 
+<<<<<<< HEAD
   [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hatedate_development"[0m
   [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hatedate_test"[0m
   [1m[35m (1111.6ms)[0m  [1m[35mCREATE DATABASE "hatedate_development" ENCODING = 'utf8'[0m
@@ -7185,11 +7186,46 @@ Completed 200 OK in 52ms (Views: 23.1ms | ActiveRecord: 7.9ms)
 
 
 Started GET "/surveys/1/" for 127.0.0.1 at 2018-01-09 12:15:22 -0500
+=======
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:43:00 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 321ms (Views: 267.3ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:43:14 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.8ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 61ms (Views: 41.3ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-09 11:44:22 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 33ms (Views: 26.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-09 11:44:28 -0500
+>>>>>>> 75b69e3fe740aadcb6f9777192d9cf6681eddc2e
 Processing by SurveysController#show as HTML
   Parameters: {"id"=>"1"}
   [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
   Rendering surveys/show.html.erb within layouts/application
+<<<<<<< HEAD
   Rendered surveys/show.html.erb within layouts/application (0.7ms)
 Completed 200 OK in 96ms (Views: 88.4ms | ActiveRecord: 0.7ms)
 
@@ -7655,5 +7691,139 @@ Processing by SurveysController#index as HTML
   Rendering surveys/index.html.erb within layouts/application
   Rendered surveys/index.html.erb within layouts/application (0.3ms)
 Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+=======
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 68ms (Views: 61.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:44:35 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-09 11:44:40 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 77ms (Views: 69.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:44:44 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 47ms (Views: 39.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-09 11:44:44 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 41ms (Views: 34.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:46:01 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 81ms (Views: 76.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:46:21 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (1.8ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 43ms (Views: 32.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:48:30 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 111ms (Views: 100.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:51:01 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (1.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 131ms (Views: 123.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:51:57 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (3.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 94ms (Views: 83.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:52:10 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 79ms (Views: 73.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:52:42 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 93ms (Views: 88.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:52:52 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 82ms (Views: 77.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-09 11:53:47 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 85ms (Views: 79.9ms | ActiveRecord: 0.5ms)
+>>>>>>> 75b69e3fe740aadcb6f9777192d9cf6681eddc2e
 
 
