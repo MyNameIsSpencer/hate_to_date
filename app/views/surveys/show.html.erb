@@ -3,18 +3,21 @@
 <script>
 var key = []
 var value = []
+var giphyKey = "<%=ENV["Giphy_Key"]%>"
 </script>
 
 <% @questions.each_with_index do |(k,v),i| %>
 
-<script>
-  key['<%=i%>'] = '<%=k%>'
-  value['<%=i%>'] = '<%=v%>'
-</script>
-  <%end  %>
+  <script>
+    key['<%=i%>'] = '<%=k%>'
+    value['<%=i%>'] = '<%=v%>'
+  </script>
+<%end  %>
 
 <button type="submit" name="start_survey">Start Survey</button>
 <br>
 
+
 <%= @questions.keys %>
 <%=@questions.values%>
+
