@@ -4,10 +4,9 @@ FactoryBot.define do
     email             "herecomes@john.ny"
     password_digest   "password"
     fsa               "M3A"
-    phone             "1112223334"
+    phone             1112223334
     # gender            "Male"
     # orientation       "straight"
     # looking_for       "friendship"
-    # phone             ""
   end
 end
