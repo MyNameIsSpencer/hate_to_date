@@ -1,0 +1,16 @@
+<h1>Survey</h1>
+<script>
+  var key = '<%=@test_results.keys[0]%>'
+  var value = '<%=@test_results.values[0]%>'
+</script>
+
+<button type="submit" name="start_survey">Start Survey</button>
+<br>
+
+<%@result.each do |q1,q2| %>
+  <img src="<%=q1%>" alt="dog">
+  <img src="<%=q2%>" alt="dog">
+  <br>
+<% end %>
+
+<%= @survey.questions.inspect %>
