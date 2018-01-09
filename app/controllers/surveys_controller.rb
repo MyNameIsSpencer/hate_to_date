@@ -2,10 +2,11 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @results = {}
+    @questions = {}
     @survey.questions.each do |question|
-      @results[question.option_a] = question.option_b
+      @questions[question.option_a] = question.option_b
     end
+
   end
 
 end
