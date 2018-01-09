@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     event.preventDefault()
     imageHolder.innerHTML = ""
     $.ajax({
-      url: "https://api.giphy.com/v1/gifs/search?api_key=RS4WEditBF6Ig0jzs1zJWbqTha5EPUo0&q=" + key[questionCounter] + "&rating=g" ,
+      url: "https://api.giphy.com/v1/gifs/search?api_key="+rails_env+"&q=" + key[questionCounter] + "&rating=g" ,
       method: 'GET',
       dataType: 'json'
     }).done(function(data1){
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
       image1.src = data1["data"][Math.floor(Math.random()*data1["data"].length)]["images"]["fixed_height_still"]["url"];
       image1.addEventListener('click', choose)
       $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?api_key=RS4WEditBF6Ig0jzs1zJWbqTha5EPUo0&q=" + value[questionCounter] + "&rating=g" ,
+        url: "https://api.giphy.com/v1/gifs/search?api_key="+rails_env+"&q=" + value[questionCounter] + "&rating=g" ,
         method: 'GET',
         dataType: 'json'
       }).done(function(data2){
