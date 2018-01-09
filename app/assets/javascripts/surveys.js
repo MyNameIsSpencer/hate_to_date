@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
       url: "https://api.giphy.com/v1/gifs/search?api_key=RS4WEditBF6Ig0jzs1zJWbqTha5EPUo0&q=" + key[questionCounter] + "&rating=g" ,
       method: 'GET',
       dataType: 'json'
-    }).done(function(data){
+    }).done(function(data1){
       var image1 = document.createElement('img')
       image1.className = "left"
-      image1.src = data["data"][Math.floor(Math.random()*data["data"].length)]["images"]["fixed_height_still"]["url"];
+      image1.src = data1["data"][Math.floor(Math.random()*data1["data"].length)]["images"]["fixed_height_still"]["url"];
       image1.addEventListener('click', choose)
       $.ajax({
         url: "https://api.giphy.com/v1/gifs/search?api_key=RS4WEditBF6Ig0jzs1zJWbqTha5EPUo0&q=" + value[questionCounter] + "&rating=g" ,
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }).done(function(data2){
         var image2 = document.createElement('img')
         image2.className = "right"
-        image2.src = data2["data"][Math.floor(Math.random()*data["data"].length)]["images"]["fixed_height_still"]["url"];
+        image2.src = data2["data"][Math.floor(Math.random()*data2["data"].length)]["images"]["fixed_height_still"]["url"];
         image2.addEventListener('click', choose)
         imageHolder.append(image1)
         imageHolder.append(image2)
