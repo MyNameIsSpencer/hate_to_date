@@ -25,6 +25,7 @@ end
 
 def show
   @user = current_user
+  @results = Result.all
 end
 
 def edit

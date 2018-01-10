@@ -3,4 +3,8 @@
 <h2> <%= @user.name %>'s results </h2>
 
 
-<%= current_user.results.inspect %>
+<% @user.results.each do |result| %>
+<%= result.survey_id %>
+<%= result.answers %>
+<%= @user.match_generator(result) %>
+<% end  %>
