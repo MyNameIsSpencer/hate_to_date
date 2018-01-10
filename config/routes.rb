@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   root "surveys#index"
-    get '/load_pictures' => 'surveys#load_pictures', :as =>   :load_pictures
-
+  resources :surveys, only: [:show] do
+    get '/load_pictures' => 'questions#load_pictures', :as =>   :load_pictures
+  end
 end
