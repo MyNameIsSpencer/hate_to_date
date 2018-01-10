@@ -12395,3 +12395,2178 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 40ms (Views: 34.8ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-01-10 00:11:44 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 50ms (Views: 46.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 00:11:53 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=3&number=0" for 127.0.0.1 at 2018-01-10 00:11:56 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"0"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 830ms (Views: 43.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 00:12:13 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 33ms (Views: 26.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=3&number=0" for 127.0.0.1 at 2018-01-10 00:12:14 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"0"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 361ms (Views: 50.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/load_pictures?id=3&number=1" for 127.0.0.1 at 2018-01-10 00:12:22 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 1234ms (Views: 119.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/load_pictures?id=3&number=2" for 127.0.0.1 at 2018-01-10 00:12:29 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 1565ms (Views: 81.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 00:12:39 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"3", "survey_id"=>"3", "answers"=>["left", "right", "left"]}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 05:12:39.039500"], ["updated_at", "2018-01-10 05:12:39.039500"], ["user_id", 3], ["survey_id", 3], ["answers", "{left,right,left}"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 129ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 00:12:39 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 36ms (Views: 27.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-10 10:04:39 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 547ms (Views: 527.2ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-10 10:04:48 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 70ms (Views: 36.8ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/load_pictures?id=4&number=0" for 127.0.0.1 at 2018-01-10 10:04:49 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"0"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 500 Internal Server Error in 1695ms (ActiveRecord: 5.9ms)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:15:in `load_pictures'
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-10 10:04:57 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 36ms (Views: 31.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/load_pictures?id=4&number=0" for 127.0.0.1 at 2018-01-10 10:04:59 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"0"}
+  [1m[36mSurvey Load (1.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 500 Internal Server Error in 156ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:15:in `load_pictures'
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-10 10:05:58 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 54ms (Views: 37.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/load_pictures?id=4&number=0" for 127.0.0.1 at 2018-01-10 10:05:59 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"0"}
+  [1m[36mSurvey Load (1.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 500 Internal Server Error in 246ms (ActiveRecord: 10.7ms)
+
+
+  
+NoMethodError (undefined method `questions' for #<Array:0x00007fdca73e4b18>):
+  
+app/controllers/surveys_controller.rb:15:in `load_pictures'
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-10 10:06:22 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 65ms (Views: 39.3ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/load_pictures?id=4&number=0" for 127.0.0.1 at 2018-01-10 10:06:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"0"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 200 OK in 358ms (Views: 123.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/load_pictures?id=4&number=1" for 127.0.0.1 at 2018-01-10 10:06:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"1"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 200 OK in 724ms (Views: 53.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=4&number=2" for 127.0.0.1 at 2018-01-10 10:06:26 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 200 OK in 873ms (Views: 63.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=4&number=3" for 127.0.0.1 at 2018-01-10 10:06:28 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 200 OK in 441ms (Views: 67.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=4&number=4" for 127.0.0.1 at 2018-01-10 10:06:29 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"4", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 4]]
+Completed 200 OK in 445ms (Views: 57.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:06:31 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"3", "survey_id"=>"4", "answers"=>["left", "right", "right", "left", "left"]}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (3.8ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 15:06:31.078905"], ["updated_at", "2018-01-10 15:06:31.078905"], ["user_id", 3], ["survey_id", 4], ["answers", "{left,right,right,left,left}"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 145ms (ActiveRecord: 17.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:06:31 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.8ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 42ms (Views: 29.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:06:40 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 40ms (Views: 33.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:06:44 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 61ms (Views: 54.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:12:14 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 105ms (Views: 85.6ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/load_pictures?id=2&number=0" for 127.0.0.1 at 2018-01-10 10:12:17 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 599ms (Views: 74.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=2&number=1" for 127.0.0.1 at 2018-01-10 10:12:18 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 233ms (Views: 76.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=2" for 127.0.0.1 at 2018-01-10 10:12:19 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 670ms (Views: 84.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=2&number=3" for 127.0.0.1 at 2018-01-10 10:12:20 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 258ms (Views: 91.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=4" for 127.0.0.1 at 2018-01-10 10:12:21 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 471ms (Views: 79.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=5" for 127.0.0.1 at 2018-01-10 10:12:22 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 245ms (Views: 89.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=6" for 127.0.0.1 at 2018-01-10 10:12:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 1455ms (Views: 126.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/load_pictures?id=2&number=7" for 127.0.0.1 at 2018-01-10 10:12:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 228ms (Views: 76.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=8" for 127.0.0.1 at 2018-01-10 10:12:26 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 486ms (Views: 78.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=9" for 127.0.0.1 at 2018-01-10 10:12:27 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 241ms (Views: 79.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=10" for 127.0.0.1 at 2018-01-10 10:12:27 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 223ms (Views: 76.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:12:28 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 687ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:12:29 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 57ms (Views: 51.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-10 10:13:35 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 62ms (Views: 39.7ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/load_pictures?id=1&number=0" for 127.0.0.1 at 2018-01-10 10:13:37 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"0"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 1321ms (Views: 89.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=1&number=1" for 127.0.0.1 at 2018-01-10 10:13:39 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 231ms (Views: 70.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=2" for 127.0.0.1 at 2018-01-10 10:13:40 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 229ms (Views: 83.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=1&number=3" for 127.0.0.1 at 2018-01-10 10:13:41 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 464ms (Views: 68.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=4" for 127.0.0.1 at 2018-01-10 10:13:42 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 240ms (Views: 91.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:13:43 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"1", "answers"=>["right", "right", "right", "right", "right"]}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 146ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:13:43 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2018-01-10 10:16:07 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/fYmLCOm1fuRaDIyaHkrkVBzndckSqWKvbihmfDbEh4AcHQASY6BWk5/ZDHCwzxOT7FIazvnL2CECMan/1xiQA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-10 10:16:07 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-01-10 10:16:09 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 66ms (Views: 37.9ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-01-10 10:16:30 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MYxEzF0grajsJLUDvjpxBI9yaAsAu8pizoiSnZDFXszMChbgNwj5CTMz4wAUgGbbkLC9tx8WQIj3OPWjn0Iukg==", "user"=>{"name"=>"bbbbb", "email"=>"bb@bb", "phone"=>"1111111111", "privacy"=>"false", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bb@bb"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 92ms (Views: 26.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-01-10 10:16:40 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vvyXbpMen4/elUoLi43neivznkCPEENT9cbAl8ewlhVDesVC+TbLLgGCHAghN/ClNDFL/JC9ybnMdqepyDfmSw==", "user"=>{"name"=>"bbbbb", "email"=>"bb@bb", "phone"=>"1111111111", "privacy"=>"false", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bb@bb"], ["LIMIT", 1]]
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "bbbbb"], ["email", "bb@bb"], ["created_at", "2018-01-10 15:16:40.237872"], ["updated_at", "2018-01-10 15:16:40.237872"], ["password_digest", "$2a$10$mtlVWLxp13NvDe2cRIKbVe.rAmQCs4rs2scjABq4keVDVL0m7obAK"], ["phone", 1111111111]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bb@bb"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 66ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:16:40 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.3ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:16:45 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 57ms (Views: 35.0ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/load_pictures?id=2&number=0" for 127.0.0.1 at 2018-01-10 10:16:48 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 1252ms (Views: 71.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=2&number=1" for 127.0.0.1 at 2018-01-10 10:16:50 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 226ms (Views: 79.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=2" for 127.0.0.1 at 2018-01-10 10:16:50 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 280ms (Views: 89.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=2&number=3" for 127.0.0.1 at 2018-01-10 10:16:51 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 241ms (Views: 77.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=4" for 127.0.0.1 at 2018-01-10 10:16:52 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 240ms (Views: 87.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=5" for 127.0.0.1 at 2018-01-10 10:16:53 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 230ms (Views: 86.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=6" for 127.0.0.1 at 2018-01-10 10:16:53 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 227ms (Views: 71.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=7" for 127.0.0.1 at 2018-01-10 10:16:54 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 279ms (Views: 119.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=8" for 127.0.0.1 at 2018-01-10 10:16:55 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 250ms (Views: 96.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=9" for 127.0.0.1 at 2018-01-10 10:16:55 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 307ms (Views: 131.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=10" for 127.0.0.1 at 2018-01-10 10:16:56 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 295ms (Views: 87.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:16:57 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 135ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:16:57 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 37ms (Views: 30.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 10:18:23 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 104ms (Views: 86.4ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/load_pictures?id=3&number=0" for 127.0.0.1 at 2018-01-10 10:18:24 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"0"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 436ms (Views: 93.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=3&number=1" for 127.0.0.1 at 2018-01-10 10:18:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 223ms (Views: 67.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=3&number=2" for 127.0.0.1 at 2018-01-10 10:18:26 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 360ms (Views: 64.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=3&number=3" for 127.0.0.1 at 2018-01-10 10:18:26 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"3", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 3]]
+Completed 200 OK in 263ms (Views: 109.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:18:27 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"22", "survey_id"=>"3", "answers"=>["right", "right", "right", "right"]}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 15:18:28.006916"], ["updated_at", "2018-01-10 15:18:28.006916"], ["user_id", 22], ["survey_id", 3], ["answers", "{right,right,right,right}"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 172ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:18:28 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 37ms (Views: 29.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:18:55 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 31.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=2&number=0" for 127.0.0.1 at 2018-01-10 10:18:57 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 315ms (Views: 122.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=1" for 127.0.0.1 at 2018-01-10 10:18:57 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 245ms (Views: 76.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=2" for 127.0.0.1 at 2018-01-10 10:18:58 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 241ms (Views: 99.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/load_pictures?id=2&number=3" for 127.0.0.1 at 2018-01-10 10:18:59 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 268ms (Views: 106.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=4" for 127.0.0.1 at 2018-01-10 10:18:59 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 239ms (Views: 90.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=5" for 127.0.0.1 at 2018-01-10 10:19:00 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 237ms (Views: 88.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=6" for 127.0.0.1 at 2018-01-10 10:19:01 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 229ms (Views: 75.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=7" for 127.0.0.1 at 2018-01-10 10:19:01 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 246ms (Views: 88.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=8" for 127.0.0.1 at 2018-01-10 10:19:02 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 255ms (Views: 88.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=9" for 127.0.0.1 at 2018-01-10 10:19:02 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 240ms (Views: 93.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=10" for 127.0.0.1 at 2018-01-10 10:19:03 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 297ms (Views: 140.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:22:48 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 44ms (Views: 35.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:23:02 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 34.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=0" for 127.0.0.1 at 2018-01-10 10:23:03 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 376ms (Views: 66.8ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/load_pictures?id=2&number=1" for 127.0.0.1 at 2018-01-10 10:23:04 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 256ms (Views: 83.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=2" for 127.0.0.1 at 2018-01-10 10:23:05 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 235ms (Views: 83.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?id=2&number=3" for 127.0.0.1 at 2018-01-10 10:23:05 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 259ms (Views: 87.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=4" for 127.0.0.1 at 2018-01-10 10:23:06 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 289ms (Views: 80.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=5" for 127.0.0.1 at 2018-01-10 10:23:07 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 243ms (Views: 100.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/load_pictures?id=2&number=6" for 127.0.0.1 at 2018-01-10 10:23:07 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 246ms (Views: 80.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/load_pictures?id=2&number=7" for 127.0.0.1 at 2018-01-10 10:23:08 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 261ms (Views: 92.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=8" for 127.0.0.1 at 2018-01-10 10:23:08 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 223ms (Views: 75.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=9" for 127.0.0.1 at 2018-01-10 10:23:09 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 259ms (Views: 112.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=10" for 127.0.0.1 at 2018-01-10 10:23:10 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 240ms (Views: 92.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:23:10 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["left", "left", "left", "left", "left", "left", "left", "left", "left", "left", "left"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 142ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:23:11 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 35ms (Views: 30.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2018-01-10 10:28:26 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 76ms (Views: 73.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-10 10:28:29 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 57ms (Views: 51.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/load_pictures?id=1&number=0" for 127.0.0.1 at 2018-01-10 10:28:33 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"0"}
+  [1m[36mSurvey Load (0.8ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 696ms (Views: 71.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/load_pictures?id=1&number=1" for 127.0.0.1 at 2018-01-10 10:28:34 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 230ms (Views: 85.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=2" for 127.0.0.1 at 2018-01-10 10:28:35 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 324ms (Views: 155.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=3" for 127.0.0.1 at 2018-01-10 10:28:35 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 429ms (Views: 137.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-10 10:28:46 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 91ms (Views: 86.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=0" for 127.0.0.1 at 2018-01-10 10:28:48 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"0"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 239ms (Views: 71.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=1" for 127.0.0.1 at 2018-01-10 10:28:49 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 276ms (Views: 106.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/load_pictures?id=1&number=2" for 127.0.0.1 at 2018-01-10 10:28:49 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 253ms (Views: 96.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=3" for 127.0.0.1 at 2018-01-10 10:28:50 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"3"}
+  [1m[36mSurvey Load (1.8ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 220ms (Views: 76.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/load_pictures?id=1&number=4" for 127.0.0.1 at 2018-01-10 10:28:50 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 230ms (Views: 85.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:28:51 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"22", "survey_id"=>"1", "answers"=>["right", "left", "left", "left", "left"]}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 135ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:28:51 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (1.1ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 56ms (Views: 44.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-10 10:29:18 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 37ms (Views: 33.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2018-01-10 10:34:56 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered surveys/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 52ms (Views: 33.7ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/load_pictures?id=1&number=0" for 127.0.0.1 at 2018-01-10 10:34:56 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"0"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 311ms (Views: 90.5ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/load_pictures?id=1&number=1" for 127.0.0.1 at 2018-01-10 10:34:57 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 245ms (Views: 74.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=2" for 127.0.0.1 at 2018-01-10 10:34:58 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 627ms (Views: 97.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=1&number=3" for 127.0.0.1 at 2018-01-10 10:34:59 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 374ms (Views: 68.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=1&number=4" for 127.0.0.1 at 2018-01-10 10:35:00 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"1", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 1]]
+Completed 200 OK in 543ms (Views: 91.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:35:01 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"user_id"=>"22", "survey_id"=>"1", "answers"=>["left", "left", "left", "left", "left"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 15:35:01.491046"], ["updated_at", "2018-01-10 15:35:01.491046"], ["user_id", 22], ["survey_id", 1], ["answers", "{left,left,left,left,left}"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 152ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:35:01 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 39ms (Views: 32.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 10:35:46 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 98ms (Views: 93.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=0" for 127.0.0.1 at 2018-01-10 10:35:48 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 422ms (Views: 81.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/load_pictures?id=2&number=1" for 127.0.0.1 at 2018-01-10 10:35:49 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 605ms (Views: 90.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=2" for 127.0.0.1 at 2018-01-10 10:35:50 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 383ms (Views: 90.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=3" for 127.0.0.1 at 2018-01-10 10:35:51 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 448ms (Views: 98.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=4" for 127.0.0.1 at 2018-01-10 10:35:52 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 221ms (Views: 72.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=5" for 127.0.0.1 at 2018-01-10 10:35:53 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 245ms (Views: 90.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?id=2&number=6" for 127.0.0.1 at 2018-01-10 10:35:54 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 568ms (Views: 127.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=7" for 127.0.0.1 at 2018-01-10 10:35:55 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 260ms (Views: 105.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/load_pictures?id=2&number=8" for 127.0.0.1 at 2018-01-10 10:35:56 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 471ms (Views: 66.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?id=2&number=9" for 127.0.0.1 at 2018-01-10 10:35:56 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 512ms (Views: 77.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?id=2&number=10" for 127.0.0.1 at 2018-01-10 10:35:57 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 486ms (Views: 77.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 10:35:59 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["right", "right", "right", "right", "right", "right", "right", "right", "right", "right", "right"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 15:35:59.182854"], ["updated_at", "2018-01-10 15:35:59.182854"], ["user_id", 22], ["survey_id", 2], ["answers", "{right,right,right,right,right,right,right,right,right,right,right}"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 131ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 10:35:59 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.4ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 33ms (Views: 28.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/surveys/4" for 127.0.0.1 at 2018-01-10 10:39:37 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 92ms (Views: 88.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:39:39 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=):
+  
+app/controllers/surveys_controller.rb:9:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:48:32 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 80ms (Views: 48.5ms | ActiveRecord: 19.3ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:48:34 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `keep_survey' for #<SurveysController:0x00007fdcade99580>):
+  
+app/controllers/surveys_controller.rb:9:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:49:32 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 41ms (Views: 30.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:49:34 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `keep_survey'
+app/controllers/surveys_controller.rb:9:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:50:27 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 42.5ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:50:28 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (1.7ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.7ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `keep_survey'
+app/controllers/surveys_controller.rb:9:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:50:48 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 50.3ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:50:49 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE Survey Load (0.0ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:12:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:56:08 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 62ms (Views: 41.7ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:56:09 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:12:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:57:23 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 59ms (Views: 47.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:57:24 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (1.0ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:12:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 10:57:41 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 62ms (Views: 37.2ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 10:57:42 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:13:in `load_pictures'
+Started GET "/surveys/5" for 127.0.0.1 at 2018-01-10 11:00:40 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 80ms (Views: 60.7ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:00:41 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:13:in `load_pictures'
+Started GET "/surveys" for 127.0.0.1 at 2018-01-10 11:02:07 -0500
+Processing by SurveysController#index as HTML
+  Rendering surveys/index.html.erb within layouts/application
+  Rendered surveys/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:02:15 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 40.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:02:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/surveys_controller.rb:13:in `load_pictures'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:08:18 -0500
+  
+SyntaxError (/Users/brandonlevy/Desktop/bitmaker/projects/final_project/hate_to_date/config/routes.rb:12: syntax error, unexpected [, expecting keyword_do or '{' or '('
+  resource :surveys, only [:show] do
+                           ^
+/Users/brandonlevy/Desktop/bitmaker/projects/final_project/hate_to_date/config/routes.rb:12: syntax error, unexpected keyword_do_block, expecting keyword_end
+urce :surveys, only [:show] do
+                              ^
+/Users/brandonlevy/Desktop/bitmaker/projects/final_project/hate_to_date/config/routes.rb:14: syntax error, unexpected keyword_end, expecting end-of-input
+  end
+     ^):
+  
+config/routes.rb:12: syntax error, unexpected [, expecting keyword_do or '{' or '('
+config/routes.rb:12: syntax error, unexpected keyword_do_block, expecting keyword_end
+config/routes.rb:14: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:08:39 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 36.9ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:08:41 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/load_pictures"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:09:09 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (1.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 73ms (Views: 52.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:09:10 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/load_pictures"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:10:05 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 47ms (Views: 35.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:10:06 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/load_pictures"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:10:37 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 114ms (Views: 108.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/surveys/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:10:38 -0500
+Processing by QuestionsController#load_pictures as JSON
+  Parameters: {"number"=>"0"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `questions' for nil:NilClass):
+  
+app/controllers/questions_controller.rb:7:in `load_pictures'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:11:26 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 53.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:11:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/load_pictures"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:11:48 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (2.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (49.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 121ms (Views: 63.9ms | ActiveRecord: 51.8ms)
+
+
+Started GET "/surveys/surveys/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:11:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/surveys/surveys/load_pictures"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:12:04 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 100ms (Views: 96.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/surveys/load_pictures?number=0" for 127.0.0.1 at 2018-01-10 11:12:05 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"load_pictures"}
+  [1m[36mSurvey Load (1.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 1.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=load_pictures):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:14:17 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (1.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 131ms (Views: 119.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/surveys/questions?number=0" for 127.0.0.1 at 2018-01-10 11:14:19 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"questions"}
+  [1m[36mSurvey Load (1.0ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=questions):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:15:25 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 60ms (Views: 39.9ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/surveys/questions?number=0" for 127.0.0.1 at 2018-01-10 11:15:26 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"questions"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 7ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=questions):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:16:44 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 42.3ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/surveys/questions?number=0" for 127.0.0.1 at 2018-01-10 11:16:45 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"questions"}
+  [1m[36mSurvey Load (0.6ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=questions):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:17:28 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 38.3ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/surveys/questions?number=0" for 127.0.0.1 at 2018-01-10 11:17:30 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"questions"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=questions):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:18:41 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 112ms (Views: 91.9ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/surveys/surveys?number=0" for 127.0.0.1 at 2018-01-10 11:18:42 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"surveys"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=surveys):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/surveys?number=0" for 127.0.0.1 at 2018-01-10 11:21:24 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"surveys"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 13ms (ActiveRecord: 5.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=surveys):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:26:36 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 129ms (Views: 111.5ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/surveys/:survey_id?number=0" for 127.0.0.1 at 2018-01-10 11:26:37 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>":survey_id"}
+  [1m[36mSurvey Load (1.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=:survey_id):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:28:58 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 103ms (Views: 97.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3?number=0" for 127.0.0.1 at 2018-01-10 11:28:59 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"3"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 85ms (Views: 48.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:30:53 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 60ms (Views: 38.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/surveys/3?number=0" for 127.0.0.1 at 2018-01-10 11:30:55 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"number"=>"0", "id"=>"3"}
+  [1m[36mSurvey Load (1.1ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 81ms (Views: 48.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:31:57 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 119ms (Views: 95.9ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/surveys/surveys?survey_id=3&number=0" for 127.0.0.1 at 2018-01-10 11:31:59 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"survey_id"=>"3", "number"=>"0", "id"=>"surveys"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=surveys):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/3" for 127.0.0.1 at 2018-01-10 11:32:45 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 49.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 11:32:47 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 47ms (Views: 42.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/surveys/surveys?survey_id=2&number=0" for 127.0.0.1 at 2018-01-10 11:32:48 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"0", "id"=>"surveys"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=surveys):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 11:33:14 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 45.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/surveys/surveys?survey_id=2&number=0" for 127.0.0.1 at 2018-01-10 11:33:15 -0500
+Processing by SurveysController#show as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"0", "id"=>"surveys"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Survey with 'id'=surveys):
+  
+app/controllers/surveys_controller.rb:4:in `show'
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 11:34:17 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 126ms (Views: 103.7ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=0" for 127.0.0.1 at 2018-01-10 11:34:18 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 735ms (Views: 64.0ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=1" for 127.0.0.1 at 2018-01-10 11:34:21 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 470ms (Views: 84.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=2" for 127.0.0.1 at 2018-01-10 11:34:22 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 676ms (Views: 72.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=3" for 127.0.0.1 at 2018-01-10 11:34:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 665ms (Views: 75.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=4" for 127.0.0.1 at 2018-01-10 11:34:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 542ms (Views: 74.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=5" for 127.0.0.1 at 2018-01-10 11:34:27 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 235ms (Views: 73.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=6" for 127.0.0.1 at 2018-01-10 11:34:28 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (30.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 565ms (Views: 67.3ms | ActiveRecord: 30.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=7" for 127.0.0.1 at 2018-01-10 11:34:29 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 500ms (Views: 124.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=8" for 127.0.0.1 at 2018-01-10 11:34:30 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 475ms (Views: 70.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=9" for 127.0.0.1 at 2018-01-10 11:34:31 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 704ms (Views: 101.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=10" for 127.0.0.1 at 2018-01-10 11:34:32 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 398ms (Views: 72.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 11:34:33 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["left", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right"]}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 9.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/results_controller.rb:6:in `create'
+Started GET "/surveys/2" for 127.0.0.1 at 2018-01-10 11:35:18 -0500
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering surveys/show.html.erb within layouts/application
+  Rendered surveys/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Completed 200 OK in 47ms (Views: 38.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=0" for 127.0.0.1 at 2018-01-10 11:35:20 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"0"}
+  [1m[36mSurvey Load (1.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 296ms (Views: 75.6ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=1" for 127.0.0.1 at 2018-01-10 11:35:21 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 276ms (Views: 92.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=2" for 127.0.0.1 at 2018-01-10 11:35:21 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"2"}
+  [1m[36mSurvey Load (0.4ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 310ms (Views: 81.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=3" for 127.0.0.1 at 2018-01-10 11:35:22 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"3"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 219ms (Views: 71.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=4" for 127.0.0.1 at 2018-01-10 11:35:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"4"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 255ms (Views: 92.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=5" for 127.0.0.1 at 2018-01-10 11:35:23 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"5"}
+  [1m[36mSurvey Load (4.0ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 301ms (Views: 81.1ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=6" for 127.0.0.1 at 2018-01-10 11:35:24 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"6"}
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 227ms (Views: 74.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=7" for 127.0.0.1 at 2018-01-10 11:35:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"7"}
+  [1m[36mSurvey Load (0.5ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 273ms (Views: 87.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=8" for 127.0.0.1 at 2018-01-10 11:35:25 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"8"}
+  [1m[36mSurvey Load (1.0ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 313ms (Views: 124.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=9" for 127.0.0.1 at 2018-01-10 11:35:26 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"9"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 289ms (Views: 119.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/load_pictures?survey_id=2&number=10" for 127.0.0.1 at 2018-01-10 11:35:27 -0500
+Processing by SurveysController#load_pictures as JSON
+  Parameters: {"survey_id"=>"2", "number"=>"10"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = $1[0m  [["survey_id", 2]]
+Completed 200 OK in 271ms (Views: 76.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/results" for 127.0.0.1 at 2018-01-10 11:35:28 -0500
+Processing by ResultsController#create as */*
+  Parameters: {"results"=>{"survey_id"=>"2", "answers"=>["left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSurvey Load (0.3ms)[0m  [1m[34mSELECT  "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "results" ("created_at", "updated_at", "user_id", "survey_id", "answers") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2018-01-10 16:35:28.077917"], ["updated_at", "2018-01-10 16:35:28.077917"], ["user_id", 22], ["survey_id", 2], ["answers", "{left,right,left,right,left,right,left,right,left,right,left}"]]
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+No template found for ResultsController#create, rendering head :no_content
+Completed 204 No Content in 175ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-01-10 11:35:28 -0500
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mResult Load (0.5ms)[0m  [1m[34mSELECT  "results".* FROM "results" WHERE "results"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 11]]
+  Rendered users/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 56ms (Views: 50.0ms | ActiveRecord: 0.7ms)
+
+

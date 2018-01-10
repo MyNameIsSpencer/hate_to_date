@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   root "surveys#index"
-  get '/load_pictures' => 'surveys#load_pictures', :as => :load_pictures
+    get '/load_pictures' => 'surveys#load_pictures', :as =>   :load_pictures
+
 end

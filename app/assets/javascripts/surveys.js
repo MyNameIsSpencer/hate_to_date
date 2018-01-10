@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var result = []
   var imageHolder = document.createElement('div')
 
+
   function makeSelection(count){
 
   // shovels the user's choice into a results array
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
       $.ajax({
       method: "POST",
       url: "/users/results",
-      data: { results: { user_id: current_user, survey_id: survey_id, answers: result } },
+      data: { results: { survey_id: survey_id, answers: result } },
     }).done(function(data){
         window.location.replace('/users')
     })
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       url: "/load_pictures" ,
       method: 'GET',
       dataType: 'json',
-      data: {id: survey_id, number: questionCounter}
+      data: { survey_id: survey_id, number: questionCounter}
     }).done(function(data){
       var image1 = document.createElement('img')
       image1.className = "left"
@@ -51,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     })
   }
-
 
   button.addEventListener('click', function(event){
     event.preventDefault()
