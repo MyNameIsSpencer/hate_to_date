@@ -5,10 +5,31 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application"  %>
   </head>
 
+
+
   <body>
+
+    <header class="site-header">
+      <h1 class="logo"> HateDate</h1>
+
+
+      <nav class="site-nav">
+          <%= link_to("Home", root_path) %>
+          <%= link_to("Surveys", surveys_path) %>
+        <% if current_user %>
+          <%= link_to("Profile Page", users_path) %>
+          <%= link_to "Logout", :logout, method: :delete %>
+
+        <% else %>
+          <%= link_to "Register", new_users_path %>
+          <%= link_to "Login", :login %>
+        <% end %>
+
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
