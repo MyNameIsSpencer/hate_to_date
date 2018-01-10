@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
   var result = []
   var imageHolder = document.createElement('div')
 
+  function makeSelection(count){
 
-  var choose = function makeSelection(){
   // shovels the user's choice into a results array
-    result.push(this.className);
+    result.push(event.target.className);
     questionCounter ++
     // if the user has made all choices, he is redirected away from the survey page
-    if (questionCounter < key.length){
+    if (questionCounter < count){
       pictureMaker()
     } else {
       $.ajax({
@@ -26,33 +26,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
   }
-
   var pictureMaker = function loadPictures(){
     imageHolder.innerHTML = ""
     $.ajax({
-      url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + key[questionCounter] + "&rating=g" ,
+      url: "/load_pictures" ,
       method: 'GET',
-      dataType: 'json'
-    }).done(function(data1){
+      dataType: 'json',
+      data: {id: survey_id, number: questionCounter}
+    }).done(function(data){
       var image1 = document.createElement('img')
       image1.className = "left"
-      image1.src = data1["data"][Math.floor(Math.random()*data1["data"].length)]["images"]["fixed_height_still"]["url"];
-      image1.addEventListener('click', choose)
-      $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?api_key="+giphyKey+"&q=" + value[questionCounter] + "&rating=g" ,
-        method: 'GET',
-        dataType: 'json'
-      }).done(function(data2){
-        var image2 = document.createElement('img')
-        image2.className = "right"
-        image2.src = data2["data"][Math.floor(Math.random()*data2["data"].length)]["images"]["fixed_height_still"]["url"];
-        image2.addEventListener('click', choose)
-        imageHolder.append(image1)
-        imageHolder.append(image2)
-        document.body.append(imageHolder)
-      })
+      image1.src = data[0]["data"][Math.floor(Math.random()*data[0]["data"].length)]["images"]["fixed_height_still"]["url"];
+      var image2 = document.createElement('img')
+      image2.className = "right"
+      image2.src = data[1]["data"][Math.floor(Math.random()*data[1]["data"].length)]["images"]["fixed_height_still"]["url"];
+      imageHolder.append(image1)
+      imageHolder.append(image2)
+      document.body.append(imageHolder)
+      image1.addEventListener('click', function(event){
+        makeSelection(data[2])
+      });
+      image2.addEventListener('click', function(event){
+        makeSelection(data[2])
+      });
     })
   }
+
 
   button.addEventListener('click', function(event){
     event.preventDefault()

@@ -1,25 +1,10 @@
 <h1>Survey</h1>
 
 <script>
-var key = []
-var value = []
-var giphyKey = "<%=ENV["Giphy_Key"]%>"
-var results = []
-var current_user = <%= current_user.id %>
+
+var current_user = <%=current_user.id %>
 var survey_id = <%= @survey.id %>
 </script>
 
-<% @questions.each_with_index do |(k,v),i| %>
-
-  <script>
-    key['<%=i%>'] = '<%=k%>'
-    value['<%=i%>'] = '<%=v%>'
-  </script>
-<%end  %>
-
 <button type="submit" name="start_survey">Start Survey</button>
 <br>
-
-
-<%= @questions.keys %>
-<%=@questions.values%>
