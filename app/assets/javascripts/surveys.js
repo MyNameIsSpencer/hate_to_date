@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var questionCounter = 0
   var result = []
   var imageHolder = document.createElement('div')
-  var page_id = window.location.pathname
-  var mid_id = page_id.replace('/surveys/', '')
-  var survey_id = parseInt(mid_id)
+  var survey_id = parseInt(window.location.pathname.replace('/surveys/', ''))
 
 
   function makeSelection(count){
