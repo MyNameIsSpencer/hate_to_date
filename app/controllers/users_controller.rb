@@ -25,7 +25,9 @@ end
 
 def show
   @user = current_user
+  @users = User.all
   @results = Result.all
+  @surveys= Survey.all
 end
 
 def edit

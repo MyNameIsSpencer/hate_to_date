@@ -4,7 +4,9 @@
 
 
 <% @user.results.each do |result| %>
-<%= result.survey_id %>
-<%= result.answers %>
-<%= @user.match_generator(result) %>
+  <%= @surveys.find(result.survey_id).name %>
+  <% @user.match_generator(result).each do |user_id, compatibility| %>
+    <p> You are <%= compatibility %> compatible with <%= @users.find(user_id).name%>. </p>
+
+  <%end %>
 <% end  %>
