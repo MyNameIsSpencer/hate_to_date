@@ -3,4 +3,10 @@
 <h2> <%= @user.name %>'s results </h2>
 
 
-<%= current_user.results.inspect %>
+<% @user.results.each do |result| %>
+  <p>Survey: <%= @surveys.find(result.survey_id).name %></p>
+  <% @user.match_generator(result).each do |user_id, compatibility| %>
+    <p> You are <%= compatibility %> compatible with <%= @users.find(user_id).name%>. </p>
+
+  <%end %>
+<% end  %>
