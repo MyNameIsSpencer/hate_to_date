@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var questionCounter = 0
   var result = []
   var imageHolder = document.createElement('div')
+  var survey_id = parseInt(window.location.pathname.replace('/surveys/', ''))
 
 
   function makeSelection(count){
@@ -30,10 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
   var pictureMaker = function loadPictures(){
     imageHolder.innerHTML = ""
     $.ajax({
-      url: "/load_pictures" ,
+      url: "/surveys/"+survey_id+"/load_pictures",
       method: 'GET',
       dataType: 'json',
-      data: { survey_id: survey_id, number: questionCounter}
+      data: { number: questionCounter}
     }).done(function(data){
       var image1 = document.createElement('img')
       image1.className = "left"
