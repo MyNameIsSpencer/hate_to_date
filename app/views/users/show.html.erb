@@ -2,7 +2,7 @@
 
 <h2> <%= @user.name %>'s results </h2>
 
-
+<%all_surveys = [] %>
 <% @user.results.each do |result| %>
   <p>Survey: <%= @surveys.find(result.survey_id).name %></p>
   <% @user.match_generator(result).each do |user_id, compatibility| %>
