@@ -11,8 +11,6 @@ User.destroy_all
 Survey.destroy_all
 Question.destroy_all
 
-
-
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -43,17 +41,27 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
   )
 end
 
-Survey.create!(name: 'Pets')
-Survey.create!(name: 'Toys')
-Survey.create!(name: 'Sports')
-Survey.create!(name: 'Movies')
-Survey.create!(name: 'People')
 
-30.times do
-  question = Question.create!(
-    option_a: Faker::Friends.character,
-    option_b: Faker::Friends.location,
-    survey_id: Survey.all.ids.sample
-  )
+Faker::Config.random = Random.new(1)
+pop_culture = {"LordOfTheRings"=>[],"DrWho"=>[],"StarWars"=>[],"Simpsons"=>[], "FamilyGuy" => []}
+pop_culture.each do |franchise, options|
+  Faker::Config.random = Random.new(1)
+  while options.length < 10 do
+    call = eval("Faker::"+franchise).character
+    puts call
+    if options.include?(call) == false
+      options << call
+    end
+  end
+  this_survey = Survey.create!(name: franchise)
+  index= 0
+  while index < 10 do
+    question = Question.create!(
+      option_a: options[index],
+      option_b: options[index + 1],
+      survey: this_survey
+    )
+    index += 2
+  end
 end
-# bootom
+pop_culture.inspect

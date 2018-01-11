@@ -3,5 +3,6 @@ class Survey < ApplicationRecord
   validates :name, uniqueness: true
 
   has_many :results
-  has_many :questions
+  has_many :questions, dependent: :destroy
+
 end
