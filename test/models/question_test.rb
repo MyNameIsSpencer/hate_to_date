@@ -1,14 +1,20 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # test "option_a is present" do
-  #   question = build(:question, option_a: nil, option_b: 'no more')
-  #   question2 = build(:question, option_a: '', option_b: 'arebadarchi')
-  #   question3 = build(:question)
-  #   # refute question.valid?
-  #   # refute question2.valid?
-  #   assert question3.valid?
-  # end
+
+  def setup
+    create(:survey, id:1)
+  end
+
+
+  test "option_a is present" do
+    question = build(:question, option_a: nil, option_b: 'no more')
+    question2 = build(:question, option_a: '', option_b: 'arebadarchi')
+    question3 = build(:question, survey_id: 1)
+    refute question.valid?
+    refute question2.valid?
+    assert question3.valid?
+  end
   #
   # test "option_b is present" do
   #   question = build(:question, option_a: nil)
