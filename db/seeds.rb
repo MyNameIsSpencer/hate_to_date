@@ -39,7 +39,8 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
     email: Faker::Internet.free_email,
     password: 'password',
     password_confirmation: 'password',
-    phone: 1234567890
+    phone: 1234567890,
+    fsa: fsa_list.sample
   )
 end
 
