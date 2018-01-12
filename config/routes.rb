@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     get '/load_pictures' => 'questions#load_pictures', :as =>   :load_pictures
   end
   get 'find_event' => 'messages#find_event', :as => :find_event
+  get 'chat_room' => 'chats#chat_room'
 end
