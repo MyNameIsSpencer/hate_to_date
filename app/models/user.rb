@@ -9,7 +9,8 @@ class User < ApplicationRecord
 
 
   has_many :results
-  has_many :messages
+  has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
+  has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
 
   has_secure_password
 

@@ -5,7 +5,7 @@ Logged in:
 <%= form_tag '/message', id: 'form_message'  do %>
   Enter your message:
   <%= text_field_tag :text_message %>
-  <%= hidden_field_tag :user , @current_user %>
+  <%= hidden_field_tag :user , @current_user.name %>
   <%= submit_tag 'Send' , data: {disable_with: false}%>
 <% end %>
 

@@ -18,7 +18,6 @@ class Question < ApplicationRecord
       if (option_as & option_bs).empty? == false
           errors.add(:options, 'Option already exists')
       end
-      puts option_as & option_bs
     end
 
   belongs_to :survey

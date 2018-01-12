@@ -4,12 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  option_a: "Test"
-  option_b: "Best"
-  survey_id: 1
-#
-two:
-  option_a: "Vest"
-  option_b: "Mest"
-  survey_id: 1
+# one:
+#   option_a: "Test"
+#   option_b: "Best"
+#   survey_id: 1
+# #
+# two:
+#   option_a: "Vest"
+#   option_b: "Mest"
+#   survey_id: 1

@@ -1,13 +1,24 @@
 addEventListener('DOMContentLoaded', function(){
   logged_in.innerText = location.search.substr(1);
-
-  const chats_channel = App.cable.subscriptions.create('ChatsChannel',{
-    connected:    () => {messages.append('connected\n');},
+  $.ajax({
+    url: 'chat_room',
+    dataType: 'json',
+    method: 'GET'
+  }).done(function(data){
+    var userMessages = data["message"]
+    var sender = data["sender"]
+    const chats_channel = App.cable.subscriptions.create('ChatsChannel',{
+    connected:    () => {
+      userMessages.forEach(function(message){
+        messages.append(sender + ": " + message[0] + "\n")
+      })
+    },
     disconnected: () => {messages.append('disconnected\n');},
     received:  data  => {
       messages.append(`${data.username}: ${data.message}\n`)
         console.log('Received data from server:', data);
     }
+  })
   })
   form_message.addEventListener("submit", e => {
     e.preventDefault();
