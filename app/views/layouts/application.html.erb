@@ -20,12 +20,12 @@
           <%= link_to("Home", root_path) %>
           <%= link_to("Surveys", surveys_path) %>
         <% if current_user %>
-          <%= link_to("Profile Page", users_path) %>
-          <%= link_to("Matches", user_matches_path) %>
+          <%= link_to("Profile Page", user_path(current_user)) %>
+          <%= link_to("Matches", user_matches_path(current_user)) %>
           <%= link_to "Logout", :logout, method: :delete %>
 
         <% else %>
-          <%= link_to "Register", new_users_path %>
+          <%= link_to "Register", new_user_path %>
           <%= link_to "Login", :login %>
         <% end %>
 

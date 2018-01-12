@@ -40,7 +40,6 @@ class User < ApplicationRecord
 def best_match(all_matches)
   best_match = {0=>[0.00, 0]}
   all_matches.each do |user_id, compatibility|
-    puts compatibility[0]
     if compatibility[0] > best_match[0][0]
       best_match[0]=compatibility
       best_match[user_id]=compatibility
@@ -58,6 +57,16 @@ def best_match(all_matches)
   end
   best_match.delete(0)
   return best_match
+end
+
+def user_matches
+  user_matches =[]
+  self.results.each do |result|
+    match = User.find(self.match_generator(result).keys)
+    user_matches << match
+  end
+  user_matches.flatten!
+  return user_matches
 end
 
 

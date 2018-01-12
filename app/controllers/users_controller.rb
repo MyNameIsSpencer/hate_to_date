@@ -24,11 +24,16 @@ class UsersController < ApplicationController
 end
 
 def show
-  @user = current_user
   @users = User.all
+  @user = User.find_by(id: params[:id])
+  unless current_user.user_matches.include?(@user) || @user ==current_user
+    redirect_to new_session_path
+  end
   @results = Result.all
   @surveys= Survey.all
 end
+
+
 
 def edit
   @user = current_user
