@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	before_action :ensure_logged_in, except: [:new, :create]
 
   def new
 		@user = User.new
@@ -49,6 +49,13 @@ def destroy
   @user = current_user
   @user.destroy
   redirect_to new_users_url
+end
+
+def load_matches
+  @user = current_user
+  @users = User.all
+  @results = Result.all
+  @surveys = Survey.all
 end
 
 end

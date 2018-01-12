@@ -21,6 +21,7 @@
           <%= link_to("Surveys", surveys_path) %>
         <% if current_user %>
           <%= link_to("Profile Page", users_path) %>
+          <%= link_to("Matches", user_matches_path) %>
           <%= link_to "Logout", :logout, method: :delete %>
 
         <% else %>

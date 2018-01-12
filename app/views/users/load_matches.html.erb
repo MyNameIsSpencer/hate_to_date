@@ -1,0 +1,14 @@
+<h2> <%= @user.name %>'s matches </h2>
+
+<p>Hi <%=@user.name  %>, here are the people who hate what you hate! </p>
+
+
+<% @user.results.each do |result| %>
+  <p>Survey: <%= @surveys.find(result.survey_id).name %></p>
+  <% @user.best_match(@user.match_generator(result)).each do |user_id, compatibility| %>
+  <div id = result>
+  <p> You matched with <%= User.find(user_id).name%> with <%= number_to_percentage(compatibility[0]*100, precision:0) %>
+    <br><%= link_to("Visit Profile", users_url(user_id)) %> | <%= link_to("Chat Now!", "/") %> <br>
+  </div>
+  <%end %>
+<% end  %>

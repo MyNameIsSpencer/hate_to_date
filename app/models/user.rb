@@ -31,8 +31,34 @@ class User < ApplicationRecord
           end
       end
       compatibility = count /survey_result.answers.length
-      all_matches[survey_result.user_id] = compatibility
+      all_matches[survey_result.user_id] = [compatibility, survey_result.created_at]
     end
-    return all_matches
+    best = best_match(all_matches)
+    return best
   end
+
+def best_match(all_matches)
+  best_match = {0=>[0.00, 0]}
+  all_matches.each do |user_id, compatibility|
+    puts compatibility[0]
+    if compatibility[0] > best_match[0][0]
+      best_match[0]=compatibility
+      best_match[user_id]=compatibility
+    elsif compatibility[0] = best_match[0][0]
+      if compatibility[1] > best_match[0][1]
+        best_match[0]=compatibility
+        best_match[user_id]=compatibility
+      end
+    end
+  end
+  best_match.each do |user_id, compatibility|
+    if compatibility[1]<best_match[0][1]
+      best_match.delete(user_id)
+    end
+  end
+  best_match.delete(0)
+  return best_match
+end
+
+
 end

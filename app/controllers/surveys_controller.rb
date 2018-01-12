@@ -1,8 +1,9 @@
 class SurveysController < ApplicationController
+	before_action :ensure_logged_in, except: [:index]
 
 def index
   @surveys =Survey.all
-
+  @user_surveys =[]
 end
 
   def show
@@ -21,8 +22,6 @@ end
       format.html
       format.json { render :json => @pictures }
     end
-
-
   end
 
 end
