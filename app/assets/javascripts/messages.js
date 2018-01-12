@@ -15,15 +15,4 @@ document.addEventListener("DOMContentLoaded", function(){
       window.location.replace(data["_embedded"]["events"][0]["url"]);
     })
   })
-
-
-
-
-
-
-
-
-
-
-
 })
