@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	before_action :ensure_logged_in, except: [:new, :create]
 
   def new
 		@user = User.new
@@ -25,11 +25,16 @@ class UsersController < ApplicationController
 end
 
 def show
-  @user = current_user
   @users = User.all
+  @user = User.find_by(id: params[:id])
+  unless current_user.user_matches.include?(@user) || @user ==current_user
+    redirect_to new_session_path
+  end
   @results = Result.all
   @surveys= Survey.all
 end
+
+
 
 def edit
   @user = current_user
@@ -50,6 +55,13 @@ def destroy
   @user = current_user
   @user.destroy
   redirect_to new_users_url
+end
+
+def load_matches
+  @user = current_user
+  @users = User.all
+  @results = Result.all
+  @surveys = Survey.all
 end
 
 end

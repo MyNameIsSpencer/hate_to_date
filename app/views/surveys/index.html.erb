@@ -1,6 +1,23 @@
 <h1> Surveys </h1>
 
+<% if current_user %>
+  <%= current_user.results.each do |result| %>
+    <%= @user_surveys << Survey.find(result.survey_id)  %>
+  <% end %>
+<% end %>
+
+<h2 id=survey-list> You haven't tried these yet! </h2>
 <% @surveys.each do |survey| %>
-<%= link_to(survey.name, survey_path(survey.id)) %>
-<br>
+  <% if @user_surveys.empty? == true || @user_surveys.include?(survey)==false %>
+    <%= link_to(survey.name, survey_path(survey.id)) %>
+    <br>
+  <% end  %>
 <% end  %>
+
+<% if current_user %>
+  <h2 id=survey-list> Tried already... </h2>
+  <% @user_surveys.each do |survey| %>
+      <%= link_to(survey.name, survey_path(survey.id)) %>
+      <br>
+  <% end  %>
+<% end %>
