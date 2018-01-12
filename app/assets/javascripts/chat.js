@@ -1,5 +1,4 @@
 addEventListener('DOMContentLoaded', function(){
-  logged_in.innerText = location.search.substr(1);
   $.ajax({
     url: 'chat_room',
     dataType: 'json',
