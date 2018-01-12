@@ -5,6 +5,30 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+# =============  William's crack at 1 marker per User ==========
+  # def get_users
+  #   @users = User.all
+  #   @fsa = Fsa.all
+  #   @user_fsas = []
+  #   @user = []
+  #   @users.each do |user|
+  #      @user << user.name
+  #   end
+  #   @fsa.each_with_index do |idfsa,i|
+  #     @fsa_ids = {}
+  #     @fsa_ids["username"] = @user[i]
+  #     @fsa_ids["id"] = idfsa.id
+  #     @fsa_ids["name"] = idfsa.name
+  #     @fsa_ids["longitude"] = idfsa.longitude
+  #     @fsa_ids["latitude"] = idfsa.latitude
+  #     @user_fsas << @fsa_ids
+  #   end
+  #   respond_to do |format|
+  #     format.html { render :get_users}
+  #     format.json { render JSON: @user_fsas }
+  #   end
+  # end
+
   def create
   @user = User.new
   @user.name = params[:user][:name]
