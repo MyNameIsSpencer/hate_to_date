@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+    </style>
+
     <title>HateDate</title>
     <%= csrf_meta_tags %>
 
@@ -32,5 +44,66 @@
       </nav>
     </header>
     <%= yield %>
+
+<!-- ========== Google Maps ============== -->
+    <div id="map"></div>
+
+    <% @fsa_array = [] %>
+    <% User.all.each do |user|%>
+      <% hasher = { lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
+      <% @fsa_array << hasher %>
+    <% end %>
+
+    <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 43.647219, lng: -79.387905},
+          zoom: 13
+        });
+
+
+        var marker = new google.maps.Marker({
+         position: {lat: 43.647219, lng: -79.387905},
+         map: map,
+         title: 'Hello World!'
+       });
+
+       var fsaElement = document.getElementById('fsa_data');
+       var fsaData = JSON.parse(fsaElement.dataset.fsa);
+       console.warn(fsaData);
+
+       for (i = 0; i < fsaData.length; i ++) {
+         var currentFsa = fsaData[i];
+         new google.maps.Marker({
+           position: {lat: currentFsa['lat'], lng: currentFsa['lng']},
+           map: map
+         });
+       }
+
+       // var locs = Fsas.all
+       // for (i = 1, i < Users.all.length, i ++) {
+       //   later = locs[Users[i].latitude]
+       //   longir = locs[Users[i].longitude]
+       //   var marker = new google.maps.Marker({
+       //    position: {lat: later, lng: longir},
+       //    map: map,
+       //  });
+       // }
+     }
+
+      function mark_users(lati, long) {
+        var markerX = new google.maps.Marker({
+         position: {lat: lati, lng: long},
+         map: map,
+         title: 'Hello World!'
+         });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
+    async defer></script>
   </body>
 </html>

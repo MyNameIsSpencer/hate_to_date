@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :surveys, only: [:index, :show]
   resource :session, only: [:new, :create, :destroy]
 
+
   root "sessions#new"
+
   resources :surveys, only: [:show] do
     get '/load_pictures' => 'questions#load_pictures', :as =>   :load_pictures
   end

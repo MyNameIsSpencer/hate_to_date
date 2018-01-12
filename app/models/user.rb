@@ -1,16 +1,16 @@
 class User < ApplicationRecord
-  validates :email, :name, presence: true
-
-  validates :email, :password_digest, length: {minimum: 4}
+  validates :name, presence: true
+  validates :email, :password_digest, :phone, length: {minimum: 4}
   validates :email, uniqueness: true
-  # validates :phone, length: {is: 10}
-  # #validates_format_of :phone, :with => /[0-9]{10}/
-  # validates :phone, numericality: { only_integer: true }
 
 
   has_many :results
+
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
+
+  belongs_to :fsa
+
 
   has_secure_password
 
