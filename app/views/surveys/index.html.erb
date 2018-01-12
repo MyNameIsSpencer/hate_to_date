@@ -1,8 +1,8 @@
 <h1> Surveys </h1>
 
 <% if current_user %>
-  <%= current_user.results.each do |result| %>
-    <%= @user_surveys << Survey.find(result.survey_id)  %>
+  <% current_user.results.each do |result| %>
+    <% @user_surveys << Survey.find(result.survey_id)  %>
   <% end %>
 <% end %>
 

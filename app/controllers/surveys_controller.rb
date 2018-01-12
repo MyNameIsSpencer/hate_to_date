@@ -8,6 +8,7 @@ end
 
   def show
     @survey = Survey.find(params[:id])
+    @user= current_user
   end
 
   def load_pictures
