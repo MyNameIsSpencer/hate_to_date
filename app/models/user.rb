@@ -6,15 +6,10 @@ class User < ApplicationRecord
 
   has_many :results
   has_many :messages
+  belongs_to :fsa
 
   has_secure_password
 
-  geocoded_by :fsa_to_latitude_longitude
-  after_validation :geocode
-
-  def fsa_to_latitude_longitude
-    return self.fsa
-  end
 
   def match_generator(result)
     all_matches = Hash.new(0.00)

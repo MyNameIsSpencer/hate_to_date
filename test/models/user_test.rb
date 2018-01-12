@@ -2,6 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
+  def setup
+    create(:fsa, id:1)
+  end
+
   test "email must be present" do
     user = build(:user, email: '')
     user2 = build(:user, email: nil)
@@ -12,7 +16,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email must be at least 4 digits" do
-    
+
   end
 
   test "email must be unique" do
