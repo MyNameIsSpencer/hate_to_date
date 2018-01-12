@@ -23,12 +23,13 @@ addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     const message = text_message.value
     const username = user.value
+    const receiver = $("#receiver").val()
     chats_channel.send({username, message})
     text_message.value=""
     $.ajax({
       url: 'messages#create',
       dataType: 'json',
-      data: {body: message},
+      data: {body: message, receiver: receiver},
       method: "POST"
     })
     })

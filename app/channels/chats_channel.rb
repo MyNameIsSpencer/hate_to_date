@@ -1,11 +1,11 @@
 class ChatsChannel < ApplicationCable::Channel
 
   def subscribed
-    stream_from "the-only-channel"
+      stream_from "chat_only"
   end
 
   def receive(data)
-    ActionCable.server.broadcast("the-only-channel", data)
+    ActionCable.server.broadcast("chat_only", data)
   end
 
 end

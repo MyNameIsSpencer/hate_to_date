@@ -6,6 +6,7 @@ Logged in:
   Enter your message:
   <%= text_field_tag :text_message %>
   <%= hidden_field_tag :user , @current_user.name %>
+  <%= hidden_field_tag :receiver, 4 %>
   <%= submit_tag 'Send' , data: {disable_with: false}%>
 <% end %>
 

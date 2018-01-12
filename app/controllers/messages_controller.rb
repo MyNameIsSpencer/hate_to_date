@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     @message=Message.new
     @message.body=params[:body]
     @message.user_id=current_user.id
-    @message.receiver_id=3
+    @message.receiver_id= params[:receiver]
     @message.save
   end
 
