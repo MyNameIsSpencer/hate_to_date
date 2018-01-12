@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   get 'find_event' => 'messages#find_event', :as => :find_event
   get 'chat_room' => 'chats#chat_room'
+  resources :messages, only: [:create]
 end

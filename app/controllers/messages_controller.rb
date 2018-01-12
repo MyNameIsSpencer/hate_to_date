@@ -8,8 +8,14 @@ class MessagesController < ApplicationController
       format.html
       format.json { render :json => @ticket_master_event }
     end
+  end
 
-
+  def create
+    @message=Message.new
+    @message.body=params[:body]
+    @message.user_id=current_user.id
+    @message.receiver_id=3
+    @message.save
   end
 
 end

@@ -19,12 +19,18 @@ addEventListener('DOMContentLoaded', function(){
         console.log('Received data from server:', data);
     }
   })
-  })
   form_message.addEventListener("submit", e => {
     e.preventDefault();
     const message = text_message.value
     const username = user.value
     chats_channel.send({username, message})
     text_message.value=""
+    $.ajax({
+      url: 'messages#create',
+      dataType: 'json',
+      data: {body: message},
+      method: "POST"
+    })
+    })
   })
 })
