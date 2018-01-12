@@ -33,6 +33,12 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
 
+
+fsa_list.each do |code|
+  Fsa.create!(name: code)
+  sleep 1
+end
+
 20.times do
   user = User.create!(
     name: Faker::Name.name,
@@ -40,7 +46,7 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
     password: 'password',
     password_confirmation: 'password',
     phone: 1234567890,
-    fsa: fsa_list.sample
+    fsa: Fsa.all.sample
   )
 end
 
