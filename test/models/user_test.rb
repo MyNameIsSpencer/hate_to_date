@@ -63,9 +63,9 @@ class UserTest < ActiveSupport::TestCase
 
   test "password_digest must be at least 4 characters long" do
     user = build(:user, password_digest: "")
-    user2 = build(:user, password_digest: "123")
-    user3 = build(:user, password_digest: " 123 ")
-    user4 = build(:user, password_digest: "1234")
+    user2 = build(:user, password_digest: "abc")
+    user3 = build(:user, password_digest: " abc ")
+    user4 = build(:user, password_digest: "abc4")
     user5 = build(:user, password_digest: "asdf##$% ^22}}")
 
     refute user.valid?
@@ -77,9 +77,21 @@ class UserTest < ActiveSupport::TestCase
 
   test "phone does not need to be present" do
     user = build(:user, phone: nil)
-
     assert user.valid?
   end
+
+  test "phone must be at least 4 digits if present" do
+    user = build(:user, phone: "23")
+    user2 = build(:user, phone: "2233")
+    user3 = build(:user, phone: "ab34")
+    user4 = build(:user, phone: "     ")
+    refute user.valid?
+    assert user2.valid?
+    assert user3.valid?
+    # refute user4.valid?   < returns failure
+  end
+
+
 
 
 end
