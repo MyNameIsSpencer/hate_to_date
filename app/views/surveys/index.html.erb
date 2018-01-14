@@ -2,7 +2,9 @@
 
 <% if current_user %>
   <% current_user.results.each do |result| %>
+  <%if @user_surveys.include?(Survey.find(result.survey_id)) == false %>
     <% @user_surveys << Survey.find(result.survey_id)  %>
+    <% end  %>
   <% end %>
 <% end %>
 
