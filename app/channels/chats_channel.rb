@@ -1,11 +1,15 @@
 class ChatsChannel < ApplicationCable::Channel
 
   def subscribed
-      stream_from "chat_only"
+      
+      @room = params[:room].sort
+      stream_from "chat_#{@room[0]}_#{@room[1]}"
   end
 
   def receive(data)
-    ActionCable.server.broadcast("chat_only", data)
+
+    ActionCable.server.broadcast("chat_#{@room[0]}_#{@room[1]}", data)
+
   end
 
 end
