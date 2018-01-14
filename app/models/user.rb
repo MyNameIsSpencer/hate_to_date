@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-  validates :name, presence: true
-  validates :email, :password_digest, :phone, length: {minimum: 4}
+  validates :name, :email, :password_digest, presence: true
+  validates :email, :password_digest, length: {minimum: 4}
   validates :email, uniqueness: true
+  validates :phone, length: {minimum: 4}, :allow_blank => true
+  # validates :fsa, :allow_blank => true
+
 
 
   has_many :results
