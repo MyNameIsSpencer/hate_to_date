@@ -54,9 +54,10 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   }
 
+if (button){
   button.addEventListener('click', function(event){
     event.preventDefault()
     pictureMaker()
   });
-
+}
 });
