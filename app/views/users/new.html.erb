@@ -40,7 +40,7 @@
   </div>
   <div class="field">
     <%= f.label :fsa %>
-    <%= f.collection_select :fsa_id, Fsa.all, :id, :name, prompt: true %>
+    <%= f.collection_select :fsa_id, Fsa.order('name ASC').all, :id, :name, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :phone %>
