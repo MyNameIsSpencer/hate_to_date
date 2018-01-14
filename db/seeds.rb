@@ -11,6 +11,84 @@ User.destroy_all
 Survey.destroy_all
 Question.destroy_all
 
+
+fsa_list.each do |code|
+  Fsa.create!(name: code)
+  sleep 2
+end
+
+20.times do
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.free_email,
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    rand(0..150000)
+  )
+end
+
+Faker::Config.random = Random.new(1)
+pop_culture = {"LordOfTheRings"=>[],"DrWho"=>[],"StarWars"=>[],"Simpsons"=>[], "FamilyGuy" => []}
+pop_culture.each do |franchise, options|
+  Faker::Config.random = Random.new(1)
+  while options.length < 10 do
+    call = eval("Faker::"+franchise).character
+    puts call
+    if options.include?(call) == false
+      options << call
+    end
+  end
+  this_survey = Survey.create!(name: franchise)
+  index= 0
+  while index < 10 do
+    question = Question.create!(
+      option_a: options[index],
+      option_b: options[index + 1],
+      survey: this_survey
+    )
+    index += 2
+  end
+end
+pop_culture.inspect
+
+# Special Seeds
+spec_count = 1
+Fsa.all do |code|
+  spec_count += 1
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: code,
+    rand(0..150000)
+  )
+end
+
+15.times do
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[2],
+    looking_for: looking_for_list[1],
+    phone: 1234567890,
+    fsa: code,
+    rand(0..150000)
+  )
+end
+
+
+
+
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -36,52 +114,8 @@ gender_list = ['male', 'female', 'other']
 gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
 looking_for_list = ['Friend', 'Activity Partner', 'Networking']
 
-fsa_list.each do |code|
-  Fsa.create!(name: code)
-  sleep 2
-end
-
-20.times do
-  user = User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.free_email,
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all.sample,
-    rand(0..150000)
-  )
-end
-
-# Special Seeds
-Fsa.all do |code|
-  user = User.create!(
-    name:
-  )
-
-
-Faker::Config.random = Random.new(1)
-pop_culture = {"LordOfTheRings"=>[],"DrWho"=>[],"StarWars"=>[],"Simpsons"=>[], "FamilyGuy" => []}
-pop_culture.each do |franchise, options|
-  Faker::Config.random = Random.new(1)
-  while options.length < 10 do
-    call = eval("Faker::"+franchise).character
-    puts call
-    if options.include?(call) == false
-      options << call
-    end
-  end
-  this_survey = Survey.create!(name: franchise)
-  index= 0
-  while index < 10 do
-    question = Question.create!(
-      option_a: options[index],
-      option_b: options[index + 1],
-      survey: this_survey
-    )
-    index += 2
-  end
-end
-pop_culture.inspect
+special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
+  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
+  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
+  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
+  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda', ]
