@@ -97,60 +97,21 @@
            }
            new google.maps.Circle({
              strokeColor: '#FF0000',
-             strokeOpacity: 0.8,
+             strokeOpacity: 0.3,
              strokeWeight: 2,
              fillColor: '#FF0000',
-             fillOpacity: 0.35,
+             fillOpacity: 0.05,
              center: {lat: later, lng: longer},
              map: map,
-             radius: count * 100
+             radius: count * count * 100
            });
          }
 
 
        }
 
-       // for (i = 0; i < fsaPopulations.length; i ++) {
-       //   var currentPop = fsaPopulations[i];
-       //
-       //   new google.maps.Circle({
-       //     strokeColor: '#FF0000',
-       //     strokeOpacity: 0.8,
-       //     strokeWeight: 2,
-       //     fillColor: '#FF0000',
-       //     fillOpacity: 0.35,
-       //     position: {lat: , lng:},
-       //     map: map,
-       //     radius: 100
-       //   })
-       // }
-
-       // var cityCircle = new google.maps.Circle({
-       //   strokeColor: '#FF0000',
-       //   strokeOpacity: 0.8,
-       //   strokeWeight: 2,
-       //   fillColor: '#FF0000',
-       //   fillOpacity: 0.35,
-       //   map: map,
-       //   center: citymap[city].center,
-       //   radius: Math.sqrt(citymap[city].population) * 100
-       // });
-
-       //   new google.maps.Marker({
-       //     position: {lat: currentFsa['lat'], lng: currentFsa['lng']},
-       //     map: map
-       //   });
-       // }
      }
 
-
-      function mark_users(lati, long) {
-        var markerX = new google.maps.Marker({
-         position: {lat: lati, lng: long},
-         map: map,
-         title: 'Hello World!'
-         });
-      }
 
     </script>
 
