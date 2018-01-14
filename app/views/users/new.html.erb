@@ -1,6 +1,9 @@
 <row>
 <h1>Signup Form</h1>
 
+<button class="register">Register</button>
+
+<div class = "modal">
 <%= form_for @user do |f|%>
 <div class="field">
     <%= f.label :name %>
@@ -11,14 +14,6 @@
     <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phone %>
-    <%= f.telephone_field :phone, :maxlength =>10, :placeholder => "5555555555" %>
-  </div>
-  <div class="field">
-    <%= f.label :make_profile_public %>
-    <%= f.check_box :privacy, {}, "false", "true" %>
-  </div>
-  <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
@@ -26,12 +21,44 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
+<button class="next">Next</button>
+</div>
+
+<div class = "modal2">
+
+<div class="field">
+  <%= f.label :avatar %><br>
+  <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :pet_peeves %>
+    <%= f.text_field :pet_peeves %>
+  </div>
   <div class="field">
     <%= f.label :fsa %>
     <%= f.text_field :fsa %>
   </div>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone, :maxlength =>10, :placeholder => "5555555555" %>
+  </div>
+  <div class="field">
+    <%= f.label :make_profile_public %>
+    <%= f.check_box :privacy, {}, "false", "true" %>
+  </div>
+  <div id = "create_user_part_2">
   <%= f.submit %>
+</div>
   <%end %>
+</div>
+
+
+
+
 
   <% if @user.errors.any?  %>
   <h1> Error </h1>
