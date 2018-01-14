@@ -1,24 +1,28 @@
 class UsersController < ApplicationController
 	before_action :ensure_logged_in, except: [:new, :create]
 
+
   def new
 		@user = User.new
 	end
 
 
   def create
-  @user = User.new
+  @user = User.create(user_params)
   @user.name = params[:user][:name]
   @user.email = params[:user][:email]
   @user.phone = params[:user][:phone]
   @user.privacy = params[:user][:privacy]
   @user.password = params[:user][:password]
   @user.password_confirmation = params[:user][:password_confirmation]
-
+	@user.fsa_id = params[:user][:fsa]
+	@user.pet_peeves = params[:user][:pet_peeves]
+	@user.description = params[:user][:description]
+	@user.avatar = params[:user][:avatar]
   if @user.save
-    user = User.find_by(email: params[:user][:email])
-    session[:user_id] = user.id
-    redirect_to users_path
+
+    session[:user_id] = @user.id
+    redirect_to user_path(@user.id)
   else
     render :new
   end
@@ -62,6 +66,16 @@ def load_matches
   @users = User.all
   @results = Result.all
   @surveys = Survey.all
+end
+
+
+private
+
+# Use strong_parameters for attribute whitelisting
+# Be sure to update your create() and update() controller methods.
+
+def user_params
+  params.require(:user).permit(:avatar)
 end
 
 end

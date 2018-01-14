@@ -37,7 +37,7 @@ gem 'pry-rails'
 
 gem 'geocoder'
 
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

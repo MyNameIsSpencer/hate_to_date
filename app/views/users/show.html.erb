@@ -1,8 +1,10 @@
 <h1> <%= @user.name %>'s page </h1>
 
-<h2> <%= @user.name %>'s results </h2>
 
-profile page tbd
+
+<%= image_tag @user.avatar.url(:thumb) %>
+
+<p>profile page tbd</p>
 
 <!-- ========== Google Maps ============== -->
     <div id="map"></div>
