@@ -10,6 +10,8 @@ var register = document.querySelector('.register');
 var modal = document.querySelector('.modal');
 var modal2 = document.querySelector('.modal2');
 var next = document.querySelector('.next');
+var meetup= document.querySelector('.meetup');
+var userModal = document.querySelector('.user_modal');
 // to display sign in block
 if(register){
   register.addEventListener('click', function()
@@ -24,6 +26,13 @@ if(next){
   {
     modal.style.display = 'none';
     modal2.style.display = 'block';
+    e.preventDefault();
+  })
+}
+
+if(meetup){
+  meetup.addEventListener('click', function(e){
+    userModal.style.display = 'block';
     e.preventDefault();
   })
 }

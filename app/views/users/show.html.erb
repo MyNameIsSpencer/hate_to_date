@@ -1,10 +1,20 @@
 <h1> <%= @user.name %>'s page </h1>
 
-
+<%= @user.fsa.inspect %>
 
 <%= image_tag @user.avatar.url(:thumb) %>
+<p> Description: <%= @user.description %> </p>
+<p> Pet Peeves: <%= @user.pet_peeves %> </p>
 
 <p>profile page tbd</p>
+
+<% if @user.results.length > 0 %>
+<button class="meetup">Want to Kvetch with others?</button>
+<%end %>
+
+<div class = "user_modal">
+  <p> meetups you may enjoy </p>
+</div>
 
 <!-- ========== Google Maps ============== -->
     <div id="map"></div>

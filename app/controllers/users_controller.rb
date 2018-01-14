@@ -68,6 +68,19 @@ def load_matches
   @surveys = Survey.all
 end
 
+def meetups
+	@user = current_user
+	@user_surveys = []
+	@user_meetups = []
+	@user.results.each do |result|
+		if @user_surveys.include?(Survey.all.find(result.survey_id).name) ==false
+			@user_surveys << Survey.all.find(result.survey_id).name
+		end
+	end
+	@user_surveys.each do |survey|
+		@meetup = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
+	end
+end
 
 private
 
