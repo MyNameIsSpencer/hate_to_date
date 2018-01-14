@@ -43,6 +43,7 @@
 
       </nav>
     </header>
+    <main>
     <%= yield %>
 
 <!-- ========== Google Maps ============== -->
@@ -55,6 +56,7 @@
     <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+
     <% if current_user%>
     <%=tag("div", :id => 'current_guy', :data => {:latitude => @user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
     <% end %>
@@ -141,6 +143,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
     async defer></script>
+    <main>
   </body>
 </html>
 

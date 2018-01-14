@@ -32,9 +32,13 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M8Z']
 
 
+gender_list = ['male', 'female', 'other']
+gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
+looking_for_list = ['Friend', 'Activity Partner', 'Networking']
+
 fsa_list.each do |code|
   Fsa.create!(name: code)
-  sleep 1
+  sleep 2
 end
 
 20.times do
@@ -43,10 +47,19 @@ end
     email: Faker::Internet.free_email,
     password: 'password',
     password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
     phone: 1234567890,
-    fsa: Fsa.all.sample
+    fsa: Fsa.all.sample,
+    rand(0..150000)
   )
 end
+
+# Special Seeds
+Fsa.all do |code|
+  user = User.create!(
+    name:
+  )
 
 
 Faker::Config.random = Random.new(1)

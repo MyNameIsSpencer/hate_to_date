@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112155655) do
+ActiveRecord::Schema.define(version: 20180114193217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180112155655) do
     t.string "phone"
     t.boolean "privacy", default: false
     t.integer "fsa_id"
+    t.integer "income"
   end
 
 end
