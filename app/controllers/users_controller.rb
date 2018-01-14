@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   @user.privacy = params[:user][:privacy]
   @user.password = params[:user][:password]
   @user.password_confirmation = params[:user][:password_confirmation]
-	@user.fsa_id = params[:user][:fsa]
+	@user.fsa_id = params[:user][:fsa_id]
 	@user.pet_peeves = params[:user][:pet_peeves]
 	@user.description = params[:user][:description]
 	@user.avatar = params[:user][:avatar]
@@ -75,7 +75,7 @@ private
 # Be sure to update your create() and update() controller methods.
 
 def user_params
-  params.require(:user).permit(:avatar)
+  params.require(:user).permit(:avatar, :fsa_id)
 end
 
 end
