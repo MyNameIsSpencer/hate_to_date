@@ -78,7 +78,8 @@ def meetups
 		end
 	end
 	@user_surveys.each do |survey|
-		@meetup = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
+		result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
+		@user_meetups << result
 	end
 end
 

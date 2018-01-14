@@ -34,6 +34,7 @@
         <% if current_user %>
           <%= link_to("Profile Page", user_path(current_user)) %>
           <%= link_to("Matches", user_matches_path(current_user)) %>
+          <%= link_to("Meetups", user_meetups_path(current_user)) %>
           <%= link_to "Logout", :logout, method: :delete %>
 
         <% else %>

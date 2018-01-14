@@ -1,5 +1,12 @@
-wgaaw
+<h2> Want to Kvetch? These meetups may be for you! </h2>
 
-<%= @user_surveys %>
-
-<%= @meetup.inspect %>
+<% if @user.results.length > 0 %>
+  <% @user_meetups.each do |meetup| %>
+    <% if meetup.length > 0 %>
+      <h3><%= meetup[0]["name"]%></h3>
+      <%= link_to(image_tag(meetup[0]["key_photo"]["thumb_link"]), meetup[0]["link"] ) %>
+    <% end %>
+  <% end  %>
+  <%else %>
+    <p> Please complete a survey so we can find you a meetup! </p>
+  <%end %>
