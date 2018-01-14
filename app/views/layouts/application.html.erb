@@ -55,8 +55,20 @@
     <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+    <% if current_user%>
+    <%=tag("div", :id => 'current_guy', :data => {:latitude => @user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
+    <% end %>
 
     <script>
+      var loggedUserLatLng = document.getElementById('current_guy');
+      var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
+      var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
+
+      // console.log(loggedUserLatLng);
+      // console.log(loggedUserLat);
+      // console.log(loggedUserLng);
+
+
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -74,7 +86,7 @@
 
        var fsaElement = document.getElementById('fsa_data');
        var fsaData = JSON.parse(fsaElement.dataset.fsa);
-       console.warn(fsaData);
+       // console.warn(fsaData);
        var fsaPopulations = {}
 
        for (i = 0; i < fsaData.length; i ++) {
@@ -106,15 +118,25 @@
              radius: count * count * 100
            });
          }
-
-
        }
 
+
+       var differenceCoordinates = [
+         {lat: loggedUserLat, lng: loggedUserLng},
+         {lat: 43.647219, lng: -79.387905},
+       ];
+       var differenceLine = new google.maps.Polyline({
+         path: differenceCoordinates,
+         geodesic: true,
+         strokeColor: '#FF0000',
+         strokeOpacity: 1.0,
+         strokeWeight: 4
+       });
+
+       differenceLine.setMap(map);
      }
 
-
     </script>
-
     <!-- ========== Google Maps End ============== -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
