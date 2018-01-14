@@ -55,7 +55,7 @@ pop_culture.each do |franchise, options|
 end
 pop_culture.inspect
 
-# Special Seeds
+# =============== Special Seeds ===================
 spec_count = 1
 Fsa.all do |code|
   spec_count += 1
@@ -72,7 +72,38 @@ Fsa.all do |code|
   )
 end
 
-15.times do
+# females have higher income
+120.times do
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[1],
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    rand(60000..150000)
+  )
+end
+
+# males looking for networking
+80.times do
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[0],
+    looking_for: looking_for_list[2],
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    rand(0..150000)
+  )
+end
+
+# other gender looking for activity partners
+20.times do
   user = User.create!(
     name: "#{special_names.sample} #{special_names.sample}",
     email: "#{Faker::Internet.free_email}#{spec_count}",
@@ -81,13 +112,58 @@ end
     gender: gender_list[2],
     looking_for: looking_for_list[1],
     phone: 1234567890,
-    fsa: code,
+    fsa: Fsa.all.sample,
     rand(0..150000)
   )
 end
 
+# rich fsas
+25.times do
+  loc_index = rand(0..4)
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    rand(80000..150000)
+  )
+end
 
+# more random users so rich fsas don't also have more people
+450.times do
+  loc_index = rand(5..95)
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    rand(0..150000)
+  )
+end
 
+# fsas with more people
+200.times do
+  loc_index = rand(20..24)
+  user = User.create!(
+    name: "#{special_names.sample} #{special_names.sample}",
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    rand(0..150000)
+  )
+end
 
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
@@ -111,7 +187,7 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 
 
 gender_list = ['male', 'female', 'other']
-gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
+gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
 looking_for_list = ['Friend', 'Activity Partner', 'Networking']
 
 special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
