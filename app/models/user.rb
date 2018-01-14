@@ -44,19 +44,10 @@ class User < ApplicationRecord
 def best_match(all_matches)
   best_match = {0=>[0.00, 0]}
   all_matches.each do |user_id, compatibility|
-    if compatibility[0] > best_match[0][0]
+    # compares match compatibility to the reference
+    if compatibility[0] >= best_match[0][0]
       best_match[0]=compatibility
       best_match[user_id]=compatibility
-    elsif compatibility[0] = best_match[0][0]
-      if compatibility[1] > best_match[0][1]
-        best_match[0]=compatibility
-        best_match[user_id]=compatibility
-      end
-    end
-  end
-  best_match.each do |user_id, compatibility|
-    if compatibility[1]<best_match[0][1]
-      best_match.delete(user_id)
     end
   end
   best_match.delete(0)
