@@ -6,10 +6,13 @@ Rails.application.routes.draw do
     resources :results, only: [:index, :show, :create]
   end
   get 'users/:id/matches' => 'users#load_matches', :as => :user_matches
+  get 'users/:id/meetups' => 'users#meetups', :as => :user_meetups
   resources :surveys, only: [:index, :show]
   resource :session, only: [:new, :create, :destroy]
 
+
   root "sessions#new"
+
   resources :surveys, only: [:show] do
     get '/load_pictures' => 'questions#load_pictures', :as =>   :load_pictures
   end

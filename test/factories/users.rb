@@ -3,8 +3,8 @@ FactoryBot.define do
     name              "Johndo"
     email             "herecomes@john.ny"
     password_digest   "password"
-    fsa               "M3A"
-    phone             1112223334
+    fsa_id              1
+    phone             '1112223334'
     # gender            "Male"
     # orientation       "straight"
     # looking_for       "friendship"

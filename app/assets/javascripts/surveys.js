@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var result = []
   var imageHolder = document.createElement('div')
   var survey_id = parseInt(window.location.pathname.replace('/surveys/', ''))
-
+  var userId= $("#user").val()
 
   function makeSelection(count){
 
@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       $.ajax({
       method: "POST",
-      url: "/users/results",
+      url: "/users/"+userId+"/results",//issue is here
       data: { results: { survey_id: survey_id, answers: result } },
     }).done(function(data){
-        window.location.replace('/users')
+        window.location.replace('/users/'+userId)
     })
 
     }
@@ -54,9 +54,10 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   }
 
+if (button){
   button.addEventListener('click', function(event){
     event.preventDefault()
     pictureMaker()
   });
-
+}
 });

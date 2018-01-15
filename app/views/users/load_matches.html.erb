@@ -2,13 +2,20 @@
 
 <p>Hi <%=@user.name  %>, here are the people who hate what you hate! </p>
 
-
-<% @user.results.each do |result| %>
-  <p>Survey: <%= @surveys.find(result.survey_id).name %></p>
-  <% @user.match_generator(result).each do |user_id, compatibility| %>
-  <div id = result>
-  <p> You matched with <%= User.find(user_id).name%> with <%= number_to_percentage(compatibility[0]*100, precision:0) %>
-    <br><%= link_to("Visit Profile", user_path(user_id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user_id.to_i)) %> <br>
-  </div>
-  <%end %>
-<% end  %>
+<% if @user.results.length == 0 %>
+  <p>We can't find you a match if you haven't finished a <%= link_to("survey", surveys_path) %>!</p>
+<%else %>
+  <% @user.results.each do |result| %>
+  <% count = 0 %>
+    <% @user.match_generator(result).each do |user_id, compatibility| %>
+    <div id = result>
+    <p> You matched with <%= User.find(user_id).name%> with <%= number_to_percentage(compatibility[0]*100, precision:0) %> based on your shared dislikes regarding <%= @surveys.find(result.survey_id).name %> </p>
+      <br><%= link_to("Visit Profile", user_path(user_id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user_id.to_i)) %> <br>
+      <% count += 1 %>
+    </div>
+    <%end %>
+  <% end  %>
+<% if count = 0 %>
+<p> No matches yet! Have you checked out your <%=link_to("meetups",user_meetups_path(@user.id)) %>?</p>
+<%end  %>
+<% end %>

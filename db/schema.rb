@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112155634) do
+ActiveRecord::Schema.define(version: 20180114031355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fsas", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -52,12 +60,18 @@ ActiveRecord::Schema.define(version: 20180112155634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "fsa"
     t.string "gender", default: "undefined"
     t.string "orientation", default: "undefined"
     t.string "looking_for", default: "undefined"
-    t.integer "phone"
+    t.string "phone"
     t.boolean "privacy", default: false
+    t.integer "fsa_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text "description"
+    t.text "pet_peeves"
   end
 
 end

@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.modal {
+  display:none;
+}
+
+.modal2 {
+  display: none;
+}
+
+.user_modal {
+  display: none;
+}
