@@ -35,7 +35,7 @@ class QuestionTest < ActiveSupport::TestCase
     refute question2.valid?
   end
 
-  test 'options unique through both collumns' do
+  test 'options unique through both columns' do
     question_set1 = create(:question, option_a: "Test", option_b: "Best", survey_id: 1)
     question_set2 = create(:question, option_a: "Vest", option_b: "Mest", survey_id: 1)
     question = build(:question, option_a: "Best", option_b: "Test", survey_id: 1)
