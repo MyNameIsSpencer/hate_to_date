@@ -1,12 +1,8 @@
-<h1> <%= @user.name %>'s page </h1>
-
-<%= @user.fsa.inspect %>
+<h1> About <%= @user.name %></h1>
 
 <%= image_tag @user.avatar.url(:thumb) %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>
-
-<p>profile page tbd</p>
 
 <% if @user.results.length > 0 %>
 <button class="meetup">Want to Kvetch with others?</button>
