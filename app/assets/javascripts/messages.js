@@ -4,6 +4,8 @@
 document.addEventListener("DOMContentLoaded", function(){
   var button2 = document.querySelector("#ticketMaster")
   var topic = document.querySelector(".topic")
+
+if (button2){
   button2.addEventListener("click", function(event){
     event.preventDefault()
     $.ajax({
@@ -12,7 +14,13 @@ document.addEventListener("DOMContentLoaded", function(){
       dataType: 'json',
       data: { topic: topic.id }
     }).done(function(data){
-      window.location.replace(data["_embedded"]["events"][0]["url"]);
+      console.log(data);
+      if (data["_embedded"]["attractions"][0]["url"]){
+        window.location.replace(data["_embedded"]["attractions"][0]["url"]);
+      }else{
+      alert("No events for this Subject Nearby")
+    }
     })
   })
+}
 })

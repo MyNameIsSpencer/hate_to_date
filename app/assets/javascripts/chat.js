@@ -2,14 +2,15 @@ addEventListener('DOMContentLoaded', function(){
   $.ajax({
     url: 'chat_room',
     dataType: 'json',
-    method: 'GET'
+    method: 'GET',
+    data: {receiver: parseInt($("#receiver").val())}
   }).done(function(data){
     var userMessages = data["message"]
     var sender = data["sender"]
-    const chats_channel = App.cable.subscriptions.create('ChatsChannel',{
+    const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [sender.id, parseInt($("#receiver").val())]}, {
     connected:    () => {
       userMessages.forEach(function(message){
-        messages.append(sender + ": " + message[0] + "\n")
+        messages.append(message[1] + ": " + message[0] + "\n")
       })
     },
     disconnected: () => {messages.append('disconnected\n');},

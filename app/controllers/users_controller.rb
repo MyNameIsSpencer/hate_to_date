@@ -1,24 +1,18 @@
 class UsersController < ApplicationController
 	before_action :ensure_logged_in, except: [:new, :create]
 
+
   def new
 		@user = User.new
 	end
 
 
   def create
-  @user = User.new
-  @user.name = params[:user][:name]
-  @user.email = params[:user][:email]
-  @user.phone = params[:user][:phone]
-  @user.privacy = params[:user][:privacy]
-  @user.password = params[:user][:password]
-  @user.password_confirmation = params[:user][:password_confirmation]
+  @user = User.create(user_params)
+  if @user.save!
 
-  if @user.save
-    user = User.find_by(email: params[:user][:email])
-    session[:user_id] = user.id
-    redirect_to users_path
+    session[:user_id] = @user.id
+    redirect_to user_path(@user.id)
   else
     render :new
   end
@@ -45,7 +39,7 @@ def update
   @user.name = params[:user][:name]
   @user.email = params[:user][:email]
   if @user.save
-    redirect_to users_url
+    redirect_to user_url
   else
     render :edit
   end
@@ -53,8 +47,9 @@ end
 
 def destroy
   @user = current_user
+  session[:user_id] = nil
   @user.destroy
-  redirect_to new_users_url
+  redirect_to new_user_url
 end
 
 def load_matches
@@ -62,6 +57,30 @@ def load_matches
   @users = User.all
   @results = Result.all
   @surveys = Survey.all
+end
+
+def meetups
+	@user = current_user
+	@user_surveys = []
+	@user_meetups = []
+	@user.results.each do |result|
+		if @user_surveys.include?(Survey.all.find(result.survey_id).name) ==false
+			@user_surveys << Survey.all.find(result.survey_id).name
+		end
+	end
+	@user_surveys.each do |survey|
+		result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
+		@user_meetups << result
+	end
+end
+
+private
+
+# Use strong_parameters for attribute whitelisting
+# Be sure to update your create() and update() controller methods.
+
+def user_params
+  params.require(:user).permit(:avatar, :fsa_id, :name, :email, :phone, :privacy, :password, :password_confirmation, :fsa_id, :pet_peeves, :description )
 end
 
 end

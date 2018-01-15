@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180114193217) do
+
+ActiveRecord::Schema.define(version: 20180115215026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +68,13 @@ ActiveRecord::Schema.define(version: 20180114193217) do
     t.boolean "privacy", default: false
     t.integer "fsa_id"
     t.integer "income"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text "description"
+    t.text "pet_peeves"
+    t.string "status"
   end
 
 end

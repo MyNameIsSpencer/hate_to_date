@@ -6,165 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-User.destroy_all
-Survey.destroy_all
-Question.destroy_all
-
-
-fsa_list.each do |code|
-  Fsa.create!(name: code)
-  sleep 2
-end
-
-20.times do
-  user = User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.free_email,
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all.sample,
-    rand(0..150000)
-  )
-end
-
-Faker::Config.random = Random.new(1)
-pop_culture = {"LordOfTheRings"=>[],"DrWho"=>[],"StarWars"=>[],"Simpsons"=>[], "FamilyGuy" => []}
-pop_culture.each do |franchise, options|
-  Faker::Config.random = Random.new(1)
-  while options.length < 10 do
-    call = eval("Faker::"+franchise).character
-    puts call
-    if options.include?(call) == false
-      options << call
-    end
-  end
-  this_survey = Survey.create!(name: franchise)
-  index= 0
-  while index < 10 do
-    question = Question.create!(
-      option_a: options[index],
-      option_b: options[index + 1],
-      survey: this_survey
-    )
-    index += 2
-  end
-end
-pop_culture.inspect
-
-# =============== Special Seeds ===================
-spec_count = 1
-Fsa.all do |code|
-  spec_count += 1
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: code,
-    rand(0..150000)
-  )
-end
-
-# females have higher income
-120.times do
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_list[1],
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all.sample,
-    rand(60000..150000)
-  )
-end
-
-# males looking for networking
-80.times do
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_list[0],
-    looking_for: looking_for_list[2],
-    phone: 1234567890,
-    fsa: Fsa.all.sample,
-    rand(0..150000)
-  )
-end
-
-# other gender looking for activity partners
-20.times do
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_list[2],
-    looking_for: looking_for_list[1],
-    phone: 1234567890,
-    fsa: Fsa.all.sample,
-    rand(0..150000)
-  )
-end
-
-# rich fsas
-25.times do
-  loc_index = rand(0..4)
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all[loc_index],
-    rand(80000..150000)
-  )
-end
-
-# more random users so rich fsas don't also have more people
-450.times do
-  loc_index = rand(5..95)
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all[loc_index],
-    rand(0..150000)
-  )
-end
-
-# fsas with more people
-200.times do
-  loc_index = rand(20..24)
-  user = User.create!(
-    name: "#{special_names.sample} #{special_names.sample}",
-    email: "#{Faker::Internet.free_email}#{spec_count}",
-    password: 'password',
-    password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
-    fsa: Fsa.all[loc_index],
-    rand(0..150000)
-  )
-end
-
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -184,6 +25,75 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1X',	'M4X',	'M5X',	'M8X',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
+
+User.destroy_all
+Survey.destroy_all
+Question.destroy_all
+
+
+fsa_list.each do |code|
+  Fsa.create!(name: code)
+  sleep 2
+end
+
+20.times do
+  user = User.create!(
+    user_name = Faker::Name.name,
+    name: user_name
+    email: Faker::Internet.free_email(user_name),
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    rand(0..150000)
+  )
+end
+
+
+pop_culture = {
+  "Lord Of The Rings"=>["Frodo Baggins", "Aragorn", "Boromir", "Meriadoc Brandybuck", "Samwise Gamgee", "Gandalf", "Gimli", "Legolas", "Peregrin Took", "Bilbo Baggins", "Arwen", "Elrond", "Galadriel", "Eomer", "Eowyn", "Theoden", "Faramir", "Gollum", "Grima Wormtongue", "Sauron", "Saruman", "Denethor"],
+  "Star Wars"=>["Luke Skywalker", "Obi-Wan Kenobi", "Han Solo", "Chewbacca", "R2-D2", "C-3PO", "Leia Organa", "Darth Vader", "Grand Moff Tarkin", "Wedge Antilles", "Yoda", "Lando Calrissian", "Boba Fett", "Jabba the Hutt", "Emperor Palpatine", "Anakin Skywalker", "Padme Amidala", "Qui-Gon Jinn", "Mace Windu", "Ahsoka Tano"],
+  "The Simpsons"=>["Homer Simpson", "Marge Simpson", "Bart Simpson", "Lisa Simpson", "Maggie Simpson", "Comic Book Guy", "Apu Nahasapeemapetilon","Seymour Skinner", "Grampa Simpson", "Dr Julius Hibbert", "Waylon Smithers", "Moe Szyslak", "Fat Tony", "Ned Flanders", "Disco Stu", "Reverend Lovejoy", "Sideshow Mel", "Krusty the Clown" ],
+  "Family Guy" => ["Peter Griffin", "Lois Griffin", "Meg Griffin", "Chris Griffin", "Stewie Griffin", "Brian Griffin","Glenn Quagmore", "Cleveland Brown", "Joseph Swanson", "Adam West" ],
+  "Pokemon" => ["Haunter", "Gengar", "Pikachu", "Raichu", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Blastoise", "Snorlax", "Scyther","Gyarados", "Alakazam", "Dragonite", "Arcanine", "Jigglypuff", "Psyduck", "Mewtwo", ],
+  "Harry Potter" => ["Harry Potter", "Hermione Granger", "Ron Weasley", "Neville Longbottom", "Draco Malfoy", "Pansy Parkinson", "Lord Voldemort", "Albus Dumbledore", "Minerva McGonagall", "Severus Snape", "Gilderoy Lockhart", "Rubeus Hagrid", "Lucius Malfoy", "Bellatrix Lestrange", "Luna Lovegood", "Alastor Moody", "Sirius Black", "Remus Lupin", "Nymphadora Tonks", "Peter Pettigrew"],
+  "Star Trek" => ["James T Kirk", "Spock", "Leonard McCoy", "Montgomery Scott", "Nyota Uhura", "Hikaru Sulu", "Pavel Chekov", "Christine Chapel", "Jean-Luc Picard", "William Riker", "Geordi La Forge", "Tasha Yar", "Worf", "Beverly Crusher", "Deanna Troi", "Data", "Wesley Crusher", "Guinan"],
+  "Futurama" => ["Philip Fry", "Turanga Leela", "Bender Rodriguez", "Amy Wong", "Hermes Conrad", "Professor Farnsworth", "Doctor Zoidberg", "Lord Nibbler", "Zapp Brannigan", "Kif Kroker"],
+  "Avengers" => ["Captain America", "Iron Man", "Thor", "Clint 'Hawkeye' Barton", "Black Widow", "Bruce Banner", "Wanda Maximoff", "Pietro Maximoff", "Vision", "Bucky Barnes", "James Rhodes", "Peter Parker", "Sam Wilson", "T'Challa", "Stephen Strange", "Scott Lang"],
+  "X-Men" => ["Cyclops", "Jean Grey", "Ororo 'Storm' Munroe", "Henry 'Beast' McCoy", "Nightcrawler", "Wolverine", "Rogue", "Charles Xavier", "Magneto", "Mystique" ],
+  "Justice League" => ["Batman", "Superman", "Wonder Woman", "Aquaman", "Green Lantern", "Cyborg", "The Flash", "Martian Manhunter", "Black Canary", "Green Arrow" ],
+  "Disney Characters" => ["Princess Jasmine", "Aladdin", "Rapunzel", "Flynn Rider", "Snow White","Simba","Mulan", "Princess Aurora", "Cinderella","Prince Eric","Pocahontas","Elsa","Tiana", "Belle", "Ariel", "Merida", "Hercules", "Megara", "Moana", "Prince Charming"]
+}
+
+pop_culture.select! do |franchise, options|
+  rearranged_list = []
+  until rearranged_list.length == options.length do
+      random_option = options.sample
+      if rearranged_list.include?(random_option) == false
+        rearranged_list << random_option
+      end
+    end
+  options.map!.with_index {|option, index| option = rearranged_list[index] }
+end
+
+pop_culture.each do |franchise, options|
+  this_survey = Survey.create!(name: franchise)
+  index= 0
+  while index < options.length do
+    question = Question.create!(
+      option_a: options[index],
+      option_b: options[index + 1],
+      survey: this_survey
+    )
+    index += 2
+  end
+end
+
+
+
+
 
 
 gender_list = ['male', 'female', 'other']

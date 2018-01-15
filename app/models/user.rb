@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#"}, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   validates :name, :email, :password_digest, presence: true
   validates :email, :password_digest, length: {minimum: 4}
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, on: :create
   validates :phone, length: {minimum: 4}, :allow_blank => true
   # validates :fsa, :allow_blank => true
 
@@ -12,7 +15,7 @@ class User < ApplicationRecord
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
 
-  belongs_to :fsa
+  belongs_to :fsa, optional: true
 
 
   has_secure_password
@@ -44,19 +47,10 @@ class User < ApplicationRecord
 def best_match(all_matches)
   best_match = {0=>[0.00, 0]}
   all_matches.each do |user_id, compatibility|
-    if compatibility[0] > best_match[0][0]
+    # compares match compatibility to the reference
+    if compatibility[0] >= best_match[0][0]
       best_match[0]=compatibility
       best_match[user_id]=compatibility
-    elsif compatibility[0] = best_match[0][0]
-      if compatibility[1] > best_match[0][1]
-        best_match[0]=compatibility
-        best_match[user_id]=compatibility
-      end
-    end
-  end
-  best_match.each do |user_id, compatibility|
-    if compatibility[1]<best_match[0][1]
-      best_match.delete(user_id)
     end
   end
   best_match.delete(0)
