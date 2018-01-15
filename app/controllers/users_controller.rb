@@ -39,7 +39,7 @@ def update
   @user.name = params[:user][:name]
   @user.email = params[:user][:email]
   if @user.save
-    redirect_to users_url
+    redirect_to user_url
   else
     render :edit
   end
@@ -47,8 +47,9 @@ end
 
 def destroy
   @user = current_user
+  session[:user_id] = nil
   @user.destroy
-  redirect_to new_users_url
+  redirect_to new_user_url
 end
 
 def load_matches

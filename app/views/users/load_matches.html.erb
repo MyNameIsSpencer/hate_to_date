@@ -9,8 +9,9 @@
   <% @user.results.each do |result| %>
     <% @user.match_generator(result).each do |user_id, compatibility| %>
     <div id = result>
-    <p> You matched with <%= User.find(user_id).name%> with <%= number_to_percentage(compatibility[0]*100, precision:0) %> based on your shared dislikes regarding <%= @surveys.find(result.survey_id).name %> </p>
-    <%= link_to("Visit Profile", user_path(user_id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user_id.to_i)) %> <br>
+    <p> You matched with <%= User.find(user_id).name%> with <%= number_to_percentage(compatibility[0]*100, precision:0) %> based on your shared dislikes regarding <%= @surveys.find(result.survey_id).name %> <br>
+    They are <%= User.find(user_id).status %>!</p>
+      <br><%= link_to("Visit Profile", user_path(user_id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user_id.to_i)) %> <br>
       <% count += 1 %>
     </div>
     <%end %>

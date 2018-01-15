@@ -4,7 +4,10 @@
 <% end %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>
-
+<% if @user == current_user %>
+<%= link_to("Edit Profile", edit_user_path) %>
+<%= link_to("Delete Profile", user_path, method: :delete, data: {confirm: "Are you sure?"}) %>
+<%end %>
 <% if @user.results.length > 0 %>
 <button class="meetup">Want to Kvetch with others?</button>
 <%end %>
