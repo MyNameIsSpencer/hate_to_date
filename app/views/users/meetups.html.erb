@@ -4,7 +4,11 @@
   <% @user_meetups.each do |meetup| %>
     <% if meetup.length > 0 %>
       <h3><%= meetup[0]["name"]%></h3>
+        <% if meetup[0]["key_photo"] %>
       <%= link_to(image_tag(meetup[0]["key_photo"]["thumb_link"]), meetup[0]["link"] ) %>
+        <% else %>
+        <%= link_to(meetup[0]["name"], meetup[0]["link"]) %>
+          <% end %>
     <% end %>
   <% end  %>
   <%else %>
