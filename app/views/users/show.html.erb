@@ -1,6 +1,7 @@
 <h1> About <%= @user.name %></h1>
-
-<%= image_tag @user.avatar.url(:thumb) %>
+<%if @user.avatar_file_size %>
+  <%= image_tag @user.avatar.url(:thumb) %>
+<% end %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>
 
@@ -17,8 +18,10 @@
 
     <% @fsa_array = [] %>
     <% User.all.each do |user|%>
-      <% hasher = { fsa_name: user.fsa.name, lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
-      <% @fsa_array << hasher %>
+      <%if user.fsa %>
+        <% hasher = { fsa_name: user.fsa.name, lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
+        <% @fsa_array << hasher %>
+        <% end %>
     <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>

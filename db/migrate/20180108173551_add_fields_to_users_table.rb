@@ -1,5 +1,5 @@
 class AddFieldsToUsersTable < ActiveRecord::Migration[5.1]
-  def change
+  def up
     add_column :users, :FSA, :string, default: nil
     add_column :users, :gender, :string, default: "undefined"
     add_column :users, :orientation, :string, default: "undefined"

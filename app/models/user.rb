@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>"}, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   validates :name, :email, :password_digest, presence: true
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
 
-  belongs_to :fsa
+  belongs_to :fsa, optional: true
 
 
   has_secure_password

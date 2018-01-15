@@ -9,17 +9,7 @@ class UsersController < ApplicationController
 
   def create
   @user = User.create(user_params)
-  @user.name = params[:user][:name]
-  @user.email = params[:user][:email]
-  @user.phone = params[:user][:phone]
-  @user.privacy = params[:user][:privacy]
-  @user.password = params[:user][:password]
-  @user.password_confirmation = params[:user][:password_confirmation]
-	@user.fsa_id = params[:user][:fsa_id]
-	@user.pet_peeves = params[:user][:pet_peeves]
-	@user.description = params[:user][:description]
-	@user.avatar = params[:user][:avatar]
-  if @user.save
+  if @user.save!
 
     session[:user_id] = @user.id
     redirect_to user_path(@user.id)
@@ -89,7 +79,7 @@ private
 # Be sure to update your create() and update() controller methods.
 
 def user_params
-  params.require(:user).permit(:avatar, :fsa_id)
+  params.require(:user).permit(:avatar, :fsa_id, :name, :email, :phone, :privacy, :password, :password_confirmation, :fsa_id, :pet_peeves, :description )
 end
 
 end
