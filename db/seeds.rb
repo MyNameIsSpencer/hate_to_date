@@ -6,11 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-User.destroy_all
-Survey.destroy_all
-Question.destroy_all
-
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -31,22 +26,31 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
 
+User.destroy_all
+Survey.destroy_all
+Question.destroy_all
+
 
 fsa_list.each do |code|
   Fsa.create!(name: code)
-  sleep 1
+  sleep 2
 end
 
 20.times do
   user = User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.free_email,
+    user_name = Faker::Name.name,
+    name: user_name
+    email: Faker::Internet.free_email(user_name),
     password: 'password',
     password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
     phone: 1234567890,
-    fsa: Fsa.all.sample
+    fsa: Fsa.all.sample,
+    rand(0..150000)
   )
 end
+
 
 pop_culture = {
   "Lord Of The Rings"=>["Frodo Baggins", "Aragorn", "Boromir", "Meriadoc Brandybuck", "Samwise Gamgee", "Gandalf", "Gimli", "Legolas", "Peregrin Took", "Bilbo Baggins", "Arwen", "Elrond", "Galadriel", "Eomer", "Eowyn", "Theoden", "Faramir", "Gollum", "Grima Wormtongue", "Sauron", "Saruman", "Denethor"],
@@ -86,4 +90,18 @@ pop_culture.each do |franchise, options|
     index += 2
   end
 end
-pop_culture.inspect
+
+
+
+
+
+
+gender_list = ['male', 'female', 'other']
+gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
+looking_for_list = ['Friend', 'Activity Partner', 'Networking']
+
+special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
+  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
+  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
+  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
+  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda', ]
