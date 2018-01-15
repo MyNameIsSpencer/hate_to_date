@@ -29,7 +29,6 @@
 
 
       <nav class="site-nav">
-          <%= link_to("Home", root_path) %>
           <%= link_to("Surveys", surveys_path) %>
         <% if current_user %>
           <%= link_to("Profile Page", user_path(current_user)) %>
@@ -44,6 +43,14 @@
 
       </nav>
     </header>
+
+    <% if flash[:notice] %>
+      <p class="notice"><%=  flash[:notice]%></p>
+    <% end %>
+   <% if flash[:alert] %>
+    <p class="alert"><%= flash[:alert] %></p>
+  <% end %>
+
     <%= yield %>
 
 </body>

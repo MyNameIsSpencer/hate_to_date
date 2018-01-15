@@ -1,5 +1,5 @@
 class DropColumnFsaLatitudeLongitudeFromUser < ActiveRecord::Migration[5.1]
-  def change
+  def up
     remove_column :users, :fsa
     remove_column :users, :latitude
     remove_column :users, :longitude

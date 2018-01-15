@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
     @pictures << left_pic
     @pictures << right_pic
     @pictures << @survey.questions.length
+    @pictures << @survey.questions[params[:number].to_i].option_a
+    @pictures << @survey.questions[params[:number].to_i].option_b
     respond_to do |format|
       format.html
       format.json { render :json => @pictures }
