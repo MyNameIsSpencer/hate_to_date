@@ -36,10 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
       dataType: 'json',
       data: { number: questionCounter}
     }).done(function(data){
-      console.log(data[0]["data"].length);
-      console.log(data[1]["data"].length);
-      console.log(data[3]);
-      console.log(data[4]);
       var image1 = document.createElement('img')
       var image1title = document.createElement('div')
       image1.className = "left"
