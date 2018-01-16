@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Survey.destroy_all
+Question.destroy_all
+
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -26,9 +30,39 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
 
-User.destroy_all
-Survey.destroy_all
-Question.destroy_all
+
+gender_list = ['male', 'female', 'other']
+gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
+looking_for_list = ['Friend', 'Activity Partner', 'Networking']
+
+special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
+  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
+  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
+  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
+  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda'
+]
+
+user_name_list = []
+
+def namer(special_names, user_name_list)
+
+  i = 0
+  new_name = nil
+  while i < 1 do
+    n = 0
+    i = 0
+    new_name = "#{special_names.sample} #{special_names.sample}"
+    user_name_list.each do |name|
+      if new_name == name
+        n += 1
+      end
+    end
+    if n < 1
+      i += 10
+    end
+  end
+  return new_name
+end
 
 
 fsa_list.each do |code|
@@ -36,10 +70,12 @@ fsa_list.each do |code|
   sleep 2
 end
 
-20.times do
+
+10.times do
+  new_name = Faker::Name.name
+  incoom = rand(0..150000)
   user = User.create!(
-    user_name = Faker::Name.name,
-    name: user_name
+    name: new_name,
     email: Faker::Internet.free_email(user_name),
     password: 'password',
     password_confirmation: 'password',
@@ -47,7 +83,123 @@ end
     looking_for: looking_for_list.sample,
     phone: 1234567890,
     fsa: Fsa.all.sample,
-    rand(0..150000)
+    income: incoom
+  )
+end
+
+
+# =============== Special Seeds ===================
+spec_count = 1
+
+
+# females have higher income
+9.times do
+  now_name = namer(special_names, user_name_list)
+  incoom = rand(60000..150000)
+  spec_count += 1
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[1],
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    income: incoom
+  )
+end
+
+# males looking for networking
+8.times do
+  now_name = namer(special_names, user_name_list)
+  spec_count += 1
+  incoom = rand(0..150000)
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[0],
+    looking_for: looking_for_list[2],
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    income: incoom
+  )
+end
+
+# other gender looking for activity partners
+3.times do
+  now_name = namer(special_names, user_name_list)
+  spec_count += 1
+  incoom = rand(0..150000)
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_list[2],
+    looking_for: looking_for_list[1],
+    phone: 1234567890,
+    fsa: Fsa.all.sample,
+    income: incoom
+  )
+end
+
+# rich fsas
+5.times do
+  now_name = namer(special_names, user_name_list)
+  spec_count += 1
+  incoom = rand(80000..150000)
+  loc_index = rand(0..3)
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    income: incoom
+  )
+end
+
+# more random users 
+20.times do
+  now_name = namer(special_names, user_name_list)
+  spec_count += 1
+  incoom = rand(0..150000)
+  loc_index = rand(4..95)
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    income: incoom
+  )
+end
+
+# fsas with more people
+15.times do
+  now_name = namer(special_names, user_name_list)
+  spec_count += 1
+  incoom = rand(0..150000)
+  loc_index = rand(4..7)
+  user = User.create!(
+    name: now_name,
+    email: "#{Faker::Internet.free_email}#{spec_count}",
+    password: 'password',
+    password_confirmation: 'password',
+    gender: gender_weighted_list.sample,
+    looking_for: looking_for_list.sample,
+    phone: 1234567890,
+    fsa: Fsa.all[loc_index],
+    income: incoom
   )
 end
 
@@ -90,18 +242,3 @@ pop_culture.each do |franchise, options|
     index += 2
   end
 end
-
-
-
-
-
-
-gender_list = ['male', 'female', 'other']
-gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
-looking_for_list = ['Friend', 'Activity Partner', 'Networking']
-
-special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
-  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
-  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
-  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
-  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda', ]
