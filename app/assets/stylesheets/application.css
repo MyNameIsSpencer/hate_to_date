@@ -25,3 +25,17 @@
 .user_modal {
   display: none;
 }
+
+.survey {
+  position: relative;
+}
+
+.survey >span{
+  text-decoration: none;
+  background: black;
+  color: white;
+  position: absolute;
+  left:0;
+  padding: 1px;
+  top:0;
+}

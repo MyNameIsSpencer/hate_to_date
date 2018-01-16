@@ -36,26 +36,28 @@ document.addEventListener("DOMContentLoaded", function() {
       dataType: 'json',
       data: { number: questionCounter}
     }).done(function(data){
-      console.log(data[0]["data"].length);
-      console.log(data[1]["data"].length);
-      console.log(data[3]);
-      console.log(data[4]);
       var image1 = document.createElement('img')
-      var image1title = document.createElement('div')
+      var image1title = document.createElement('span')
+      var image1holder = document.createElement('div')
       image1.className = "left"
+      image1holder.className = "survey"
       image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height_still"]["url"];
       image1.alt = data[3]
       image1title.innerText = data[3]
       var image2 = document.createElement('img')
-      var image2title = document.createElement('div')
+      var image2title = document.createElement('span')
+      var image2holder = document.createElement('div')
+      image2holder.className = "survey"
       image2.className = "right"
       image2.src = data[1]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height_still"]["url"];
       image2.alt = data[4]
       image2title.innerText = data[4]
-      imageHolder.append(image1)
-      imageHolder.append(image1title)
-      imageHolder.append(image2)
-      imageHolder.append(image2title)
+      image1holder.append(image1)
+      image1holder.append(image1title)
+      imageHolder.append(image1holder)
+      image2holder.append(image2)
+      image2holder.append(image2title)
+      imageHolder.append(image2holder)
       document.body.append(imageHolder)
       image1.addEventListener('click', function(event){
         makeSelection(data[2])
