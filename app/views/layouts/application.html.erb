@@ -44,30 +44,39 @@
       </nav>
     </header>
     <main>
-      
+
    <% if flash[:notice] %>
       <p class="notice"><%=  flash[:notice]%></p>
     <% end %>
    <% if flash[:alert] %>
     <p class="alert"><%= flash[:alert] %></p>
   <% end %>
-      
+
   <%= yield %>
 
 <!-- ========== Google Maps ============== -->
+
     <div id="map"></div>
+
+    <% @fsa_array = [] %>
+    <% User.all.each do |user|%>
+      <%if user.fsa %>
+        <% hasher = { fsa_name: user.fsa.name, lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
+        <% @fsa_array << hasher %>
+        <% end %>
+    <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
 
     <% if current_user%>
-    <%=tag("div", :id => 'current_guy', :data => {:latitude => @user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
+    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
     <% end %>
 
     <script>
       var loggedUserLatLng = document.getElementById('current_guy');
       var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
       var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
-
+      var distance = document.getElementById('distance');
       // console.log(loggedUserLatLng);
       // console.log(loggedUserLat);
       // console.log(loggedUserLng);
@@ -83,7 +92,7 @@
 
 
         var marker = new google.maps.Marker({
-         position: {lat: 43.647219, lng: -79.387905},
+         position: {lat: loggedUserLat, lng: loggedUserLng},
          map: map,
          title: 'Hello World!'
         });
@@ -119,7 +128,7 @@
              fillOpacity: 0.05,
              center: {lat: later, lng: longer},
              map: map,
-             radius: count * count * 100 + 100
+             radius: count * 50
            });
          }
        }
@@ -138,14 +147,378 @@
        });
 
        differenceLine.setMap(map);
+       // Distance Between
+        var origin1 =  {lat: loggedUserLat, lng: loggedUserLng};
+        var destination1 = {lat: 43.647219, lng: -79.387905};
+        var service = new google.maps.DistanceMatrixService();
+
+        service.getDistanceMatrix(
+          {
+            origins: [origin1],
+            destinations: [destination1],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false,
+          }, callback);
+
+        function callback(response, status) {
+          var results = response.rows[0].elements[0]['distance']['text'];
+          distance.innerText = ('You are about  ' + results + '  apart');
+        }
      }
 
     </script>
-    <!-- ========== Google Maps End ============== -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
     async defer></script>
+    <!-- ========== Google Maps End ============== -->
+
     </main>
 
 </body>
 </html>
+
+
+<!-- ========== Google Maps Style V ============== -->
+<script>
+  var purple =
+[
+    {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#bc00ff"
+            },
+            {
+                "saturation": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#e8b8f9"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#3e114e"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#2e093b"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "color": "#9e1010"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#58176e"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#d180ee"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "color": "#a02aca"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#cc81e7"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#bc00ff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#6d2388"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#c46ce3"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#b7918f"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#280b33"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    }
+]
+</script>

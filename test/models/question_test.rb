@@ -28,7 +28,7 @@ class QuestionTest < ActiveSupport::TestCase
   end
 
   test "option_a and option_b are different" do
-    question = build(:question, option_a: "East", option_b: "West", survey_id: 1)
+    question = build(:question, option_a: "East", option_b: "North", survey_id: 1)
     question2 = build(:question, option_a: "West", option_b: "West", survey_id: 1)
 
     assert question.valid?
