@@ -35,6 +35,10 @@
           <%= link_to("Matches", user_matches_path(current_user)) %>
           <%= link_to("Meetups", user_meetups_path(current_user)) %>
           <%= link_to "Logout", :logout, method: :delete %>
+          <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
+          <%= f.label :status %>
+          <%= f.select :status, ['Online', 'Busy', 'Available'], {}, {:onChange=>"this.form.submit()"} %>
+          <%end %>
 
         <% else %>
           <%= link_to "Register", new_user_path %>
@@ -44,14 +48,14 @@
       </nav>
     </header>
     <main>
-      
+
    <% if flash[:notice] %>
       <p class="notice"><%=  flash[:notice]%></p>
     <% end %>
    <% if flash[:alert] %>
     <p class="alert"><%= flash[:alert] %></p>
   <% end %>
-      
+
   <%= yield %>
 
 <!-- ========== Google Maps ============== -->
@@ -60,7 +64,7 @@
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
 
     <% if current_user%>
-    <%=tag("div", :id => 'current_guy', :data => {:latitude => @user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
+    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
 
     <script>

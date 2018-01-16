@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :surveys, only: [:index, :show]
   resource :session, only: [:new, :create, :destroy]
 
-
+  patch 'users/:id/change_status' => 'users#change_status', :as => :change_status
   root "sessions#new"
 
   resources :surveys, only: [:show] do

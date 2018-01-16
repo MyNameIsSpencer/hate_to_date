@@ -74,6 +74,12 @@ def meetups
 	end
 end
 
+def change_status
+  @user = current_user
+  @user.update(status: params[:user][:status])
+end
+
+
 private
 
 # Use strong_parameters for attribute whitelisting
