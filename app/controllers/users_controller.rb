@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
   @user = User.create(user_params)
   if @user.save!
-
+    @user.update(status: 'Online')
     session[:user_id] = @user.id
     redirect_to user_path(@user.id)
   else
@@ -36,8 +36,7 @@ end
 
 def update
   @user = current_user
-  @user.name = params[:user][:name]
-  @user.email = params[:user][:email]
+  @user.update(user_params)
   if @user.save
     redirect_to user_url
   else
