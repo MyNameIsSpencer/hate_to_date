@@ -69,7 +69,7 @@
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
 
     <% if current_user%>
-    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => @user.fsa.longitude}) %>
+    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
 
     <script>
