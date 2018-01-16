@@ -18,7 +18,8 @@ if (button2){
       if (data["_embedded"]["attractions"][0]["url"]){
         window.location.replace(data["_embedded"]["attractions"][0]["url"]);
       }else{
-      alert("No events for this Subject Nearby")
+      alert("No events for this Subject Nearby");
+      window.location.replace("/surveys")
     }
     })
   })
