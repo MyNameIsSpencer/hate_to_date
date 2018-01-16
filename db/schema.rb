@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115215026) do
+ActiveRecord::Schema.define(version: 20180116225257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180115215026) do
     t.text "pet_peeves"
     t.integer "income"
     t.string "status"
+    t.integer "blocks", default: [], array: true
   end
 
 end

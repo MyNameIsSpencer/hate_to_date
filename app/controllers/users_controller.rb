@@ -79,6 +79,14 @@ def change_status
 end
 
 
+def block_user
+  @user=current_user
+  receiver_id = params[:receiver].to_i
+  @user.blocks<<receiver_id unless @user.blocks.include?(receiver_id)
+  @user.save
+  redirect_to user_matches_url(@user.id)
+end
+
 private
 
 # Use strong_parameters for attribute whitelisting

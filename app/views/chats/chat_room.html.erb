@@ -38,6 +38,13 @@ Logged in:
      title: 'Me'
     });
 
+    var senderCheckbox = false
+
+    var senderInfoWindow = new google.maps.InfoWindow({
+      content: "You: <%= @current_user.name %>" + "<br>" + "Description:  <%=@current_user.description  %> " + "<br>" + "FSA: " + " <%= Fsa.find(@current_user.fsa_id).name %> "
+    });
+
+    <% unless @receiver.blocks.include?(@current_user.id)%>
     var otherMarker = new google.maps.Marker({
      position: {lat: <%=@receiver.fsa.latitude  %> , lng: <%=@receiver.fsa.longitude  %>},
      map: map,
@@ -49,23 +56,39 @@ Logged in:
      {lat: <%=@receiver.fsa.latitude  %> , lng: <%=@receiver.fsa.longitude  %>},
    ];
 
-   var senderInfoWindow = new google.maps.InfoWindow({
-      content: "Sender: <%= @current_user.name %>" + "<br>" + "Description:  <%=@current_user.description  %> "
-          });
   //
   var receiverInfoWindow = new google.maps.InfoWindow({
-    content: "Receiver: <%= @receiver.name %>" +  "<br>" + "Description:  <%=@receiver.description  %> "
+    content: "Them: <%= @receiver.name %>" +  "<br>" + "Description:  <%=@receiver.description  %> " + "<br>" + "FSA: " + " <%= Fsa.find(@receiver.fsa_id).name %> "
   });
-
-
+  var receiverCheckbox = false
+<%end %>
 
    marker.addListener('click', function(event){
-    senderInfoWindow.open(map, marker)
-   })
-
+     if (senderCheckbox === false) {
+    senderInfoWindow.open(map, marker);
+    senderCheckbox = true
+    } else if (senderCheckbox === true){
+    senderInfoWindow.close();
+    senderCheckbox = false
+    }
+    if (receiverCheckbox === true){
+   receiverInfoWindow.close();
+   receiverCheckbox = false
+  }
+})
 
    otherMarker.addListener('click', function(event){
-    receiverInfoWindow.open(map, otherMarker)
+     if (receiverCheckbox === false) {
+    receiverInfoWindow.open(map, otherMarker);
+    receiverCheckbox = true
+  } else if (receiverCheckbox === true){
+    receiverInfoWindow.close();
+    receiverCheckbox = false
+    }
+    if (senderCheckbox === true){
+      senderInfoWindow.close();
+      senderCheckbox = false
+  }
    })
 
    var differenceLine = new google.maps.Polyline({

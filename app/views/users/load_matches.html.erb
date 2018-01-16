@@ -15,11 +15,14 @@
   <p>Survey: <%= Survey.find(result.survey_id).name %></p>
 <%sorted.each do |match| %>
 <%user = User.find(match[0].to_i) %>
+<% unless @user.blocks.include?(user.id) %>
 <p>You matched with <%= user.name %> with <%= number_to_percentage(match[1].to_f*100, precision:0) %> <br>
 They are <%= user.status %>!</p>
 <%= link_to("Visit Profile", user_path(user.id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user.id)) %> <br>
+<%= link_to("Block User", block_user_path(:receiver => user.id), method: :patch, :data => {:confirm => 'Are you sure?  Blocks cannot be Undone.'}) %>
 <%count+=1 %>
 </div>
+<%end %>
 <% end %>
 <%end %>
 <%end %>

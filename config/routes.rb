@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get 'find_event' => 'messages#find_event', :as => :find_event
   get 'chat_room' => 'chats#chat_room'
   resources :messages, only: [:create]
+
+  patch 'user/:id/block_user' => 'users#block_user', :as => :block_user
 end
