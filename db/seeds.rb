@@ -67,7 +67,7 @@ end
 
 fsa_list.each do |code|
   Fsa.create!(name: code)
-  sleep 2
+  # sleep 2
 end
 
 
@@ -76,7 +76,7 @@ end
   incoom = rand(0..150000)
   user = User.create!(
     name: new_name,
-    email: Faker::Internet.free_email(user_name),
+    email: Faker::Internet.free_email(new_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
@@ -165,7 +165,7 @@ end
   )
 end
 
-# more random users 
+# more random users
 20.times do
   now_name = namer(special_names, user_name_list)
   spec_count += 1
