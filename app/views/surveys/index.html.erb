@@ -11,7 +11,8 @@
 <h2 id=survey-list> You haven't tried these yet! </h2>
 <% @surveys.each do |survey| %>
   <% if @user_surveys.empty? == true || @user_surveys.include?(survey)==false %>
-    <%= link_to(survey.name, survey_path(survey.id)) %>
+  <p><%= survey.name %></p>
+    <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..4)]["images"]["fixed_width"]["url"], alt: survey.name), survey_path(survey.id)) %>
     <br>
   <% end  %>
 <% end  %>
