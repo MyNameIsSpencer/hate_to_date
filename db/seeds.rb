@@ -71,12 +71,12 @@ fsa_list.each do |code|
 end
 
 
-10.times do
-  new_name = Faker::Name.name
+5.times do
+  now_name = Faker::Name.name
   incoom = rand(0..150000)
   user = User.create!(
-    name: new_name,
-    email: Faker::Internet.free_email(new_name),
+    name: now_name,
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
@@ -89,17 +89,14 @@ end
 
 
 # =============== Special Seeds ===================
-spec_count = 1
-
 
 # females have higher income
 9.times do
   now_name = namer(special_names, user_name_list)
   incoom = rand(60000..150000)
-  spec_count += 1
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_list[1],
@@ -113,11 +110,10 @@ end
 # males looking for networking
 8.times do
   now_name = namer(special_names, user_name_list)
-  spec_count += 1
   incoom = rand(0..150000)
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_list[0],
@@ -131,11 +127,10 @@ end
 # other gender looking for activity partners
 3.times do
   now_name = namer(special_names, user_name_list)
-  spec_count += 1
   incoom = rand(0..150000)
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_list[2],
@@ -149,12 +144,11 @@ end
 # rich fsas
 5.times do
   now_name = namer(special_names, user_name_list)
-  spec_count += 1
   incoom = rand(80000..150000)
   loc_index = rand(0..3)
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
@@ -166,14 +160,13 @@ end
 end
 
 # more random users
-20.times do
+15.times do
   now_name = namer(special_names, user_name_list)
-  spec_count += 1
   incoom = rand(0..150000)
   loc_index = rand(4..95)
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
@@ -185,14 +178,13 @@ end
 end
 
 # fsas with more people
-15.times do
+10.times do
   now_name = namer(special_names, user_name_list)
-  spec_count += 1
   incoom = rand(0..150000)
   loc_index = rand(4..7)
   user = User.create!(
     name: now_name,
-    email: "#{Faker::Internet.free_email}#{spec_count}",
+    email: Faker::Internet.free_email(now_name),
     password: 'password',
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
