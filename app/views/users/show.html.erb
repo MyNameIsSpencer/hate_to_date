@@ -31,17 +31,34 @@
         <% end %>
     <% end %>
 
+    <% @user_array = [] %>
+    <% User.all.each do |user|%>
+      <% if user.id != current_user.id %>
+        <% hasher = {} %>
+        <% hasher[:id] = user.id %>
+        <% hasher[:fsa_name] = user.fsa.name %>
+        <% hasher[:latitude] = user.fsa.latitude %>
+        <% hasher[:longitude] = user.fsa.longitude %>
+        <% @user_array << hasher %>
+      <% end %>
+    <% end %>
+
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+
+    <%=tag("div", :id => 'user_locations', :data => {:user_locations => @user_array})%>
 
     <% if current_user%>
     <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
+
+
 
     <script>
       var loggedUserLatLng = document.getElementById('current_guy');
       var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
       var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
       var distance = document.getElementById('distance');
+      var radius = 10000;
       // console.log(loggedUserLatLng);
       // console.log(loggedUserLat);
       // console.log(loggedUserLng);
@@ -54,6 +71,22 @@
           zoom: 12,
           styles: purple
         });
+
+
+
+
+function calcDistance (lata, lnga, latb, lngb) {
+    return google.maps.geometry.spherical.computeDistanceBetween(
+      new google.maps.LatLng(lata, lnga), new google.maps.LatLng(latb, lngb));
+ }
+
+var blart = 43.647219
+var bling = -79.387905
+var fromUserDistance = calcDistance(loggedUserLat, loggedUserLng, blart, bling);
+console.warn(fromUserDistance);
+
+
+
 
 
         var marker = new google.maps.Marker({
@@ -98,7 +131,56 @@
          }
        }
 
-//Polyline
+// Radius
+      var usersLocElement = document.getElementById('user_locations');
+      var usersData = JSON.parse(usersLocElement.dataset.user_locations);
+      var parsedUserLocations = {}
+
+
+      for (i = 0; i < usersData.length; i ++) {
+        var iUser = usersData[i];
+        var destinationLat = iUser.latitude
+        var destinationLng = iUser['longitude']
+
+        var originA =  {lat: loggedUserLat, lng: loggedUserLng};
+        var destinationA = {lat: destinationLat, lng: destinationLng};
+        var service = new google.maps.DistanceMatrixService();
+
+        service.getDistanceMatrix(
+          {
+            origins: [originA],
+            destinations: [destinationA],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false,
+          }, callback);
+
+        function callback(response, status) {
+          var results = response.rows[0].elements[0]['distance']['text'];
+          distance.innerText = ('You are about  ' + results + '  apart');
+        }
+
+
+      }
+
+
+      var fsaElement = document.getElementById('fsa_data');
+      var fsaData = JSON.parse(fsaElement.dataset.fsa);
+      // console.warn(fsaData);
+      var fsaPopulations = {}
+
+
+      for (i = 0; i < usersData.length; i ++) {
+        var iUser = usersData[i];
+        if (fsaPopulations[currentFsa['fsa_name']] > 0) {
+          fsaPopulations[currentFsa['fsa_name']] += 1;
+        } else {
+          fsaPopulations[currentFsa['fsa_name']] = 1;
+        }
+      }
+
+// Polyline
        // var differenceCoordinates = [
        //   {lat: loggedUserLat, lng: loggedUserLng},
        //   {lat: 43.647219, lng: -79.387905},
@@ -136,7 +218,8 @@
 
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap&libraries=geometry"
     async defer></script>
     <!-- ========== Google Maps End ============== -->
 
