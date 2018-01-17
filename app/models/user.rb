@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, :password_digest, length: {minimum: 4}
   validates :email, uniqueness: true, on: :create
   validates :phone, length: {minimum: 4}, :allow_blank => true
-  # validates :fsa, :allow_blank => true
+  # validates :fsa_id, :allow_blank => true
 
 
 
