@@ -8,10 +8,10 @@
   <% end %>
 <% end %>
 
-<h2 id=survey-list> You haven't tried these yet! </h2>
+
 <div id="main-container" class="container">
 <% @surveys.each_slice(3) do |survey_3| %>
-  <% if @user_surveys.empty? == true || @user_surveys.include?(survey)==false %>
+
       <div class="row">
         <%survey_3.each do |survey| %>
         <div class = "survey">
@@ -24,17 +24,5 @@
     </div>
     <%end %>
   </div>
-  <% end  %>
 <% end  %>
 </div>
-
-<% if current_user %>
-  <h2 id=survey-list> Tried already... </h2>
-  <% @user_surveys.each do |survey| %>
-  <div class = "survey">
-  <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..9)]["images"]["fixed_height"]["url"], alt: survey.name), survey_path(survey.id), class: "fixed_height") %>
-  <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..9)]["images"]["fixed_width"]["url"], alt: survey.name), survey_path(survey.id), class: "fixed_width") %>
-    <span><%= link_to(survey.name, survey_path(survey.id)) %></span>
-  </div>
-  <% end  %>
-<% end %>

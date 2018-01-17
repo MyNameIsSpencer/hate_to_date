@@ -17,3 +17,19 @@ span{
   top: 0;
   background: orange
 }
+
+
+.row{
+  margin-bottom: 1.5em;
+  position:relative;
+}
+
+
+.col-xs-6 img {
+  max-width: 400px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
