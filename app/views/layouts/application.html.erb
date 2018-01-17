@@ -29,6 +29,12 @@
 
 
       <nav class="site-nav">
+        <%= form_tag find_user_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search], placeholder: "Pet Peaves" %>
+          <%= submit_tag "Search", :title => nil %>
+        </p>
+        <%end %>
           <%= link_to("Surveys", surveys_path) %>
         <% if current_user %>
           <%= link_to("Profile Page", user_path(current_user)) %>
@@ -59,7 +65,7 @@
   <%= yield %>
 
 <!-- ========== Google Maps ============== -->
-    
+
     <!-- ========== Google Maps End ============== -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"

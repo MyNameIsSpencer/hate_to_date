@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
 
   patch 'user/:id/block_user' => 'users#block_user', :as => :block_user
+  get 'find_user' => 'users#find_user', :as => :find_user
 end

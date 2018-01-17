@@ -20,15 +20,23 @@ end
 
 def show
   @users = User.all
-  @user = User.find_by(id: params[:id])
+  @user = User.find(params[:id])
   unless current_user.user_matches.include?(@user) || @user ==current_user
     redirect_to new_session_path
+  end
+  if  @user.blocks.include?(current_user.id)
+    flash[:notice] = "Cannot acces profile.  You have been blocked."
+    redirect_to user_matches_url(current_user.id)
   end
   @results = Result.all
   @surveys= Survey.all
 end
 
-
+def find_user
+  @user = current_user
+  @found_users = User.where("pet_peeves = ?", params[:search])
+  render :show
+end
 
 def edit
   @user = current_user
