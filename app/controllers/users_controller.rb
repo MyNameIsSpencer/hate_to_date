@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
   @user = User.create(user_params)
   if @user.save!
-
+    @user.update(status: 'Online')
     session[:user_id] = @user.id
     redirect_to user_path(@user.id)
   else
@@ -20,15 +20,23 @@ end
 
 def show
   @users = User.all
-  @user = User.find_by(id: params[:id])
+  @user = User.find(params[:id])
   unless current_user.user_matches.include?(@user) || @user ==current_user
     redirect_to new_session_path
+  end
+  if  @user.blocks.include?(current_user.id)
+    flash[:notice] = "Cannot acces profile.  You have been blocked."
+    redirect_to user_matches_url(current_user.id)
   end
   @results = Result.all
   @surveys= Survey.all
 end
 
-
+def find_user
+  @user = current_user
+  @found_users = User.where("pet_peeves = ?", params[:search])
+  render :show
+end
 
 def edit
   @user = current_user
@@ -36,8 +44,7 @@ end
 
 def update
   @user = current_user
-  @user.name = params[:user][:name]
-  @user.email = params[:user][:email]
+  @user.update(user_params)
   if @user.save
     redirect_to user_url
   else
@@ -72,6 +79,20 @@ def meetups
 		result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
 		@user_meetups << result
 	end
+end
+
+def change_status
+  @user = current_user
+  @user.update(status: params[:user][:status])
+end
+
+
+def block_user
+  @user=current_user
+  receiver_id = params[:receiver].to_i
+  @user.blocks<<receiver_id unless @user.blocks.include?(receiver_id)
+  @user.save
+  redirect_to user_matches_url(@user.id)
 end
 
 private

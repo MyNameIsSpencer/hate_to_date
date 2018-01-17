@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115215026) do
+
+ActiveRecord::Schema.define(version: 20180117154754) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +40,8 @@ ActiveRecord::Schema.define(version: 20180115215026) do
     t.integer "survey_id"
     t.string "option_a"
     t.string "option_b"
+    t.string "option_a_url"
+    t.string "option_b_url"
   end
 
   create_table "results", force: :cascade do |t|
@@ -45,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180115215026) do
     t.integer "user_id"
     t.integer "survey_id"
     t.string "answers", default: [], array: true
-    t.integer "match_id"
+    t.string "matches", default: [], array: true
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -66,6 +71,8 @@ ActiveRecord::Schema.define(version: 20180115215026) do
     t.string "phone"
     t.boolean "privacy", default: false
     t.integer "fsa_id"
+    t.float "latitude"
+    t.float "longitude"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
@@ -74,6 +81,7 @@ ActiveRecord::Schema.define(version: 20180115215026) do
     t.text "pet_peeves"
     t.integer "income"
     t.string "status"
+    t.integer "blocks", default: [], array: true
   end
 
 end

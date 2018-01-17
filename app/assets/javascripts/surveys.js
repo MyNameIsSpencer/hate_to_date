@@ -2,7 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function() {
-  var button = document.querySelector('button')
+  var button = document.querySelector('#start_survey')
   var questionCounter = 0
   var result = []
   var imageHolder = document.createElement('div')
@@ -40,8 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
       var image1title = document.createElement('span')
       var image1holder = document.createElement('div')
       image1.className = "left"
+
+      
       image1holder.className = "survey"
-      image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height_still"]["url"];
+      image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["original"]["url"];
       image1.alt = data[3]
       image1title.innerText = data[3]
       var image2 = document.createElement('img')
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var image2holder = document.createElement('div')
       image2holder.className = "survey"
       image2.className = "right"
-      image2.src = data[1]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height_still"]["url"];
+      image2.src = data[1]["data"][Math.floor(Math.random()*5)]["images"]["original"]["url"];
       image2.alt = data[4]
       image2title.innerText = data[4]
       image1holder.append(image1)

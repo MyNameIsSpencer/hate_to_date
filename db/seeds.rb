@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M1B',	'M3B',	'M4B',	'M5B',	'M6B',	'M9B',
 'M1C',	'M3C',	'M4C',	'M5C',	'M6C',	'M9C',
@@ -26,6 +25,31 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
 
+gender_list = ['male', 'female', 'other']
+gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
+looking_for_list = ['Friend', 'Activity Partner', 'Networking']
+
+special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
+  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
+  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
+  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
+  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda', ]
+
+  pop_culture = {
+    "Lord Of The Rings"=>["Frodo Baggins", "Aragorn", "Boromir", "Meriadoc Brandybuck", "Samwise Gamgee", "Gandalf", "Gimli", "Legolas", "Peregrin Took", "Bilbo Baggins", "Arwen", "Elrond", "Galadriel", "Eomer", "Eowyn", "Theoden", "Faramir", "Gollum", "Grima Wormtongue", "Sauron", "Saruman", "Denethor"],
+    "Star Wars"=>["Luke Skywalker", "Obi-Wan Kenobi", "Han Solo", "Chewbacca", "R2-D2", "C-3PO", "Leia Organa", "Darth Vader", "Grand Moff Tarkin", "Wedge Antilles", "Yoda", "Lando Calrissian", "Boba Fett", "Jabba the Hutt", "Emperor Palpatine", "Anakin Skywalker", "Padme Amidala", "Qui-Gon Jinn", "Mace Windu", "Ahsoka Tano"],
+    "The Simpsons"=>["Homer Simpson", "Marge Simpson", "Bart Simpson", "Lisa Simpson", "Maggie Simpson", "Comic Book Guy", "Apu Nahasapeemapetilon","Seymour Skinner", "Grampa Simpson", "Dr Julius Hibbert", "Waylon Smithers", "Moe Szyslak", "Fat Tony", "Ned Flanders", "Disco Stu", "Reverend Lovejoy", "Sideshow Mel", "Krusty the Clown" ],
+    "Family Guy" => ["Peter Griffin", "Lois Griffin", "Meg Griffin", "Chris Griffin", "Stewie Griffin", "Brian Griffin","Glenn Quagmore", "Cleveland Brown", "Joseph Swanson", "Adam West" ],
+    "Pokemon" => ["Haunter", "Gengar", "Pikachu", "Raichu", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Blastoise", "Snorlax", "Scyther","Gyarados", "Alakazam", "Dragonite", "Arcanine", "Jigglypuff", "Psyduck", "Mewtwo", ],
+    "Harry Potter" => ["Harry Potter", "Hermione Granger", "Ron Weasley", "Neville Longbottom", "Draco Malfoy", "Pansy Parkinson", "Lord Voldemort", "Albus Dumbledore", "Minerva McGonagall", "Severus Snape", "Gilderoy Lockhart", "Rubeus Hagrid", "Lucius Malfoy", "Bellatrix Lestrange", "Luna Lovegood", "Alastor Moody", "Sirius Black", "Remus Lupin", "Nymphadora Tonks", "Peter Pettigrew"],
+    "Star Trek" => ["James T Kirk", "Spock", "Leonard McCoy", "Montgomery Scott", "Nyota Uhura", "Hikaru Sulu", "Pavel Chekov", "Christine Chapel", "Jean-Luc Picard", "William Riker", "Geordi La Forge", "Tasha Yar", "Worf", "Beverly Crusher", "Deanna Troi", "Data", "Wesley Crusher", "Guinan"],
+    "Futurama" => ["Philip Fry", "Turanga Leela", "Bender Rodriguez", "Amy Wong", "Hermes Conrad", "Professor Farnsworth", "Doctor Zoidberg", "Lord Nibbler", "Zapp Brannigan", "Kif Kroker"],
+    "Avengers" => ["Captain America", "Iron Man", "Thor", "Clint 'Hawkeye' Barton", "Black Widow", "Bruce Banner", "Wanda Maximoff", "Pietro Maximoff", "Vision", "Bucky Barnes", "James Rhodes", "Peter Parker", "Sam Wilson", "T'Challa", "Stephen Strange", "Scott Lang"],
+    "X-Men" => ["Cyclops", "Jean Grey", "Ororo 'Storm' Munroe", "Henry 'Beast' McCoy", "Nightcrawler", "Wolverine", "Rogue", "Charles Xavier", "Magneto", "Mystique" ],
+    "Justice League" => ["Batman", "Superman", "Wonder Woman", "Aquaman", "Green Lantern", "Cyborg", "The Flash", "Martian Manhunter", "Black Canary", "Green Arrow" ],
+    "Disney Characters" => ["Princess Jasmine", "Aladdin", "Rapunzel", "Flynn Rider", "Snow White","Simba","Mulan", "Princess Aurora", "Cinderella","Prince Eric","Pocahontas","Elsa","Tiana", "Belle", "Ariel", "Merida", "Hercules", "Megara", "Moana", "Prince Charming"]
+  }
+
 User.destroy_all
 Survey.destroy_all
 Question.destroy_all
@@ -33,13 +57,12 @@ Question.destroy_all
 
 fsa_list.each do |code|
   Fsa.create!(name: code)
-  sleep 2
 end
 
 20.times do
+  user_name = Faker::Name.name
   user = User.create!(
-    user_name = Faker::Name.name,
-    name: user_name
+    name: user_name,
     email: Faker::Internet.free_email(user_name),
     password: 'password',
     password_confirmation: 'password',
@@ -47,25 +70,9 @@ end
     looking_for: looking_for_list.sample,
     phone: 1234567890,
     fsa: Fsa.all.sample,
-    rand(0..150000)
   )
 end
 
-
-pop_culture = {
-  "Lord Of The Rings"=>["Frodo Baggins", "Aragorn", "Boromir", "Meriadoc Brandybuck", "Samwise Gamgee", "Gandalf", "Gimli", "Legolas", "Peregrin Took", "Bilbo Baggins", "Arwen", "Elrond", "Galadriel", "Eomer", "Eowyn", "Theoden", "Faramir", "Gollum", "Grima Wormtongue", "Sauron", "Saruman", "Denethor"],
-  "Star Wars"=>["Luke Skywalker", "Obi-Wan Kenobi", "Han Solo", "Chewbacca", "R2-D2", "C-3PO", "Leia Organa", "Darth Vader", "Grand Moff Tarkin", "Wedge Antilles", "Yoda", "Lando Calrissian", "Boba Fett", "Jabba the Hutt", "Emperor Palpatine", "Anakin Skywalker", "Padme Amidala", "Qui-Gon Jinn", "Mace Windu", "Ahsoka Tano"],
-  "The Simpsons"=>["Homer Simpson", "Marge Simpson", "Bart Simpson", "Lisa Simpson", "Maggie Simpson", "Comic Book Guy", "Apu Nahasapeemapetilon","Seymour Skinner", "Grampa Simpson", "Dr Julius Hibbert", "Waylon Smithers", "Moe Szyslak", "Fat Tony", "Ned Flanders", "Disco Stu", "Reverend Lovejoy", "Sideshow Mel", "Krusty the Clown" ],
-  "Family Guy" => ["Peter Griffin", "Lois Griffin", "Meg Griffin", "Chris Griffin", "Stewie Griffin", "Brian Griffin","Glenn Quagmore", "Cleveland Brown", "Joseph Swanson", "Adam West" ],
-  "Pokemon" => ["Haunter", "Gengar", "Pikachu", "Raichu", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Blastoise", "Snorlax", "Scyther","Gyarados", "Alakazam", "Dragonite", "Arcanine", "Jigglypuff", "Psyduck", "Mewtwo", ],
-  "Harry Potter" => ["Harry Potter", "Hermione Granger", "Ron Weasley", "Neville Longbottom", "Draco Malfoy", "Pansy Parkinson", "Lord Voldemort", "Albus Dumbledore", "Minerva McGonagall", "Severus Snape", "Gilderoy Lockhart", "Rubeus Hagrid", "Lucius Malfoy", "Bellatrix Lestrange", "Luna Lovegood", "Alastor Moody", "Sirius Black", "Remus Lupin", "Nymphadora Tonks", "Peter Pettigrew"],
-  "Star Trek" => ["James T Kirk", "Spock", "Leonard McCoy", "Montgomery Scott", "Nyota Uhura", "Hikaru Sulu", "Pavel Chekov", "Christine Chapel", "Jean-Luc Picard", "William Riker", "Geordi La Forge", "Tasha Yar", "Worf", "Beverly Crusher", "Deanna Troi", "Data", "Wesley Crusher", "Guinan"],
-  "Futurama" => ["Philip Fry", "Turanga Leela", "Bender Rodriguez", "Amy Wong", "Hermes Conrad", "Professor Farnsworth", "Doctor Zoidberg", "Lord Nibbler", "Zapp Brannigan", "Kif Kroker"],
-  "Avengers" => ["Captain America", "Iron Man", "Thor", "Clint 'Hawkeye' Barton", "Black Widow", "Bruce Banner", "Wanda Maximoff", "Pietro Maximoff", "Vision", "Bucky Barnes", "James Rhodes", "Peter Parker", "Sam Wilson", "T'Challa", "Stephen Strange", "Scott Lang"],
-  "X-Men" => ["Cyclops", "Jean Grey", "Ororo 'Storm' Munroe", "Henry 'Beast' McCoy", "Nightcrawler", "Wolverine", "Rogue", "Charles Xavier", "Magneto", "Mystique" ],
-  "Justice League" => ["Batman", "Superman", "Wonder Woman", "Aquaman", "Green Lantern", "Cyborg", "The Flash", "Martian Manhunter", "Black Canary", "Green Arrow" ],
-  "Disney Characters" => ["Princess Jasmine", "Aladdin", "Rapunzel", "Flynn Rider", "Snow White","Simba","Mulan", "Princess Aurora", "Cinderella","Prince Eric","Pocahontas","Elsa","Tiana", "Belle", "Ariel", "Merida", "Hercules", "Megara", "Moana", "Prince Charming"]
-}
 
 pop_culture.select! do |franchise, options|
   rearranged_list = []
@@ -90,18 +97,3 @@ pop_culture.each do |franchise, options|
     index += 2
   end
 end
-
-
-
-
-
-
-gender_list = ['male', 'female', 'other']
-gender_weighted_list = ['female', 'female', 'female', 'female', 'female', 'female', 'female', 'male', 'male', 'male', 'male', 'other']
-looking_for_list = ['Friend', 'Activity Partner', 'Networking']
-
-special_names = ['Captain', 'Broccoli', 'T-Rex', 'Fuchsia', 'Master', 'Night Shade', 'Inceptator', 'Action', 'Hellfire', 'Breakout',
-  'X-Ray', 'C-840 G', 'Nebula', 'Winslow', 'Q', 'Betman', 'Obooma', 'River Walk', 'Falling Star', 'DEliGht', 'Sir', 'Ninja', 'Samurai',
-  'Surprise', 'Sveltess', 'Robo Rob', 'Imperator', 'Hoopdidoop', 'Lush', 'Mini', 'Commander', 'Fury', 'Wooden Car', 'Quarantine',
-  'Forest', 'Guy', 'Gal', 'Hero', 'Jiggy Jaggy', 'Kite Catcher', 'Octopus', 'Pillow', 'Raining', 'Rage', 'Tarantula', 'Time Cutter',
-  'Loathing', 'of Hate', 'Vengeful', 'Venom', 'Umbrella', 'Yelling', 'Zero', 'Zelda', ]
