@@ -28,6 +28,7 @@
 
 .survey {
   position: relative;
+  display: block;
 }
 
 .survey >span{
