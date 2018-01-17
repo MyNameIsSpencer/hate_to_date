@@ -32,6 +32,14 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
 'M4Y',	'M7Y',	'M8Y',
 'M8Z']
 
+fsa_list.each_with_index do |code, index|
+  if index % 5 == 0
+    puts "sleeping zzz"
+    sleep 1
+  end
+  this_fsa = Fsa.create!(name:code)
+  p this_fsa
+end
 
   pop_culture = {
     "Lord Of The Rings"=>["Frodo Baggins", "Aragorn", "Boromir", "Meriadoc Brandybuck", "Samwise Gamgee", "Gandalf", "Gimli", "Legolas", "Peregrin Took", "Bilbo Baggins", "Arwen", "Elrond", "Galadriel", "Eomer", "Eowyn", "Theoden", "Faramir", "Gollum", "Grima Wormtongue", "Sauron", "Saruman", "Denethor"],
@@ -47,10 +55,6 @@ fsa_list = ['M3A',	'M4A',	'M5A',	'M6A',	'M7A',	'M9A',
     "Justice League" => ["Batman", "Superman", "Wonder Woman", "Aquaman", "Green Lantern", "Cyborg", "The Flash", "Martian Manhunter", "Black Canary", "Green Arrow" ],
     "Disney Characters" => ["Princess Jasmine", "Aladdin", "Rapunzel", "Flynn Rider", "Snow White","Simba","Mulan", "Princess Aurora", "Cinderella","Prince Eric","Pocahontas","Elsa","Tiana", "Belle", "Ariel", "Merida", "Hercules", "Megara", "Moana", "Prince Charming"]
   }
-
-fsa_list.each do |code|
-  Fsa.create!(name: code)
-end
 
 30.times do
   user_name = Faker::Name.name
@@ -89,3 +93,16 @@ pop_culture.each do |franchise, options|
     index += 2
   end
 end
+
+100.times do
+  this_survey = Survey.all.sample
+  answer_array = []
+  this_survey.questions.length.times do
+    answer_array << ["left", "right"].sample
+  end
+  Result.create!(
+    user_id: User.all.ids.sample,
+    survey_id: this_survey.id,
+    answers: answer_array
+  )
+  end
