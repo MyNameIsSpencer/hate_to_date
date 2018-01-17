@@ -20,3 +20,6 @@
     <p> No matches yet! Have you checked out your <%=link_to("meetups",user_meetups_path(@user.id)) %>?</p>
   <%end  %>
 <% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initLoadMatchesMap&libraries=geometry"
+async defer></script>

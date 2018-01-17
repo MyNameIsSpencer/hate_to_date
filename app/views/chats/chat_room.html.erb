@@ -11,3 +11,10 @@ Logged in:
 <% end %>
 
 <pre id="messages" style='border: 2px solid blue; padding: 1rem; margin: 1rem'></pre>
+
+
+<!-- ========== Google Maps ============== -->
+<%=tag("div", :id => 'receiver_guy', :data => {:latitude => @receiver.fsa.latitude, :longitude => @receiver.fsa.longitude}) %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initChatMap&libraries=geometry"
+async defer></script>
