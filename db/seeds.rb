@@ -63,7 +63,7 @@ end
     email: Faker::Internet.free_email(user_name),
     password: 'password',
     password_confirmation: 'password',
-    phone: "1234567890",
+    phone: '1234567890',
     fsa: Fsa.all.sample,
     income: rand(1..1000000)
   )

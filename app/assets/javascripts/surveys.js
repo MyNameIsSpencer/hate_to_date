@@ -39,9 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var image1 = document.createElement('img')
       var image1title = document.createElement('span')
       var image1holder = document.createElement('div')
+      image1holder.className = "survey col-xs-6"
       image1.className = "left"
-
-
       image1holder.className = "survey"
       image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height"]["url"];
       image1.alt = data[3]
@@ -49,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var image2 = document.createElement('img')
       var image2title = document.createElement('span')
       var image2holder = document.createElement('div')
-      image2holder.className = "survey"
+      image2holder.className = "survey col-xs-6"
       image2.className = "right"
       image2.src = data[1]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height"]["url"];
       image2.alt = data[4]
@@ -60,7 +59,8 @@ document.addEventListener("DOMContentLoaded", function() {
       image2holder.append(image2)
       image2holder.append(image2title)
       imageHolder.append(image2holder)
-      document.body.append(imageHolder)
+      // document.body.append(imageHolder)
+      $( ".row" ).append( imageHolder);
       image1.addEventListener('click', function(event){
         makeSelection(data[2])
       });
@@ -74,6 +74,7 @@ if (button){
   button.addEventListener('click', function(event){
     event.preventDefault()
     pictureMaker()
+    $( "#map" ).css({ display: "hidden" });
   });
 }
 });
