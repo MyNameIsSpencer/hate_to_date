@@ -59,9 +59,9 @@ end
     email: Faker::Internet.free_email(user_name),
     password: 'password',
     password_confirmation: 'password',
-    gender: gender_weighted_list.sample,
-    looking_for: looking_for_list.sample,
-    phone: 1234567890,
+    # gender: gender_weighted_list.sample,
+    # looking_for: looking_for_list.sample,
+    phone: '1234567890',
     fsa: Fsa.all.sample,
     income: rand(1..1000000)
   )
