@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     @message.body=params[:body]
     @message.user_id=current_user.id
     @message.receiver_id= params[:receiver]
-    @message.save
+    @message.save unless User.find(params[:receiver]).blocks.include?(current_user.id)
   end
 
 end

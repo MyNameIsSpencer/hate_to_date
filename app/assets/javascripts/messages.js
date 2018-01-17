@@ -14,12 +14,13 @@ if (button2){
       dataType: 'json',
       data: { topic: topic.id }
     }).done(function(data){
-      console.log(data);
-      if (data["_embedded"]["attractions"][0]["url"]){
-        window.location.replace(data["_embedded"]["attractions"][0]["url"]);
+      console.log(data["_embedded"]);
+      if (data["_embedded"]=== undefined || data["_embedded"]["attractions"][0]["url"] === undefined){
+        alert("No events for this Subject Nearby");
+        window.location.replace("/surveys")
       }else{
-      alert("No events for this Subject Nearby")
-    }
+        window.location.replace(data["_embedded"]["attractions"][0]["url"]);
+      }
     })
   })
 }

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, :password_digest, length: {minimum: 4}
   validates :email, uniqueness: true, on: :create
   validates :phone, length: {minimum: 4}, :allow_blank => true
-  # validates :fsa, :allow_blank => true
+  # validates :fsa_id, :allow_blank => true
 
 
 
@@ -40,21 +40,19 @@ class User < ApplicationRecord
       compatibility = count /survey_result.answers.length
       all_matches[survey_result.user_id] = [compatibility, survey_result.created_at]
     end
-    best = best_match(all_matches)
+    best = best_matches(all_matches)
     return best
   end
 
-def best_match(all_matches)
-  best_match = {0=>[0.00, 0]}
+def best_matches(all_matches)
+  best_matches = {}
   all_matches.each do |user_id, compatibility|
     # compares match compatibility to the reference
-    if compatibility[0] >= best_match[0][0]
-      best_match[0]=compatibility
-      best_match[user_id]=compatibility
+    if compatibility[0] >= 0.5
+      best_matches[user_id]=compatibility
     end
   end
-  best_match.delete(0)
-  return best_match
+  return best_matches
 end
 
 def user_matches
@@ -66,6 +64,4 @@ def user_matches
   user_matches.flatten!
   return user_matches
 end
-
-
 end

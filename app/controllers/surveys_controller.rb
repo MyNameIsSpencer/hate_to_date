@@ -4,6 +4,10 @@ class SurveysController < ApplicationController
 def index
   @surveys =Survey.all
   @user_surveys =[]
+	@survey_images = {}
+	@surveys.each do |survey|
+		@survey_images[survey.id]=HTTParty.get("https://api.giphy.com/v1/gifs/search?api_key=#{ENV["Giphy_Key"]}&q=#{survey.name}&rating=g&limit=10")
+	end
 end
 
   def show

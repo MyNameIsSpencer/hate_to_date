@@ -21,4 +21,14 @@ class Question < ApplicationRecord
     end
 
   belongs_to :survey
+
+  def save_picture_if_none_in_database(left, right)
+    if self.option_a_url == nil
+      self.update(option_a_url: left)
+    end
+    if self.option_b_url == nil
+      self.update(option_b_url: right)
+    end
+  end
+
 end
