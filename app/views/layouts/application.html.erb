@@ -78,7 +78,8 @@
     <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
-
+    
+    <% if current_user  %>
     <% @user_array = [] %>
     <% User.all.each do |user|%>
       <% hasher = {} %>
@@ -88,6 +89,7 @@
       <% hasher[:longitude] = user.fsa.longitude %>
       <% @user_array << hasher %>
     <% end %>
+    <%end %>
 
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
 
