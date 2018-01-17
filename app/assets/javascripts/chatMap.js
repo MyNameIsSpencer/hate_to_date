@@ -58,4 +58,13 @@ initChatMap = function() {
    });
    differenceLine.setMap(map);
 
+
+// ====== Not sure about this V
+   callback();
+
+   function callback(response, status) {``
+     var results = response.rows[0].elements[0]['distance']['text'];
+     distanceText.innerText = ('You are about  ' + results + '  apart');
+   };
+
  }
