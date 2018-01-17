@@ -1,9 +1,6 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
-function initMap() {
-  console.log('init Map');
-}
 
 document.addEventListener('DOMContentLoaded', function(){
 var register = document.querySelector('.register');
@@ -36,8 +33,6 @@ if(meetup){
     e.preventDefault();
   })
 }
-
-
 
 
 })

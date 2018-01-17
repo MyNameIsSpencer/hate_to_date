@@ -67,10 +67,36 @@
 <!-- ========== Google Maps ============== -->
 
 
-    <!-- ========== Google Maps End ============== -->
+    <div id="map"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initMap"
-    async defer></script>
+    <% @fsa_array = [] %>
+    <% User.all.each do |user|%>
+      <%if user.fsa %>
+        <% hasher = { fsa_name: user.fsa.name, lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
+        <% @fsa_array << hasher %>
+        <% end %>
+    <% end %>
+
+    <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+
+    <% @user_array = [] %>
+    <% User.all.each do |user|%>
+      <% hasher = {} %>
+      <% hasher[:id] = user.id %>
+      <% hasher[:fsa_name] = user.fsa.name %>
+      <% hasher[:latitude] = user.fsa.latitude %>
+      <% hasher[:longitude] = user.fsa.longitude %>
+      <% @user_array << hasher %>
+    <% end %>
+
+    <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
+
+
+    <% if current_user%>
+    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
+    <% end %>
+<!-- ========== Google Maps End ============== -->
+
     </main>
 
 </body>
