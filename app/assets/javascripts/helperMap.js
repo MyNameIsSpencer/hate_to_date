@@ -15,7 +15,14 @@ return google.maps.geometry.spherical.computeDistanceBetween(
 
 //**
 // Iterate through Users and find distance from current User
-function populateRadMap(usersData, radUsers, map, myRadius, loggedUserLat, loggedUserLng) {
+function populateRadMap(map, loggedUserLat, loggedUserLng) {
+  var myRadius = 10000;
+
+  // Get User data from tag
+    var usersLocElement = document.getElementById('user_locations');
+    var usersData = JSON.parse(usersLocElement.dataset.userLocation);
+    var radUsers = []
+
   for (i = 0; i < usersData.length; i ++) {
     var iUser = usersData[i];
     var destinationLat = iUser.latitude

@@ -9,7 +9,6 @@ initShowMap = function() {
   var loggedUserLatLng = document.getElementById('current_guy');
   var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
   var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
-  var myRadius = 10000;
 
   // var distance = document.getElementById('distance');
   // console.log(loggedUserLatLng);
@@ -39,12 +38,8 @@ initShowMap = function() {
    var fsaPopulations = {}
 
 
-// Get User data from tag
-  var usersLocElement = document.getElementById('user_locations');
-  var usersData = JSON.parse(usersLocElement.dataset.userLocation);
-  var radUsers = []
 
-populateRadMap(usersData, radUsers, map, myRadius, loggedUserLat, loggedUserLng)
+populateRadMap(map, loggedUserLat, loggedUserLng)
 // //**
 // // Iterate through Users and find distance from current User
 //   for (i = 0; i < usersData.length; i ++) {
