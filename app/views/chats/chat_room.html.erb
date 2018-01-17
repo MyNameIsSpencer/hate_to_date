@@ -2,7 +2,7 @@
 Logged in:
 <div id="logged_in"></div>
 <p>Chatting with <%= @receiver.name %> Status: <%=@receiver.status%> </p>
-<%= form_tag '/message', id: 'form_message'  do %>
+<%= form_tag '/messages', id: 'form_message'  do %>
   Enter your message:
   <%= text_field_tag :text_message %>
   <%= hidden_field_tag :user , @current_user.name %>
