@@ -3,24 +3,25 @@
 //  ========== Google Maps ==============
 initShowMap = function() {
 
-  console.log('This is the User Show map')
+  console.log('This is the start of the User Show map')
+
+// Parsing the logged in User's info from the JSON tag and set Radius
   var loggedUserLatLng = document.getElementById('current_guy');
   var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
   var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
-  var distance = document.getElementById('distance');
-  var myRadius = 12000;
+  var myRadius = 10000;
+  // var distance = document.getElementById('distance');
   // console.log(loggedUserLatLng);
   // console.log(loggedUserLat);
   // console.log(loggedUserLng);
 
-
+// Put the map into the #map div
   var map;
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 43.647219, lng: -79.387905},
       zoom: 12,
       styles: purple
     });
-
 
 // Put Marker at User's fsa
     var marker = new google.maps.Marker({
@@ -46,16 +47,10 @@ initShowMap = function() {
      }
    }
 
-
-
 // Radius
-
-
   var usersLocElement = document.getElementById('user_locations');
   var usersData = JSON.parse(usersLocElement.dataset.userLocation);
   var radUsers = []
-
-
 
 // Iterate through Users and find distance from current User
   for (i = 0; i < usersData.length; i ++) {
@@ -67,8 +62,8 @@ initShowMap = function() {
       radUsers.push(iUser);
     }
   }
-console.log(radUsers);
 
+// Pass and parse one set of data
   var fsaElement = document.getElementById('fsa_data');
   var fsaData = JSON.parse(fsaElement.dataset.fsa);
   // console.warn(fsaData);
@@ -89,7 +84,7 @@ console.log(radUsers);
   }
 
 
-  //Make circle for each fsa, size depending on number of Users
+  //Make circles for each fsa within radius, size depending on number of Users
     for (var i = 0; i < radFsas.length; i++) {
       for (var j = 0; j < radUsers.length; j++) {
         if (radFsas[i]['fsa_name'] === radUsers[j]['fsa_name']) {
@@ -98,12 +93,10 @@ console.log(radUsers);
       }
     }
 
-
-
     for (var i = 0; i < radFsas.length; i ++) {
       later = radFsas[i]['latitude']
       longer = radFsas[i]['longitude']
-      pop = radFsas[i]['count']
+      fsaPop = radFsas[i]['count']
       new google.maps.Circle({
         strokeColor: 'deeppink',
         strokeOpacity: 1,
@@ -112,13 +105,8 @@ console.log(radUsers);
         fillOpacity: 0.6,
         center: {lat: later, lng: longer},
         map: map,
-        radius: pop * 200
+        radius: fsaPop * 100
       });
     }
 
-
-
-
-
-console.log('Bottom of Map');
  }
