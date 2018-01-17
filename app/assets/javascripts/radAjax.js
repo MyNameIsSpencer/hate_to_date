@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-  $.ajax({
-    url:        'new_session',
-    method:     'GET',
-    data:       {},
-    dataType:   'json'
-  })
 
-  if (button){
-    button.addEventListener('click', function(event){
-      event.preventDefault()
-      pictureMaker()
-    });
-  }
+// var radButton = document.getElementById('radButton');
+// radButton.addEventListener('click', function(e) {
+//   e.preventDefault();
+//   var radInput = document.getElementById("radInput").value
+//   console.log(radInput);
+//   populateRadMap();
+// })
+
+// document.addEventListener('click', function(){
+//   document.getElementById("radInput").innerHTML
+
+var radButton = document.getElementById('radButton');
+radButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  var radInput = parseInt(document.getElementById("radInput").value)
+  console.log(radInput);
+  initShowMap(radInput);
+})
+
 });

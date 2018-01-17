@@ -1,8 +1,10 @@
 
 
 //  ========== Google Maps ==============
-initShowMap = function() {
-
+initShowMap = function(radInput) {
+  if (radInput === undefined) {
+    radInput = 10000;
+  }
   console.log('This is the start of the User Show map')
 
 // Parsing the logged in User's info from the JSON tag and set Radius
@@ -39,7 +41,8 @@ initShowMap = function() {
 
 
 
-populateRadMap(map, loggedUserLat, loggedUserLng)
+
+populateRadMap(map, loggedUserLat, loggedUserLng, radInput)
 // //**
 // // Iterate through Users and find distance from current User
 //   for (i = 0; i < usersData.length; i ++) {
