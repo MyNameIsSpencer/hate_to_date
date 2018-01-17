@@ -61,7 +61,7 @@ end
     password_confirmation: 'password',
     gender: gender_weighted_list.sample,
     looking_for: looking_for_list.sample,
-    phone: 1234567890,
+    phone: '1234567890',
     fsa: Fsa.all.sample,
     income: rand(1..1000000)
   )
