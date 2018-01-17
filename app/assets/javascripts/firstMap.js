@@ -58,26 +58,6 @@ initFirstMap = function() {
    }
 
 
-   differenceLine.setMap(map);
-   // Distance Between
-    var origin1 =  {lat: loggedUserLat, lng: loggedUserLng};
-    var destination1 = {lat: 43.647219, lng: -79.387905};
-    var service = new google.maps.DistanceMatrixService();
-
-    service.getDistanceMatrix(
-      {
-        origins: [origin1],
-        destinations: [destination1],
-        travelMode: google.maps.TravelMode.DRIVING,
-        unitSystem: google.maps.UnitSystem.METRIC,
-        avoidHighways: false,
-        avoidTolls: false,
-      }, callback);
-
-    function callback(response, status) {
-      var results = response.rows[0].elements[0]['distance']['text'];
-      distance.innerText = ('You are about  ' + results + '  apart');
-    }
 
 
 //========== Google Maps End ==========

@@ -5,3 +5,9 @@ function createMap(lat, lng) {
     styles: purple
   });
 }
+
+
+function calcDistance (lata, lnga, latb, lngb) {
+return google.maps.geometry.spherical.computeDistanceBetween(
+  new google.maps.LatLng(lata, lnga), new google.maps.LatLng(latb, lngb));
+}
