@@ -24,6 +24,8 @@ They are <%= user.status %>!</p>
 </div>
 <%end %>
 <% end %>
+
+
 <%end %>
 <%end %>
 <br>
@@ -31,3 +33,6 @@ They are <%= user.status %>!</p>
 <%if count == 0 %>
 <p> No matches yet! Have you checked out you <%= link_to("meetups", user_meetups_path(@user.id)) %>?</p>
 <%end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initLoadMatchesMap&libraries=geometry"
+async defer></script>

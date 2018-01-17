@@ -12,13 +12,16 @@ Logged in:
 
 <pre id="messages" style='border: 2px solid blue; padding: 1rem; margin: 1rem'></pre>
 
-<div id="map"></div>
 
-<%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
 
-<% if current_user%>
-<%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
-<% end %>
+<h2 id='distanceText'></h2>
+
+<!-- ========== Google Maps ============== -->
+<%=tag("div", :id => 'receiver_guy', :data => {:latitude => @receiver.fsa.latitude, :longitude => @receiver.fsa.longitude}) %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initChatMap&libraries=geometry"
+async defer></script>
+
 
 <script>
 
@@ -444,3 +447,4 @@ Logged in:
     }
 ]
 </script>
+
