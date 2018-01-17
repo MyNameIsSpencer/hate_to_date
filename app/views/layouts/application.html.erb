@@ -78,8 +78,8 @@
     <% end %>
 
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
-    
-    <% if current_user  %>
+
+    <% if current_user.fsa  %>
     <% @user_array = [] %>
     <% User.all.each do |user|%>
       <% hasher = {} %>
