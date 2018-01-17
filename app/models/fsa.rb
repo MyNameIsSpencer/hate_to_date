@@ -1,6 +1,8 @@
 class Fsa < ApplicationRecord
   validates :name, presence: true
+
   validates :name, length: {is: 3}
+
 
   has_many :users
 
