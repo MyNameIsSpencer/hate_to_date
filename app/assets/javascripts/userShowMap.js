@@ -8,7 +8,7 @@ initShowMap = function() {
   var loggedUserLat = JSON.parse(loggedUserLatLng.dataset.latitude);
   var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
   var distance = document.getElementById('distance');
-  var myRadius = 10000;
+  var myRadius = 12000;
   // console.log(loggedUserLatLng);
   // console.log(loggedUserLat);
   // console.log(loggedUserLng);
@@ -88,35 +88,35 @@ console.log(radUsers);
     }
   }
 
-    console.log(radFsas);
-
 
   //Make circle for each fsa, size depending on number of Users
     for (var i = 0; i < radFsas.length; i++) {
-
+      for (var j = 0; j < radUsers.length; j++) {
+        if (radFsas[i]['fsa_name'] === radUsers[j]['fsa_name']) {
+          radFsas[i]['count'] += 1;
+        }
+      }
     }
 
-     for (var key in radFsas) {
-       count = radFsas[key]
-       later = 0.0;
-       longer = 0.0;
-       for (i = 0; i < radUsers.length; i ++) {
-         if (key === radUsers[i].fsa_name) {
-           later = radUsers[i].lat;
-           longer = radUsers[i].lng;
-         }
-         new google.maps.Circle({
-           strokeColor: 'deeppink',
-           strokeOpacity: 0.3,
-           strokeWeight: 2,
-           fillColor: 'deeppink',
-           fillOpacity: 0.05,
-           center: {lat: later, lng: longer},
-           map: map,
-           radius: count * 50
-         });
-       }
-     }
+
+
+    for (var i = 0; i < radFsas.length; i ++) {
+      later = radFsas[i]['latitude']
+      longer = radFsas[i]['longitude']
+      pop = radFsas[i]['count']
+      new google.maps.Circle({
+        strokeColor: 'deeppink',
+        strokeOpacity: 1,
+        strokeWeight: 2,
+        fillColor: 'deeppink',
+        fillOpacity: 0.6,
+        center: {lat: later, lng: longer},
+        map: map,
+        radius: pop * 200
+      });
+    }
+
+
 
 
 
