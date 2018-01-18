@@ -13,10 +13,13 @@
 <% if @found_users %>
 
   <%@found_users.each do |user| %>
-  <p></p>  <%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+  <% if user.privacy == false  %>
+  <p><%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+  <% else %>
+    <p>Another user has the pet peeve "<%= params[:search] %>"</p>
   <% end %>
 <% end %>
-
+<% end %>
 
 
 <!-- ========== Google Maps ============== -->
