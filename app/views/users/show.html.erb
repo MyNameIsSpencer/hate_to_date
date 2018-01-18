@@ -1,4 +1,10 @@
-<h1> About <%= @user.name %></h1>
+<h1></h1>
+<% if current_user %>
+  <h1 class="welcome-user">Welcome <%= current_user.name %>!</h1>
+<% end %>
+
+
+<h1> About Me</h1>
 <%if @user.avatar_file_size %>
   <%= image_tag @user.avatar.url(:thumb) %>
 <% end %>
