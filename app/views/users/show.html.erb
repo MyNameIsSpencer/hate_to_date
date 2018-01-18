@@ -4,10 +4,18 @@
 <% end %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>
+
 <% if @user == current_user %>
-<%= link_to("Edit Profile", edit_user_path) %>
-<%= link_to("Delete Profile", user_path, method: :delete, data: {confirm: "Are you sure?"}) %>
+<%= link_to("Edit Profile", edit_user_path(current_user)) %>
+<%= link_to("Delete Profile", user_path(current_user), method: :delete, data: {confirm: "Are you sure?"}) %>
 <%end %>
+
+<% if @found_users %>
+
+  <%@found_users.each do |user| %>
+  <p></p>  <%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+  <% end %>
+<% end %>
 
 
 

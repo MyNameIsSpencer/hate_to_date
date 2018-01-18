@@ -97,7 +97,7 @@
 
     <% @fsa_array = [] %>
     <% User.all.each do |user|%>
-      <%if user.fsa %>
+      <%if user.fsa && user.privacy == false %>
         <% hasher = { fsa_name: user.fsa.name, lat: user.fsa.latitude, lng: user.fsa.longitude}  %>
         <% @fsa_array << hasher %>
         <% end %>
@@ -108,18 +108,18 @@
     <% if current_user&.fsa %>
       <% @user_array = [] %>
       <% User.all.each do |user|%>
+      <% if user.fsa  && user.privacy == false%>
         <% hasher = {} %>
         <% hasher[:id] = user.id %>
         <% hasher[:fsa_name] = user.fsa.name %>
         <% hasher[:latitude] = user.fsa.latitude %>
         <% hasher[:longitude] = user.fsa.longitude %>
         <% @user_array << hasher %>
+        <%end %>
       <% end %>
 
     <% end %>
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
-
-
 
     <% if current_user&.fsa %>
       <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
