@@ -24,6 +24,9 @@ addEventListener('DOMContentLoaded', function(){
     const message = text_message.value
     const username = user.value
     const receiver = $("#receiver").val()
+    console.log(message);
+    console.log(username);
+    console.log(receiver);
     chats_channel.send({username, message})
     text_message.value=""
     $.ajax({
