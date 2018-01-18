@@ -1,23 +1,41 @@
 
-<%= form_tag session_path do %>
-<div class="form-row">
-  <h1 class='login'>Log In</h1>
-  <div class="login-fields">
-  <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabelLg"%>
-</div>
-
-
-  <div class="login-fields">
-  <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "password" %>
-</div>
-  <div class="action"> <%= submit_tag "Log in" %>
+<div class="map-background">
 
 </div>
 
-</div>
-<%end %>
+<center>
+  <div class="form-row">
+    <h1 class='login'>Log In</h1>
+    <div class="login-fields">
+      <%= form_tag session_path do %>
+    <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
+  </div>
 
-<div>
+
+    <div class="login-fields">
+    <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "password" %>
+  </div>
+    <div class="action"> <%= submit_tag "Log in" %>
+
+  </div>
+
+  </div>
+  <%end %>
+
+  <div>
+</center>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initFirstMap&libraries=geometry"
 async defer></script>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // var mapWrapper = document.createElement('div');
+    var paddedMap = document.querySelector('.padded-map');
+    // paddedMap.style.visibility = "hidden";
+    // mapWrapper.className="map_wrapper";
+    // mapWrapper.appendChild('padded-map');
+    $('.map-background').append(paddedMap);
+  });
+</script>
+
 </div>

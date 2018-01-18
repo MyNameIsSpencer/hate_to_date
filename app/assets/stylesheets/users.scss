@@ -26,6 +26,33 @@ header {
   width: 100%
 }
 
+.form-row {
+  position: absolute;
+    /* display: inline-block; */
+    z-index: 12;
+    //display: inline-grid;
+
+    margin-top: -350px;
+    // margin-left: 35%;
+    // margin-right: 35%;
+    width: 300px;
+    align-self: center;
+    // height: 20%;
+    background-color: grey;
+    border: 3px solid darkpurple;
+    border-radius: 25px;
+    top: 60%;
+    left: 39%;
+
+}
+
+.map-background {
+  margin-top: -25px;
+  margin-right: -10px;
+  margin-left: -10px;
+  height: fit-content;
+}
+
 .padded-map {
   padding: 20px;
   background-color: #280b33;
