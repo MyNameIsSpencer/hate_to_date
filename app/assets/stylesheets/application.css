@@ -13,8 +13,13 @@
  *= require_tree .
  *= require_self
  */
+ body {
+  font-family: 'Open Sans', sans-serif;
+}
 
-
+.logo {
+  font-family: 'Rock Salt', cursive;
+}
 .modal2 {
   display: none;
 }

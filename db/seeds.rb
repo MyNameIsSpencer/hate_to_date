@@ -65,6 +65,7 @@ end
     password_confirmation: 'password',
     phone: '1234567890',
     fsa: Fsa.all.sample,
+    privacy: [true, false].sample,
     income: rand(1..1000000)
   )
 end
