@@ -29,27 +29,52 @@
 
 
       <nav class="navbar">
-        <%= form_tag find_user_path, :method => 'get' do %>
-        <p>
-          <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
-          <%= submit_tag "Search", :title => nil %>
-        </p>
-        <%end %>
-          <%= link_to("Surveys", surveys_path) %>
-        <% if current_user %>
-          <%= link_to("Profile Page", user_path(current_user)) %>
-          <%= link_to("Matches", user_matches_path(current_user)) %>
-          <%= link_to("Meetups", user_meetups_path(current_user)) %>
-          <%= link_to "Logout", :logout, method: :delete %>
-          <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
-          <%= f.label :status %>
-          <%= f.select :status, ['Online', 'Busy', 'Available'], {}, {:onChange=>"this.form.submit()"} %>
-          <%end %>
+        <div class="header-buttons">
+          <table>
+            <tr>
+              <td class="tab-cols">
+                <%= link_to("Surveys", surveys_path) %>
+              </td>
+              <% if current_user %>
 
-        <% else %>
-          <%= link_to "Register", new_user_path %>
-          <%= link_to "Login", :login %>
-        <% end %>
+              <td class="tab-cols">
+                <%= link_to("Profile Page", user_path(current_user)) %>
+              </td>
+              <td class="tab-cols">
+                <%= link_to("Matches", user_matches_path(current_user)) %>
+              </td>
+              <td class="tab-cols">
+                <%= link_to("Meetups", user_meetups_path(current_user)) %>
+              </td>
+              <td class="tab-cols">
+                <%= link_to "Logout", :logout, method: :delete %>
+              </td>
+              <td>
+                <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
+                <%= f.label :status %>
+                <%= f.select :status, ['Online', 'Busy', 'Available'], {}, {:onChange=>"this.form.submit()"} %>
+                <%end %>
+              </td>
+              <% else %>
+
+              <td class="tab-cols">
+                <%= link_to "Register", new_user_path %>
+              </td>
+              <td class="tab-cols">
+                <%= link_to "Login", :login %>
+              </td>
+              <% end %>
+              <td class="search-bar">
+                <%= form_tag find_user_path, :method => 'get' do %>
+                <p>
+                  <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
+                  <%= submit_tag "Search", :title => nil %>
+                </p>
+                <%end %>
+              </td>
+            </tr>
+          </table>
+        </div>
 
       </nav>
     </header>
@@ -78,23 +103,27 @@
         <% end %>
     <% end %>
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
+
+
     <% if current_user&.fsa %>
-    <% @user_array = [] %>
-    <% User.all.each do |user|%>
-      <% hasher = {} %>
-      <% hasher[:id] = user.id %>
-      <% hasher[:fsa_name] = user.fsa.name %>
-      <% hasher[:latitude] = user.fsa.latitude %>
-      <% hasher[:longitude] = user.fsa.longitude %>
-      <% @user_array << hasher %>
+      <% @user_array = [] %>
+      <% User.all.each do |user|%>
+        <% hasher = {} %>
+        <% hasher[:id] = user.id %>
+        <% hasher[:fsa_name] = user.fsa.name %>
+        <% hasher[:latitude] = user.fsa.latitude %>
+        <% hasher[:longitude] = user.fsa.longitude %>
+        <% @user_array << hasher %>
+      <% end %>
+
     <% end %>
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
     <%end %>
 
 
-    <% if current_user%>
+    <% if current_user&.fsa %>
+      <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
 
-    <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
 <!-- ========== Google Maps End ============== -->
 
