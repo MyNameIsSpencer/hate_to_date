@@ -28,7 +28,7 @@
       <h1 class="logo"> HateDate</h1>
 
 
-      <nav class="site-nav">
+      <nav class="navbar">
         <%= form_tag find_user_path, :method => 'get' do %>
         <p>
           <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
@@ -92,7 +92,8 @@
     <%end %>
 
 
-    <% if current_user&.fsa%>
+    <% if current_user%>
+
     <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
 <!-- ========== Google Maps End ============== -->
