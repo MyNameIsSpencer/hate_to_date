@@ -76,4 +76,11 @@ if (button){
     $( "#map" ).css({ display: "hidden" });
   });
 }
+
+var overlays = document.querySelectorAll('.overlay')
+overlays.forEach(function(overlay){
+  overlay.addEventListener('click', function(e){
+    alert('Survey already completed today.  Please select another survey.')
+  })
+})
 });

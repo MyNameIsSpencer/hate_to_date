@@ -13,28 +13,51 @@
  *= require_tree .
  *= require_self
  */
- body {
-  font-family: 'Open Sans', sans-serif;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+ font-family: 'Open Sans', sans-serif
 }
 
 .logo {
-  font-family: 'Rock Salt', cursive;
+ font-family: 'Rock Salt', cursive;
 }
 .modal2 {
-  display: none;
+ display: none;
 }
 
 .survey {
-  position: relative;
-  display: block;
+ position: relative;
+ display: block;
 }
 
 .survey >span{
-  text-decoration: none;
-  background: black;
-  color: white;
-  position: absolute;
-  left:0;
-  padding: 1px;
-  top:0;
+ text-decoration: none;
+ background: black;
+ color: white;
+ position: absolute;
+ left:0;
+ padding: 1px;
+ top:0;
+}
+
+.col-xs-6 > span{
+
+  margin-left: 6%;
+  margin-top: 3%;
+
+}
+
+#questions {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#messages {
+  border:1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: .6;
 }
