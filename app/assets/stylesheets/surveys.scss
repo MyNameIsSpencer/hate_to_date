@@ -9,27 +9,49 @@ img {
 
 .survey {
   position: relative;
+  z-index: 1;
 }
 
 span{
   position: absolute;
-  left: 1.5rem;
-  top: 0;
-  background: orange
+  left: 3rem;
+  top: 3rem;
+  background: black;
+  text-decoration-color: white;
+}
+
+span a {
+  padding: 2px;
 }
 
 
 .row{
   margin-bottom: 1.5em;
   position:relative;
+  width: 100%;
 }
 
 
-.col-xs-6 img {
+.survey img {
   max-width: 400px;
-  position: absolute;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding: 1%;
   left: 0;
   right: 0;
+
+}
+
+.overlay {
+    position:absolute;
+    display: block;
+    background-color: purple;
+    opacity: 0.6;
+    width: 99%;
+    height: 99%;
+}
+
+div#main-content {
+    padding: 0;
 }

@@ -17,12 +17,17 @@
         <div class = "survey">
       <div id="main-content" class="col-xs-4">
 
-
+<% if @user_surveys.include?(survey) %>
+  <div class = "overlay">
+    </div>
+        <%end %>
     <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..9)]["images"]["downsized"]["url"], alt: survey.name), survey_path(survey.id), class: "downsized") %>
-      <span><%= link_to(survey.name, survey_path(survey.id)) %></span>
+    <span><%= link_to(survey.name, survey_path(survey.id)) %></span>
+
+
+
     </div>
-    </div>
-    <%end %>
   </div>
 <% end  %>
 </div>
+<% end %>
