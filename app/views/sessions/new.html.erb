@@ -5,19 +5,20 @@
 
 <center>
   <div class="form-row">
-    <h1 class='login'>Log In</h1>
+    <h1 class="login"> HateDate</h1>
     <div class="login-fields">
       <%= form_tag session_path do %>
     <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
-  </div>
 
 
-    <div class="login-fields">
-    <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "password" %>
-  </div>
+
+
+    <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "Password" %>
     <div class="action"> <%= submit_tag "Log in" %>
 
   </div>
+  </div>
+
 
   </div>
   <%end %>
