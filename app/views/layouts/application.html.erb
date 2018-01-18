@@ -32,21 +32,21 @@
         <div class="header-buttons">
           <table>
             <tr>
-              <td>
+              <td class="tab-cols">
                 <%= link_to("Surveys", surveys_path) %>
               </td>
               <% if current_user %>
 
-              <td>
+              <td class="tab-cols">
                 <%= link_to("Profile Page", user_path(current_user)) %>
               </td>
-              <td>
+              <td class="tab-cols">
                 <%= link_to("Matches", user_matches_path(current_user)) %>
               </td>
-              <td>
+              <td class="tab-cols">
                 <%= link_to("Meetups", user_meetups_path(current_user)) %>
               </td>
-              <td>
+              <td class="tab-cols">
                 <%= link_to "Logout", :logout, method: :delete %>
               </td>
               <td>
@@ -57,10 +57,10 @@
               </td>
               <% else %>
 
-              <td>
+              <td class="tab-cols">
                 <%= link_to "Register", new_user_path %>
               </td>
-              <td>
+              <td class="tab-cols">
                 <%= link_to "Login", :login %>
               </td>
               <% end %>
