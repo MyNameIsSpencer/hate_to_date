@@ -13,9 +13,28 @@
  *= require_tree .
  *= require_self
  */
+ body {
+  font-family: 'Open Sans', sans-serif;
+}
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+.logo {
+  font-family: 'Rock Salt', cursive;
+}
+.modal2 {
+  display: none;
+}
 
+.survey {
+  position: relative;
+  display: block;
+}
 
-@media screen and (min-width:700px)
+.survey >span{
+  text-decoration: none;
+  background: black;
+  color: white;
+  position: absolute;
+  left:0;
+  padding: 1px;
+  top:0;
+}

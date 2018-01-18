@@ -10,10 +10,7 @@ initChatMap = function() {
   var receiverLatLng = document.getElementById('receiver_guy');
   var receiverLat = JSON.parse(receiverLatLng.dataset.latitude);
   var receiverLng = JSON.parse(receiverLatLng.dataset.longitude);
-  console.log(receiverLatLng);
-  console.log(receiverLat);
-  console.log(receiverLng);
-
+  var block = JSON.parse(receiverLatLng.dataset.block)
 // Caculate distance between User and Recevier
   var userReceiverDistance = calcDistance(loggedUserLat, loggedUserLng, receiverLat, receiverLng);
 
@@ -34,15 +31,57 @@ initChatMap = function() {
     var marker = new google.maps.Marker({
      position: {lat: loggedUserLat, lng: loggedUserLng},
      map: map,
-     title: 'Hello World!'
+     title: 'Me'
     });
 
+    var senderCheckbox = false
+
+    var senderInfoWindow = new google.maps.InfoWindow({
+      content: "You"
+    });
+
+
 // Put Marker at Receiver's fsa
-    var marker = new google.maps.Marker({
+  if (block===false){
+    var otherMarker = new google.maps.Marker({
      position: {lat: receiverLat, lng: receiverLng},
      map: map,
-     title: 'Hello World!'
+     title: 'Them'
     });
+
+    var receiverInfoWindow = new google.maps.InfoWindow({
+      content: "Them"
+    });
+    var receiverCheckbox = false
+  }
+
+  marker.addListener('click', function(event){
+    if (senderCheckbox === false) {
+   senderInfoWindow.open(map, marker);
+   senderCheckbox = true
+   } else if (senderCheckbox === true){
+   senderInfoWindow.close();
+   senderCheckbox = false
+   }
+   if (receiverCheckbox === true){
+  receiverInfoWindow.close();
+  receiverCheckbox = false
+ }
+})
+
+  otherMarker.addListener('click', function(event){
+    if (receiverCheckbox === false) {
+   receiverInfoWindow.open(map, otherMarker);
+   receiverCheckbox = true
+ } else if (receiverCheckbox === true){
+   receiverInfoWindow.close();
+   receiverCheckbox = false
+   }
+   if (senderCheckbox === true){
+     senderInfoWindow.close();
+     senderCheckbox = false
+ }
+  })
 
 // Draw Polyline from User to Receiver fsa
    var differenceCoordinates = [

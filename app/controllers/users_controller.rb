@@ -44,7 +44,7 @@ end
 
 def update
   @user = current_user
-  @user.update(user_params)
+  @user.update!(user_params)
   if @user.save
     redirect_to user_url
   else
@@ -55,6 +55,7 @@ end
 def destroy
   @user = current_user
   session[:user_id] = nil
+  @user.delete_user_results
   @user.destroy
   redirect_to new_user_url
 end
@@ -76,8 +77,12 @@ def meetups
 		end
 	end
 	@user_surveys.each do |survey|
-		result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
-		@user_meetups << result
+		if @user.fsa
+			result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20&lat=#{@user.fsa.latitude}&lon=#{@user.fsa.longitude}&radius=50")
+		else
+			result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
+		end
+			@user_meetups << result
 	end
 end
 

@@ -22,7 +22,7 @@ function populateRadMap(map, loggedUserLat, loggedUserLng, myRadius) {
     var usersData = JSON.parse(usersLocElement.dataset.userLocation);
     var radUsers = []
 
-  for (i = 0; i < usersData.length; i ++) {
+  for (var i = 0; i < usersData.length; i ++) {
     var iUser = usersData[i];
     var destinationLat = iUser.latitude
     var destinationLng = iUser['longitude']
