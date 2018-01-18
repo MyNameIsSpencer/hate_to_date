@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+@media screen and (min-width:700px){}
+
+body {
+ font-family: 'Open Sans', sans-serif;
+}
+
+.logo {
+  padding-left:2%;
+ font-family: 'Rock Salt', cursive;
+}
+.modal2 {
+ display: none;
+}
+
+.survey {
+ position: relative;
+ display: block;
+}
+
+.survey >span{
+ text-decoration: none;
+ background: black;
+ color: white;
+ position: absolute;
+ left:0;
+ padding: 1px;
+ top:0;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.search_and_status{
+  float:left;
+  display: block;
+  align-content: center;
+  padding: 1em;
+}
+
+span.caret {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+a.dropdown-toggle.navbar-text {
+    position: relative;
+    color: black;
+}
+
+.dropdown.navbar-right {
+    text-decoration: none;
+    color: black;
+    right: 2em;
+    top: 1em;
+}
+
+.navbar {
+  margin-bottom: 10px;
+}
