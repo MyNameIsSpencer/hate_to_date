@@ -28,10 +28,10 @@
       <h1 class="logo"> HateDate</h1>
 
 
-      <nav class="site-nav">
+      <nav class="navbar">
         <%= form_tag find_user_path, :method => 'get' do %>
         <p>
-          <%= text_field_tag :search, params[:search], placeholder: "Pet Peaves" %>
+          <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
           <%= submit_tag "Search", :title => nil %>
         </p>
         <%end %>
@@ -69,6 +69,7 @@
 
     <div id="map"></div>
 
+
     <% @fsa_array = [] %>
     <% User.all.each do |user|%>
       <%if user.fsa %>
@@ -76,9 +77,8 @@
         <% @fsa_array << hasher %>
         <% end %>
     <% end %>
-
     <%=tag("div", :id => 'fsa_data', :data => {:fsa => @fsa_array})%>
-
+    <% if current_user&.fsa %>
     <% @user_array = [] %>
     <% User.all.each do |user|%>
       <% hasher = {} %>
@@ -88,11 +88,12 @@
       <% hasher[:longitude] = user.fsa.longitude %>
       <% @user_array << hasher %>
     <% end %>
-
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
+    <%end %>
 
 
     <% if current_user%>
+
     <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>
 <!-- ========== Google Maps End ============== -->

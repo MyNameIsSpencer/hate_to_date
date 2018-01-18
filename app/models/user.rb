@@ -8,15 +8,12 @@ class User < ApplicationRecord
   validates :phone, length: {minimum: 4}, :allow_blank => true
   # validates :fsa_id, :allow_blank => true
 
-
-
-  has_many :results
-
+  has_many :results, :dependent => :destroy
+  
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
 
   belongs_to :fsa, optional: true
-
 
   has_secure_password
 
@@ -48,7 +45,7 @@ def best_matches(all_matches)
   best_matches = {}
   all_matches.each do |user_id, compatibility|
     # compares match compatibility to the reference
-    if compatibility[0] >= 0.5
+    if compatibility[0] >= 0.75
       best_matches[user_id]=compatibility
     end
   end
@@ -64,4 +61,16 @@ def user_matches
   user_matches.flatten!
   return user_matches
 end
+
+def delete_user_results
+  Result.all.each do |result|
+    result.matches.each do |match|
+      if match[0].to_i == self.id
+        result.matches.delete(match)
+        result.save
+      end
+    end
+  end
+end
+
 end
