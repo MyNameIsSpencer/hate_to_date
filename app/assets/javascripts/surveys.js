@@ -74,6 +74,7 @@ if (button){
     event.preventDefault()
     pictureMaker()
     $( "#map" ).css({ display: "hidden" });
+    button.style.display = "none"
   });
 }
 });
