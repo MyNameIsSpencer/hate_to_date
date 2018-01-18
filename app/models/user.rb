@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :phone, length: {minimum: 4}, :allow_blank => true
   # validates :fsa_id, :allow_blank => true
 
-  has_many :results
+  has_many :results, :dependent => :destroy
 
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy

@@ -91,7 +91,6 @@
 
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
 
-
     <% if current_user%>
     <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
     <% end %>

@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
       var image1holder = document.createElement('div')
       image1holder.className = "survey col-xs-6"
       image1.className = "left"
-      image1holder.className = "survey"
       image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height"]["url"];
       image1.alt = data[3]
       image1title.innerText = data[3]
