@@ -1,9 +1,7 @@
 <row>
 <h1>Signup Form</h1>
 
-<button class="register">Register</button>
-
-<div class = "initial">
+<div class = "modal">
 <%= form_for @user do |f|%>
 <div class="field">
     <%= f.label :name %>
@@ -24,7 +22,7 @@
 <button class="next">Next</button>
 </div>
 
-<div class = "second">
+<div class = "modal2">
 
 <div class="field">
   <%= f.label :avatar %><br>
@@ -47,7 +45,7 @@
     <%= f.telephone_field :phone, :maxlength =>10, :placeholder => "5555555555" %>
   </div>
   <div class="field">
-    <%= f.label :make_profile_public %>
+    <%= f.label :keep_profile_private %>
     <%= f.check_box :privacy, {}, "false", "true" %>
   </div>
   <div id = "create_user_part_2">
