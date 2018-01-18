@@ -18,6 +18,7 @@
 @import "bootstrap";
 
 
+
 @media screen and (min-width:700px){}
 
 body {
@@ -29,6 +30,7 @@ body {
  font-family: 'Rock Salt', cursive;
 }
 .second_step {
+
  display: none;
 }
 
@@ -46,6 +48,7 @@ body {
  padding: 1px;
  top:0;
 }
+
 
 td {
   vertical-align: middle;
@@ -78,4 +81,23 @@ a.dropdown-toggle.navbar-text {
 
 .navbar {
   margin-bottom: 10px;
+
+.col-xs-6 > span{
+
+  margin-left: 6%;
+  margin-top: 3%;
+
+}
+
+#questions {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#messages {
+  border:1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: .6;
+
 }

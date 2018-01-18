@@ -5,13 +5,12 @@
 <% else %>
 <p>Come back tomorrow to try this survey again!</p>
 <% end %>
-<br>
-<button type="submit" name="ticket_master" id="ticketMaster">Ticket Master</button>
+
 <br>
 <div class="topic" id ="<%=@survey.name%>" type="hidden">
 
 </div>
-<div class="row">
+<div class="row" id="questions">
 
 </div>
 <input type="hidden" id="user" value="<%= @user.id %>">

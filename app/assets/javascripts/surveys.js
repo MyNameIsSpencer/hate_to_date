@@ -77,4 +77,11 @@ if (button){
     button.style.display = "none"
   });
 }
+
+var overlays = document.querySelectorAll('.overlay')
+overlays.forEach(function(overlay){
+  overlay.addEventListener('click', function(e){
+    alert('Survey already completed today.  Please select another survey.')
+  })
+})
 });
