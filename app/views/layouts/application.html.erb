@@ -54,7 +54,7 @@
               <td>
                 <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
                 <%= f.label :status %>
-                <%= f.select :status, ['Online', 'Busy', 'Available'], {}, {:onChange=>"this.form.submit()"} %>
+                <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
                 <%end %>
               </td>
               <% else %>
