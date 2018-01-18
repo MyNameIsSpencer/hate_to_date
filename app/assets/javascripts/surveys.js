@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
       url: "/users/"+userId+"/results",//issue is here
       data: { results: { survey_id: survey_id, answers: result } },
     }).done(function(data){
-        window.location.replace('/users/'+userId)
+        window.location.replace('/users/'+userId+'/matches')
     })
 
     }
