@@ -64,12 +64,11 @@ end
 
 def delete_user_results
   Result.all.each do |result|
-    result.matches.each do |match|
+    result.matches.map! do |match|
       if match[0].to_i == self.id
-        puts result.inspect
         result.matches.delete(match)
         result.save
-        puts result.inspect
+        return result
       end
     end
   end

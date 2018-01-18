@@ -31,52 +31,60 @@
 
 
       <nav class="navbar">
-        <div class="header-buttons">
-          <table>
-            <tr>
-              <td class="tab-cols">
-                <%= link_to("Surveys", surveys_path) %>
-              </td>
-              <% if current_user %>
+        <% if current_user %>
+        <div class="search_and_status">
+        <form class="form-inline">
+          <%= form_tag find_user_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
+            <%= submit_tag "Search", :title => nil %>
+          </p>
+          <%end %>
+        </form>
+      </tr>
 
-              <td class="tab-cols">
-                <%= link_to("Profile Page", user_path(current_user)) %>
-              </td>
-              <td class="tab-cols">
-                <%= link_to("Matches", user_matches_path(current_user)) %>
-              </td>
-              <td class="tab-cols">
-                <%= link_to("Meetups", user_meetups_path(current_user)) %>
-              </td>
-              <td class="tab-cols">
-                <%= link_to "Logout", :logout, method: :delete %>
-              </td>
-              <td>
-                <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
-                <%= f.label :status %>
-                <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
-                <%end %>
-              </td>
-              <% else %>
+      <form class="form-inline">
+        <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
+        <%= f.label :status %>
+        <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
+        <%end %>
+        <%end %>
+      </form>
 
-              <td class="tab-cols">
-                <%= link_to "Register", new_user_path %>
-              </td>
-              <td class="tab-cols">
-                <%= link_to "Login", :login %>
-              </td>
-              <% end %>
-              <td class="search-bar">
-                <%= form_tag find_user_path, :method => 'get' do %>
-                <p>
-                  <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
-                  <%= submit_tag "Search", :title => nil %>
-                </p>
-                <%end %>
-              </td>
-            </tr>
-          </table>
+      </div>
+
+      <a class ></a>
+
+      <ul class="nav navbar-nav navbar-right">
+				<% if current_user %>
+				<!-- signed in items -->
+					<div class="dropdown navbar-right">
+						<a class="dropdown-toggle navbar-text" data-toggle="dropdown">Hello, <%= current_user.name  %>! <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+              <li class="dropdown-item"><%=  link_to("Surveys", surveys_path)%></li>
+							<li class="dropdown-item"><%= link_to("Profile Page", user_path(current_user))%></li>
+							<li class="dropdown-item"><%= link_to("Matches", user_matches_path(current_user))%></li>
+							<li class="dropdown-item"><%= link_to("Meetups", user_meetups_path(current_user)) %></li>
+							<li class="dropdown-item"><%= link_to "Logout", :logout, method: :delete%></li>
+						</ul>
+					</div>
+				<%else  %>
+				<!-- Signed out items -->
+        <div class="dropdown navbar-right">
+          <a class="dropdown-toggle navbar-text" data-toggle="dropdown">Hello, Stranger! <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><%=  link_to("Surveys", surveys_path)%></li>
+            <li class="dropdown-item"><%= link_to "Register", new_user_path %></li>
+            <li class="dropdown-item"><%=  link_to "Login", :login%></li>
+          </ul>
         </div>
+
+
+				<%end  %>
+			</ul>
+
+
+
 
       </nav>
     </header>

@@ -17,14 +17,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
+@media screen and (min-width:700px){}
+
 body {
- font-family: 'Open Sans', sans-serif
+ font-family: 'Open Sans', sans-serif;
 }
 
 .logo {
+  padding-left:2%;
  font-family: 'Rock Salt', cursive;
 }
-.modal2 {
+.second_step {
+
  display: none;
 }
 
@@ -43,6 +49,39 @@ body {
  top:0;
 }
 
+
+td {
+  vertical-align: middle;
+}
+
+.search_and_status{
+  float:left;
+  display: block;
+  align-content: center;
+  padding: 1em;
+}
+
+span.caret {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+a.dropdown-toggle.navbar-text {
+    position: relative;
+    color: black;
+}
+
+.dropdown.navbar-right {
+    text-decoration: none;
+    color: black;
+    right: 2em;
+    top: 1em;
+}
+
+.navbar {
+  margin-bottom: 10px;
+
 .col-xs-6 > span{
 
   margin-left: 6%;
@@ -60,4 +99,5 @@ body {
   padding: 1rem;
   margin: 1rem;
   font-weight: .6;
+
 }

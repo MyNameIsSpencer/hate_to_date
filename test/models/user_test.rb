@@ -103,14 +103,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "delete_user_results deletes all user results" do
-    skip
     user = create(:user, id:1)
     user2 = create(:user, id:2, email:'test@test')
     survey = create(:survey, id:1)
     result1 = create(:result)
     result2 = create(:result, user_id:2, matches: [['1','a'],['3','b']])
     expected = [['3', 'b']]
-    actual = result2.matches
+    actual = result2.reload.matches
     assert_equal(expected, actual)
   end
 end
