@@ -14,8 +14,22 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
 
+.modal2 {
+  display: none;
+}
 
-@media screen and (min-width:700px)
+.survey {
+  position: relative;
+  display: block;
+}
+
+.survey >span{
+  text-decoration: none;
+  background: black;
+  color: white;
+  position: absolute;
+  left:0;
+  padding: 1px;
+  top:0;
+}

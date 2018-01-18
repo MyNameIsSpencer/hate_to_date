@@ -1,8 +1,6 @@
 <row>
 <h1>Signup Form</h1>
 
-<button class="register">Register</button>
-
 <div class = "modal">
 <%= form_for @user do |f|%>
 <div class="field">
@@ -47,8 +45,8 @@
     <%= f.telephone_field :phone, :maxlength =>10, :placeholder => "5555555555" %>
   </div>
   <div class="field">
-    <%= f.label :make_profile_public %>
-    <%= f.check_box :privacy, {}, "false", "true" %>
+    <%= f.label :keep_profile_private %>
+    <%= f.check_box :privacy, {}, "true", "false" %>
   </div>
   <div id = "create_user_part_2">
   <%= f.submit %>

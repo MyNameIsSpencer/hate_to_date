@@ -44,7 +44,7 @@ end
 
 def update
   @user = current_user
-  @user.update(user_params)
+  @user.update!(user_params)
   if @user.save
     redirect_to user_url
   else
@@ -55,6 +55,7 @@ end
 def destroy
   @user = current_user
   session[:user_id] = nil
+  @user.delete_user_results
   @user.destroy
   redirect_to new_user_url
 end

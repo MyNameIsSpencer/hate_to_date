@@ -1,8 +1,8 @@
 class Question < ApplicationRecord
-  validates :option_a, :option_b, presence: true
-  validates_uniqueness_of :option_a, :option_b
-  validate  :a_not_b
-  validate  :a_and_b_unique_throughout_columns
+  # validates :option_a, :option_b, presence: true
+  # validates_uniqueness_of :option_a, :option_b
+  # validate  :a_not_b
+  # validate  :a_and_b_unique_throughout_columns
 
     def a_not_b
       if option_a == option_b

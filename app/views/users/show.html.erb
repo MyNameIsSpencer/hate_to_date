@@ -4,17 +4,23 @@
 <% end %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>
+<p> Is Your Profile private? <%= "Yes" if @user.privacy == true %><%= "No" if @user.privacy == false %></p>
+
 <% if @user == current_user %>
-<%= link_to("Edit Profile", edit_user_path) %>
-<%= link_to("Delete Profile", user_path, method: :delete, data: {confirm: "Are you sure?"}) %>
-<%end %>
-<% if @user.results.length > 0 %>
-<button class="meetup">Want to Kvetch with others?</button>
+<%= link_to("Edit Profile", edit_user_path(current_user)) %>
+<%= link_to("Delete Profile", user_path(current_user), method: :delete, data: {confirm: "Are you sure?"}) %>
 <%end %>
 
-<div class = "user_modal">
-  <p> meetups you may enjoy </p>
-</div>
+<% if @found_users %>
+
+  <%@found_users.each do |user| %>
+  <% if user.privacy == false  %>
+  <p><%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+  <% else %>
+    <p>Another user has the pet peeve "<%= params[:search] %>"</p>
+  <% end %>
+<% end %>
+<% end %>
 
 
 <!-- ========== Google Maps ============== -->

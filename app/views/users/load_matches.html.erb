@@ -12,11 +12,10 @@
 <% matches = result.make_matches(@user.match_generator(result))%>
 <%sorted = matches.sort_by {|match| match[1].to_f}.reverse %>
 <div class="matches" id =" <%=Survey.find(result.survey_id) %>">
-  <p>Survey: <%= Survey.find(result.survey_id).name %></p>
 <%sorted.each do |match| %>
 <%user = User.find(match[0].to_i) %>
 <% unless @user.blocks.include?(user.id) %>
-<p>You matched with <%= user.name %> with <%= number_to_percentage(match[1].to_f*100, precision:0) %> <br>
+<p>You matched with <%= user.name %> with <%= number_to_percentage(match[1].to_f*100, precision:0) %>  on <%= Survey.find(result.survey_id).name %>.<br>
 They are <%= user.status %>!</p>
 <%= link_to("Visit Profile", user_path(user.id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user.id)) %> <br>
 <%= link_to("Block User", block_user_path(:receiver => user.id), method: :patch, :data => {:confirm => 'Are you sure?  Blocks cannot be Undone.'}) %>
@@ -31,7 +30,7 @@ They are <%= user.status %>!</p>
 <br>
 </div>
 <%if count == 0 %>
-<p> No matches yet! Have you checked out you <%= link_to("meetups", user_meetups_path(@user.id)) %>?</p>
+<p> No matches yet! Have you checked out your <%= link_to("meetups", user_meetups_path(@user.id)) %>?</p>
 <%end %>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initLoadMatchesMap&libraries=geometry"
