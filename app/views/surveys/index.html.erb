@@ -21,9 +21,10 @@
   <div class = "overlay">
     </div>
         <%end %>
+        <%if @survey_images[survey.id]["data"] != []  %>
     <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..9)]["images"]["downsized"]["url"], alt: survey.name), survey_path(survey.id), class: "downsized") %>
     <span><%= link_to(survey.name, survey_path(survey.id)) %></span>
-
+<%end %>
 
 
     </div>
