@@ -9,6 +9,8 @@ addEventListener('DOMContentLoaded', function(){
     console.log('Success');
     var userMessages = data["message"]
     var sender = data["sender"]
+    console.log(sender);
+    console.log(parseInt($("#receiver").val()));
     const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [sender.id, parseInt($("#receiver").val())]}, {
     connected:    () => {
       userMessages.forEach(function(message){
@@ -20,10 +22,8 @@ addEventListener('DOMContentLoaded', function(){
       messages.append(`${data.username}: ${data.message}\n`)
         console.log('Received data from server:', data);
     }
-  }).fail(function(data){
-    console.log(data);
-    console.log('failure');
   })
+
   form_message.addEventListener("submit", e => {
     e.preventDefault();
     const message = text_message.value
@@ -41,5 +41,8 @@ addEventListener('DOMContentLoaded', function(){
       method: "POST"
     })
     })
+  }).fail(function(data){
+    console.log(data);
+    console.log('failure');
   })
 })
