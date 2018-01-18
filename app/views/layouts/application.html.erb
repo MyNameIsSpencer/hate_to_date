@@ -117,14 +117,36 @@
         <% @user_array << hasher %>
         <%end %>
       <% end %>
-
     <% end %>
+
     <%=tag("div", :id => 'user_locations', :data => {:user_location => @user_array})%>
 
     <% if current_user&.fsa %>
       <%=tag("div", :id => 'current_guy', :data => {:latitude => current_user.fsa.latitude, :longitude => current_user.fsa.longitude}) %>
 
     <% end %>
+
+    <% if current_user&.fsa %>
+      <%@matches_array =[] %>
+      <%current_user.results.each do |result| %>
+        <%result.matches.each do |match| %>
+          <% User.all.each do |user| %>
+          <%if match[0].to_i == user.id %>
+            <% if user.fsa%>
+              <% hasher = {} %>
+              <% hasher[:id] = user.id %>
+              <% hasher[:fsa_name] = user.fsa.name %>
+              <% hasher[:latitude] = user.fsa.latitude %>
+              <% hasher[:longitude] = user.fsa.longitude %>
+              <%@matches_array << hasher %>
+              <%end %>
+            <%end %>
+          <%end %>
+        <%end %>
+      <%end %>
+    <%end %>
+
+    <%=tag("div", :id => 'current_matches', :data => {:matches_location => @matches_array})%>
 <!-- ========== Google Maps End ============== -->
 
     </main>

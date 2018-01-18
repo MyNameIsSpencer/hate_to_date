@@ -11,8 +11,9 @@ initLoadMatchesMap = function() {
   var loggedUserLng = JSON.parse(loggedUserLatLng.dataset.longitude);
 
 //////  ****** Array of Matches
-  var allMatches = JSON.parse(document.getElementById('current_matches'));
-
+  var allMatches = document.getElementById('current_matches');
+  var allMatchesData=JSON.parse(allMatches.dataset.matchesLocation)
+  console.log(allMatchesData);
 
   // var myRadius = 10000;
   // var distance = document.getElementById('distance');
@@ -29,15 +30,22 @@ initLoadMatchesMap = function() {
     });
 
 // Put Marker at User's fsa
-    var marker = new google.maps.Marker({
-     position: {lat: loggedUserLat, lng: loggedUserLng},
-     map: map,
-     title: 'Hello World!'
-    });
+    // var marker = new google.maps.Marker({
+    //  position: {lat: loggedUserLat, lng: loggedUserLng},
+    //  map: map,
+    //  title: 'Hello World!'
+    // });
 
 // Put Marker at each Match's fsa
 //        TBD
 
+
+    for (var i = 0; i < allMatchesData.length; i++) {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(allMatchesData[i]['latitude'], allMatchesData[i]['longitude']),
+        map: map,
+      });
+    }
 
 
 // Counting number of Users in each fsa
