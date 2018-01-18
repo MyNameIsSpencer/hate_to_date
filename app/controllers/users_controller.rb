@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
   @user = User.create(user_params)
-  if @user.save!
+  if @user.save
     @user.update(status: 'Online')
     session[:user_id] = @user.id
     redirect_to user_path(@user.id)
@@ -25,7 +25,7 @@ def show
     redirect_to new_session_path
   end
   if  @user.blocks.include?(current_user.id)
-    flash[:notice] = "Cannot acces profile.  You have been blocked."
+    flash[:notice] = "Cannot access profile.  You have been blocked."
     redirect_to user_matches_url(current_user.id)
   end
   @results = Result.all
