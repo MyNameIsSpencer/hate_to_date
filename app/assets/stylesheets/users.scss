@@ -73,3 +73,9 @@ h1 {
 .action {
   margin-bottom: 20px;
 }
+
+h1 + img {
+    display: block;
+    width: 100px;
+    height: 100px;
+}

@@ -44,7 +44,7 @@ end
 
 def update
   @user = current_user
-  @user.update(user_params)
+  @user.update!(user_params)
   if @user.save
     redirect_to user_url
   else
