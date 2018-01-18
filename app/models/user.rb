@@ -9,7 +9,7 @@ class User < ApplicationRecord
   # validates :fsa_id, :allow_blank => true
 
   has_many :results, :dependent => :destroy
-  
+
   has_many :sent_messages, :class_name=> 'Message', :foreign_key=>'user_id', :dependent=>:destroy
   has_many :recieved_messages, :class_name=> 'Message', :foreign_key=>'receiver_id', :dependent=>:destroy
 
@@ -66,8 +66,10 @@ def delete_user_results
   Result.all.each do |result|
     result.matches.each do |match|
       if match[0].to_i == self.id
+        puts result.inspect
         result.matches.delete(match)
         result.save
+        puts result.inspect
       end
     end
   end

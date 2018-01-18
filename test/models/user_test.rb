@@ -91,7 +91,26 @@ class UserTest < ActiveSupport::TestCase
     # refute user4.valid?   < returns failure
   end
 
+  test "best_matches_method only grabs result if compatibility is above threshold" do
+    owner = build(:user)
+    user = build(:user, id: 1)
+    user2 = build(:user, id: 2)
+    user3= build(:user, id: 3)
+    all_matches = {user.id => [0.80, 'a'], user2.id => [0.70, 'b'], user3.id => [0.90, 'c']}
+    expected = {1 => [0.80, 'a'], 3 => [0.90, 'c'] }
+    actual = owner.best_matches(all_matches)
+    assert_equal(expected, actual)
+  end
 
-
-
+  test "delete_user_results deletes all user results" do
+    skip
+    user = create(:user, id:1)
+    user2 = create(:user, id:2, email:'test@test')
+    survey = create(:survey, id:1)
+    result1 = create(:result)
+    result2 = create(:result, user_id:2, matches: [['1','a'],['3','b']])
+    expected = [['3', 'b']]
+    actual = result2.matches
+    assert_equal(expected, actual)
+  end
 end
