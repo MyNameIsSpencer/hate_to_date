@@ -131,7 +131,7 @@
       <%current_user.results.each do |result| %>
         <%result.matches.each do |match| %>
           <% User.all.each do |user| %>
-          <%if match[0].to_i == user.id %>
+          <%if match[0].to_i == user.id && user.blocks.include?(current_user.id)==false%>
             <% if user.fsa%>
               <% hasher = {} %>
               <% hasher[:id] = user.id %>
