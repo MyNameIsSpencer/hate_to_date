@@ -106,7 +106,7 @@ private
 # Be sure to update your create() and update() controller methods.
 
 def user_params
-  params.require(:user).permit(:avatar, :fsa_id, :name, :email, :phone, :privacy, :password, :password_confirmation, :fsa_id, :pet_peeves, :description )
+  params.require(:user).permit(:avatar, :fsa_id, :name, :email, :phone, :privacy, :password, :password_confirmation, :fsa_id, :pet_peeves, :description)
 end
 
 end

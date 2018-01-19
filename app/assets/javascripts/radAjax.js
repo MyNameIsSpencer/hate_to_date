@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
 //   document.getElementById("radInput").innerHTML
 
 var radButton = document.getElementById('radButton');
-radButton.addEventListener('click', function(e) {
+if(radButton){radButton.addEventListener('click', function(e) {
   e.preventDefault();
   var radInput = parseInt(document.getElementById("radInput").value)
   console.log(radInput);
   initShowMap(radInput);
 })
-
+}
 });

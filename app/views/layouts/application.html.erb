@@ -33,23 +33,27 @@
       <nav class="navbar">
         <% if current_user %>
         <div class="search_and_status">
-        <form class="form-inline">
+
           <%= form_tag find_user_path, :method => 'get' do %>
           <p>
             <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
             <%= submit_tag "Search", :title => nil %>
           </p>
           <%end %>
-        </form>
+
       </tr>
 
-      <form class="form-inline">
+
+
         <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
-        <%= f.label :status %>
-        <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
-        <%end %>
-        <%end %>
-      </form>
+           <%= f.label :status %>
+          <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
+          <%end %>
+
+
+
+
+            <%end %>
 
       </div>
 
