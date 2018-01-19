@@ -4,9 +4,9 @@
 <% end %>
 
 
-<h1> About Me</h1>
+<h4> About Me</h4>
 <%if @user.avatar_file_size %>
-  <%= image_tag @user.avatar.url(:thumb) %>
+  <%= image_tag @user.avatar.url(:thumb), class: "user_avatar"%>
 <% end %>
 <p> Description: <%= @user.description %> </p>
 <p> Pet Peeves: <%= @user.pet_peeves %> </p>

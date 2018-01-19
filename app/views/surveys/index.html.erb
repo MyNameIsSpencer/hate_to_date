@@ -17,9 +17,13 @@
         <div class = "survey">
       <div id="main-content" class="col-xs-4">
 
-<% if @user_surveys.include?(survey) %>
+<% if @user_surveys.include?(survey)%>
+ <%survey.results.each do |result|  %>
+ <%if result.created_at.to_date == Date.today && result.user == current_user  %>
   <div class = "overlay">
     </div>
+        <%end %>
+        <%end %>
         <%end %>
         <%if @survey_images[survey.id]["data"] != []  %>
     <%= link_to(image_tag(@survey_images[survey.id]["data"][rand(0..9)]["images"]["downsized"]["url"], alt: survey.name), survey_path(survey.id), class: "downsized") %>
