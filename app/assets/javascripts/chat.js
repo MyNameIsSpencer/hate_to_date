@@ -5,12 +5,8 @@ addEventListener('DOMContentLoaded', function(){
     method: 'GET',
     data: {receiver: parseInt($("#receiver").val())}
   }).done(function(data){
-    console.log(data);
-    console.log('Success');
     var userMessages = data["message"]
     var sender = data["sender"]
-    console.log(sender);
-    console.log(parseInt($("#receiver").val()));
     const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [sender.id, parseInt($("#receiver").val())]}, {
     connected:    () => {
       userMessages.forEach(function(message){
@@ -29,9 +25,6 @@ addEventListener('DOMContentLoaded', function(){
     const message = text_message.value
     const username = user.value
     const receiver = $("#receiver").val()
-    console.log(message);
-    console.log(username);
-    console.log(receiver);
     chats_channel.send({username, message})
     text_message.value=""
     $.ajax({
@@ -41,8 +34,5 @@ addEventListener('DOMContentLoaded', function(){
       method: "POST"
     })
     })
-  }).fail(function(data){
-    console.log(data);
-    console.log('failure');
   })
 })
