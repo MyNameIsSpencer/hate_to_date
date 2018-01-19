@@ -1,8 +1,17 @@
-<row>
-<h1>Signup Form</h1>
+<% content_for :body_class, 'login-page' %>
 
+<div class="map-background">
+
+</div>
+
+<center>
+  <div class="form-row register">
+    <div class="login-fields">
+      <h1 class = "logo">Signup Form</h1>
 <div class = "first_step">
+
 <%= form_for @user do |f|%>
+
 <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -23,7 +32,6 @@
 </div>
 
 <div class = "second_step">
-
 <div class="field">
   <%= f.label :avatar %><br>
   <%= f.file_field :avatar %>
@@ -53,7 +61,9 @@
 </div>
   <%end %>
 </div>
-
+</div>
+</div>
+</center>
 
 
   <% if @user.errors.any?  %>
@@ -69,3 +79,24 @@
     </div>
   <% end %>
 </row>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initFirstMap&libraries=geometry"
+async defer></script>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    // var mapWrapper = document.createElement('div');
+    var paddedMap = document.querySelector('.padded-map');
+    // paddedMap.style.visibility = "hidden";
+    // mapWrapper.className="map_wrapper";
+    // mapWrapper.appendChild('padded-map');
+    $('.map-background').append(paddedMap);
+  });
+</script>
+
+</div>
+
+<!-- ========== Google Maps ============== -->
+  <div class="padded-map">
+    <div id="map"></div>
+  </div>

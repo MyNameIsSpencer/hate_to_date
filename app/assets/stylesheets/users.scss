@@ -58,6 +58,16 @@ header {
   //  Dark Purple colour #280b33
 }
 
+.form-row.register{
+  max-width: fill-available;
+  max-height: fill-available;
+  height:350px;
+  width:300px;
+
+}
+
+
+
 .login-fields {
   height: 20px;
   width: 30%;
@@ -168,4 +178,3 @@ h1 + img {
   img.user_avatar {
     border: 2px darkgray ridge;
 }
-
