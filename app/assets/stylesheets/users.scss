@@ -61,8 +61,9 @@ header {
 .form-row.register{
   max-width: fill-available;
   max-height: fill-available;
-  height:350px;
-  width:300px;
+  height:360px;
+  width:350px;
+  margin-top: -390px;
 
 }
 
@@ -177,4 +178,8 @@ h1 + img {
 
   img.user_avatar {
     border: 2px darkgray ridge;
+}
+
+h1.logo.register {
+    padding: 0%;
 }
