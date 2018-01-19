@@ -19,6 +19,7 @@ addEventListener('DOMContentLoaded', function(){
         console.log('Received data from server:', data);
     }
   })
+
   form_message.addEventListener("submit", e => {
     e.preventDefault();
     const message = text_message.value

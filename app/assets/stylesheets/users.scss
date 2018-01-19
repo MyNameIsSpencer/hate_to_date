@@ -23,6 +23,60 @@ header {
 
   position: fixed;
   width: 100%
+  // box-shadow: 5px 10px 8px #888888;
+}
+
+#radButton {
+  margin-bottom: 10px;
+}
+
+.form-control {
+
+}
+
+.form-row {
+  // position: relative;
+  /* display: inline-block; */
+  // z-index: 12;
+  //display: inline-grid;
+  opacity: .99;
+  margin-top: -350px;
+  // margin-left: 35%;
+  // margin-right: 35%;
+  width: 250px;
+  height: 200px;
+  align-self: center;
+  // height: 20%;
+  // background-color: grey;
+  background: linear-gradient(to bottom right, purple, pink);
+  border: 3px solid #280b33;
+  border-radius: 25px;
+  top: 60%;
+  left: 39%;
+  // z-index: 10;
+  // height: 30%;
+  //  Dark Purple colour #280b33
+}
+
+.login-fields {
+  height: 20px;
+  width: 30%;
+  display: grid;
+  margin-bottom: 10px;
+  margin-top: -7px;
+  margin-left: -52%;
+}
+
+.map-background {
+  margin-top: -25px;
+  margin-right: -10px;
+  margin-left: -10px;
+  height: fit-content;
+}
+
+.padded-map {
+  padding: 20px;
+  background-color: #280b33;
 }
 
 .header-buttons {
@@ -48,6 +102,7 @@ h1 {
   float: left;
   width:33.3333%;
   text-align: left;
+  font-family: 'Rock Salt', cursive;
 }
 .site-nav {
   color: lavenderblush;
@@ -63,12 +118,22 @@ h1 {
 }
 
 .login {
-  margin-top: 45px;
+  // margin-top: 45px;
+  //padding-left: 3%;
+  color: lavenderblush;
+  //float: left;
+  // width:33.3333%;
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+
 }
 
-.action {
-  margin-bottom: 20px;
-}
+// .action {
+//   height: 30px;
+//   width: 200px;
+//   margin-bottom: 10px;
+//   // margin-bottom: 200px;
+// }
 
 h1 + img {
     display: block;
@@ -77,3 +142,19 @@ h1 + img {
     border: 2px solid black;
 
 }
+
+.login-button {
+  height: 35px;
+  width: 205px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  background: linear-gradient(to bottom right, purple, rebeccapurple);
+  color: white;
+  border: 2px solid #280b33;
+}
+
+.form-control {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 5px;
+  }
