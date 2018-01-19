@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 
 gem 'pry-rails'
-
+gem 'redis', '~> 3.3'
 gem 'geocoder'
 
 gem 'paperclip', '~> 4.2'
