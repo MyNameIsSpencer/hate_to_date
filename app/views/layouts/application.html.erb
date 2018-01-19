@@ -27,7 +27,7 @@
   <body>
 
     <header class="site-header">
-      <h1 class="logo"> HateDate</h1>
+      <h1 class="logo"> <%= link_to("Hate Date", about_us_path) %></h1>
 
 
       <nav class="navbar">
@@ -42,8 +42,6 @@
           <%end %>
 
       </tr>
-
-
 
         <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
            <%= f.label :status %>

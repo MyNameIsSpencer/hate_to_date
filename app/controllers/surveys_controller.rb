@@ -22,4 +22,7 @@ end
 		end
   end
 
+	def about_us
+	end
+
 end
