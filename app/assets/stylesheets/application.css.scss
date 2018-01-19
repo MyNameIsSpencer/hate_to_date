@@ -135,8 +135,13 @@ a.dropdown-toggle.navbar-text {
     bottom: 0;
     width: 100%;
     background-color: purple;
-    color: gold;
+    color: white;
     text-align: center;
     font-size: 25px;
-    z-index: 100
+    z-index: 100;
+    font-family: 'Rock Salt', cursive;
+}
+
+.footer p {
+  padding-top: 0.5em
 }

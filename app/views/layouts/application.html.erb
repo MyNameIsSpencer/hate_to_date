@@ -166,6 +166,10 @@
 
 </body>
 <div class="footer">
-  <a href="https://tylermoeller.github.io/motivational-posters/">Had enough Hate Today</a>
+<%if current_user %>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Had enough Hate Today?</a>
+  <%else %>
+  <p>Let's Start Hating</p>
+  <%end %>
 </div>
 </html>
