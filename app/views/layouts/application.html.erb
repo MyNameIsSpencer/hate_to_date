@@ -24,8 +24,12 @@
 
 
 
+  <body class="<%= content_for :body_class %>">
+
+
   <body>
     <div id="logo_click"></div>
+
     <header class="site-header">
 
       <h1 class="logo"> <%= link_to("Hate Date", about_us_path) %></h1>
@@ -101,11 +105,7 @@
 
   <%= yield %>
 
-<!-- ========== Google Maps ============== -->
 
-    <div class="padded-map">
-      <div id="map"></div>
-    </div>
 
 
     <% @fsa_array = [] %>

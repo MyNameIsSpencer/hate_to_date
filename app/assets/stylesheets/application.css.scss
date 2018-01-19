@@ -24,9 +24,24 @@ body {
  font-family: 'Open Sans', sans-serif;
 }
 
+
+// START
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+// END
+
 .logo h1 {
   text-decoration: none;
 }
+
 
 .logo {
   padding-left:2%;
