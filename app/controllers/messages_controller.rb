@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @topic = params[:topic]
     @latitude = current_user.fsa.latitude
     @longitude = current_user.fsa.longitude
-    @ticket_master_event = HTTParty.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{@topic}&latlong=#{@latitude},#{@longitude}&radius=100&apikey=#{ENV["Discovery_Key"]}")
+    @ticket_master_event = HTTParty.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{@topic}&latlong=#{@latitude},#{@longitude}&radius=500&apikey=#{ENV["Discovery_Key"]}")
     respond_to do |format|
       format.html
       format.json { render :json => @ticket_master_event }
