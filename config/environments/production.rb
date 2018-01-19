@@ -41,9 +41,9 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+  config.action_cable.url = 'wss://warm-taiga-88114.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = [ 'https://warm-taiga-88114.herokuapp.com',  'http://warm-taiga-88114.herokuapp.com']
-
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:a7bd37e3727542950980e43458e55584@crestfish.redistogo.com:10389/'
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
