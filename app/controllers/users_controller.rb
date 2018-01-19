@@ -78,7 +78,7 @@ def meetups
 	end
 	@user_surveys.each do |survey|
 		if @user.fsa
-			result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20&lat=#{@user.fsa.latitude}&lon=#{@user.fsa.longitude}&radius=50")
+			result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20&lat=#{@user.fsa.latitude}&lon=#{@user.fsa.longitude}&radius=250")
 		else
 			result = HTTParty.get("https://api.meetup.com/find/groups?&key=#{ENV["Meetup_Key"]}&sign=true&photo-host=public&country=CA&text=#{survey}&page=20")
 		end
