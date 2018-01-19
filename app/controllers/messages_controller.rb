@@ -2,8 +2,9 @@ class MessagesController < ApplicationController
 
   def find_event
     @topic = params[:topic]
-    @city = current_user.fsa.name
-    @ticket_master_event = HTTParty.get("https://app.ticketmaster.com/discovery/v2/attractions.json?keyword=#{@topic}&apikey=#{ENV["Discovery_Key"]}")
+    @latitude = current_user.fsa.latitude
+    @longitude = current_user.fsa.longitude
+    @ticket_master_event = HTTParty.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{@topic}&latlong=#{@latitude},#{@longitude}&radius=100&apikey=#{ENV["Discovery_Key"]}")
     respond_to do |format|
       format.html
       format.json { render :json => @ticket_master_event }
