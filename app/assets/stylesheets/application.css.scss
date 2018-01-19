@@ -149,14 +149,19 @@ a.dropdown-toggle.navbar-text {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: purple;
+    background: linear-gradient(to bottom right, purple, rebeccapurple);
     color: white;
     text-align: center;
     font-size: 25px;
     z-index: 100;
     font-family: 'Rock Salt', cursive;
+    margin-top: 100px
 }
 
 .footer p {
   padding-top: 0.5em
+}
+
+.footer a{
+  color: red
 }
