@@ -117,3 +117,13 @@ a.dropdown-toggle.navbar-text {
 .about_container p{
   font-size: 1.5rem;
 }
+
+#logo_click{
+  width:275px;
+  height: 90px;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 100
+
+}
