@@ -31,6 +31,10 @@ header {
   margin-bottom: 10px;
 }
 
+.form-control {
+
+}
+
 .form-row {
   // position: relative;
   /* display: inline-block; */
@@ -60,8 +64,8 @@ header {
   width: 30%;
   display: grid;
   margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: -15%;
+  margin-top: -7px;
+  margin-left: -52%;
 }
 
 .map-background {
@@ -126,9 +130,12 @@ h1 {
 
 }
 
-.action {
-  margin-bottom: 20px;
-}
+// .action {
+//   height: 30px;
+//   width: 200px;
+//   margin-bottom: 10px;
+//   // margin-bottom: 200px;
+// }
 
 h1 + img {
     display: block;
@@ -137,3 +144,19 @@ h1 + img {
     border: 2px solid black;
 
 }
+
+.login-button {
+  height: 35px;
+  width: 205px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  background: linear-gradient(to bottom right, purple, rebeccapurple);
+  color: white;
+  border: 2px solid #280b33;
+}
+
+.form-control {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 5px;
+  }
