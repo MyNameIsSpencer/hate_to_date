@@ -3,6 +3,7 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function() {
   var button = document.querySelector('#start_survey')
+  var logo = document.querySelector('.logo')
   var questionCounter = 0
   var result = []
   var imageHolder = document.createElement('div')
@@ -84,4 +85,14 @@ overlays.forEach(function(overlay){
     alert('Survey already completed today.  Please select another survey.')
   })
 })
+
+if(logo){
+  logo.addEventListener('click', function(event)
+{
+  console.log("wth");
+    window.location.replace('/about_us');
+})
+}
+
+
 });
