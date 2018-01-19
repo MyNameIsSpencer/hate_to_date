@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-	before_action :ensure_logged_in, except: [:index]
+	before_action :ensure_logged_in, except: [:index, :about_us]
 
 def index
   @surveys =Survey.all
@@ -21,5 +21,8 @@ end
 			end
 		end
   end
+
+	def about_us
+	end
 
 end

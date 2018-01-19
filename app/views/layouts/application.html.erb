@@ -26,8 +26,13 @@
 
   <body class="<%= content_for :body_class %>">
 
+
+  <body>
+    <div id="logo_click"></div>
+
     <header class="site-header">
-      <h1 class="logo"> HateDate</h1>
+
+      <h1 class="logo"> <%= link_to("Hate Date", about_us_path) %></h1>
 
 
       <nav class="navbar">
@@ -43,8 +48,6 @@
 
       </tr>
 
-
-
         <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
            <%= f.label :status %>
           <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
@@ -57,7 +60,6 @@
 
       </div>
 
-      <a class ></a>
 
       <ul class="nav navbar-nav navbar-right">
 				<% if current_user %>
@@ -163,4 +165,11 @@
     </main>
 
 </body>
+<div class="footer">
+<%if current_user %>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Had enough Hate Today?</a>
+  <%else %>
+  <p>Let's Start Hating</p>
+  <%end %>
+</div>
 </html>

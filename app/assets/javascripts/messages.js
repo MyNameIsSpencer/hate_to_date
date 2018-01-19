@@ -15,11 +15,10 @@ if (button2){
         dataType: 'json',
         data: { topic: topic}
       }).done(function(data){
-        if (data["_embedded"]=== undefined || data["_embedded"]["attractions"][0]["url"] === undefined){
-          alert("No events for this Subject Nearby");
-          window.location.replace("/surveys")
+        if (data["_embedded"]=== undefined || data["_embedded"]["events"][0]["url"] === undefined){
+          alert("No events for "+topic+" Nearby");
         }else{
-          window.location.replace(data["_embedded"]["attractions"][0]["url"]);
+          window.location.replace(data["_embedded"]["events"][0]["url"]);
         }
       })
     })

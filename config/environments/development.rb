@@ -44,7 +44,7 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:a7bd37e3727542950980e43458e55584@crestfish.redistogo.com:10389/'
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

@@ -109,6 +109,7 @@ class UserTest < ActiveSupport::TestCase
     result1 = create(:result)
     result2 = create(:result, user_id:2, matches: [['1','a'],['3','b']])
     expected = [['3', 'b']]
+    user.delete_user_results
     actual = result2.reload.matches
     assert_equal(expected, actual)
   end

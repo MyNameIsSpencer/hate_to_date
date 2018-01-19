@@ -24,6 +24,7 @@ body {
  font-family: 'Open Sans', sans-serif;
 }
 
+
 // START
 @keyframes slideInLeft {
   from {
@@ -37,9 +38,19 @@ body {
 }
 // END
 
+.logo h1 {
+  text-decoration: none;
+}
+
+
 .logo {
   padding-left:2%;
  font-family: 'Rock Salt', cursive;
+}
+
+
+.hate_date {
+  font-family: 'Rock Salt', cursive;
 }
 
 .second_step {
@@ -111,4 +122,41 @@ a.dropdown-toggle.navbar-text {
   margin: 1rem;
   font-weight: .6;
 
+}
+
+.about_container{
+  padding:1.5em;
+  text-align: center;
+}
+
+.about_container p{
+  font-size: 1.5rem;
+}
+
+#logo_click{
+  width:275px;
+  height: 90px;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 100
+
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    z-index: 100;
+    font-family: 'Rock Salt', cursive;
+}
+
+.footer p {
+  padding-top: 0.5em
 }
