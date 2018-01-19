@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:a7bd37e3727542950980e43458e55584@crestfish.redistogo.com:10389/
   channel_prefix: hate_date_production
