@@ -1,3 +1,22 @@
 // Place all the styles related to the Results controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// <div class="square-parent">
+//   <div class="form-row">
+//     <h1 class="login"> HateDate</h1>
+//     <div class="login-fields">
+//       <%= form_tag session_path do %>
+//     <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
+//
+//     <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "Password" %>
+//     <div class="action"> <%= submit_tag "Log in", class:"login-button" %>
+//       <%end %>
+//
+//   </div>
+//   </div>
+//
+//   </div>
+//
+// </div>

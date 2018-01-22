@@ -30,8 +30,14 @@ header {
   margin-bottom: 10px;
 }
 
-.form-control {
 
+.form-box {
+  opacity: .99;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(to bottom right, purple, pink);
+  border: 3px solid #280b33;
+  border-radius: 25px;
 }
 
 .form-row {
@@ -58,8 +64,10 @@ header {
   //  Dark Purple colour #280b33
 }
 
-.square-parent {
 
+.login-fields > form {
+    display: inline-block;
+    text-align: center;
 }
 
 .login-fields {
