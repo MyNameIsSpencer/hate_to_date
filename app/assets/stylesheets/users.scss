@@ -58,20 +58,24 @@ header {
   //  Dark Purple colour #280b33
 }
 
+.square-parent {
+
+}
+
 .login-fields {
   height: 20px;
   width: 30%;
   display: grid;
   margin-bottom: 10px;
   margin-top: 10px;
-  margin-left: -52%;
+  // margin-left: -52%;
 }
 
 .map-background {
-  margin-top: -25px;
-  margin-right: -10px;
-  margin-left: -10px;
-  height: fit-content;
+  // margin-top: -25px;
+  // margin-right: -10px;
+  // margin-left: -10px;
+  // height: fit-content;
 }
 
 .padded-map {
@@ -168,4 +172,3 @@ h1 + img {
   img.user_avatar {
     border: 2px darkgray ridge;
 }
-
