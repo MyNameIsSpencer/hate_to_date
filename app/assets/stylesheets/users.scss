@@ -2,12 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html {
-  background-color: white;
+  width: 100%;
+  height: 100%;
+  background-color: #280b33;
   color: black;
 }
 
 main{
-  margin-top: 105px
+  margin-top: 105px;
+  background-color: #280b33;
 }
 
 header {
@@ -30,38 +33,52 @@ header {
   margin-bottom: 10px;
 }
 
-
-.form-box {
-  opacity: .99;
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(to bottom right, purple, pink);
-  border: 3px solid #280b33;
-  border-radius: 25px;
+#map {
+  margin-top: 0%;
+  height: 650px;
 }
 
-.form-row {
-  // position: relative;
-  /* display: inline-block; */
-  // z-index: 12;
-  //display: inline-grid;
-  opacity: .99;
-  margin-top: -350px;
-  // margin-left: 35%;
-  // margin-right: 35%;
+.padded-map {
+  padding: 20px;
+  background-color: #280b33;
+  // height: 100%;
+}
+
+.form-box {
+  position: fixed;
+  margin-left: 40%;
   width: 250px;
-  height: 200px;
-  align-self: center;
-  // height: 20%;
-  // background-color: grey;
+  height: 210px;
   background: linear-gradient(to bottom right, purple, pink);
   border: 3px solid #280b33;
   border-radius: 25px;
-  top: 60%;
-  left: 39%;
-  // z-index: 10;
-  // height: 30%;
-  //  Dark Purple colour #280b33
+  top: 40%;
+}
+
+.login {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: lavenderblush;
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+}
+
+.form-of-login {
+  margin-left: 20px;
+  height: 30px;
+  width: 202px;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  margin-left: 20px;
+  height: 35px;
+  width: 202px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  background: linear-gradient(to bottom right, purple, rebeccapurple);
+  color: white;
+  border: 2px solid #280b33;
 }
 
 
@@ -84,11 +101,6 @@ header {
   // margin-right: -10px;
   // margin-left: -10px;
   // height: fit-content;
-}
-
-.padded-map {
-  padding: 20px;
-  background-color: #280b33;
 }
 
 .header-buttons {
@@ -129,24 +141,7 @@ h1 {
   color: lavenderblush;
 }
 
-.login {
-  margin-top: 10px;
-  //padding-left: 3%;
-  color: lavenderblush;
-  //float: left;
-  // width:33.3333%;
-  text-align: center;
-  font-family: 'Rock Salt', cursive;
 
-
-}
-
-// .action {
-//   height: 30px;
-//   width: 200px;
-//   margin-bottom: 10px;
-//   // margin-bottom: 200px;
-// }
 
 h1 + img {
     display: block;
@@ -155,22 +150,6 @@ h1 + img {
     border: 2px solid black;
 
 }
-
-.login-button {
-  height: 35px;
-  width: 205px;
-  margin-bottom: 0px;
-  font-size: 20px;
-  background: linear-gradient(to bottom right, purple, rebeccapurple);
-  color: white;
-  border: 2px solid #280b33;
-}
-
-.form-control {
-    height: 30px;
-    width: 200px;
-    margin-bottom: 5px;
-  }
 
   .login-page .logo {
     animation-name: slideInLeft;
