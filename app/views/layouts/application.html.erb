@@ -40,10 +40,8 @@
         <div class="search_and_status">
 
           <%= form_tag find_user_path, :method => 'get' do %>
-          <p>
             <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
             <%= submit_tag "Search", :title => nil %>
-          </p>
           <%end %>
 
       </tr>

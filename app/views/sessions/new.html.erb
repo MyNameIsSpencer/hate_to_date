@@ -10,7 +10,7 @@
   <%= form_tag session_path do %>
   <%= text_field_tag :email, params[:email], placeholder: "Email", class: 'form-of-login' %>
   <%= password_field_tag :password, params[:password], placeholder: "Password", class: 'form-of-login' %>
-  <div> <%= submit_tag "Log in", class: "login-button" %>
+  <div> <%= submit_tag "Log in", id: "login-button" %>
   <% end %>
 </div>
 
@@ -35,5 +35,5 @@ async defer></script>
 
 <!-- ========== Google Maps ============== -->
   <div class="padded-map">
-    <div id="map"></div>
+    <div id="map1"></div>
   </div>
