@@ -15,10 +15,6 @@
   margin-left: 20px;
 }
 
-.field {
-  color: lavender;
-}
-
 #logged-in-text {
   color:lavender;
   padding-left: 20px;
@@ -27,6 +23,34 @@
 #form_message {
   color:lavender;
   padding-left: 20px;
+}
+
+.left-column {
+  background-color:#aaa;
+  // display: inline-block;
+  float: left;
+  margin-top: -25px;
+  width: 8%;
+  padding: 10px;
+  height: 800px;
+  position: fixed;
+  display: inline;
+}
+
+.right-column {
+  // background-color:#aaa;
+  // display: inline-block;
+  float: right;
+  // margin-top: -25px;
+  width: 92%;
+  // padding: 10px;
+  // height: 800px;
+  // position: fixed;
+  display: inline;
+}
+
+.field {
+  color: lavender;
 }
 
 .padded-map {

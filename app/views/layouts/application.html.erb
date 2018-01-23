@@ -44,17 +44,13 @@
             <%= submit_tag "Search", :title => nil %>
           <%end %>
 
-      </tr>
 
         <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
            <%= f.label :status %>
           <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
           <%end %>
 
-
-
-
-            <%end %>
+        <%end %>
 
       </div>
 
@@ -86,13 +82,31 @@
 
 				<%end  %>
 			</ul>
-
-
-
-
       </nav>
     </header>
+
+
+
+    <% if current_user %>
+    <div class="left-column">
+        <h2></h2>
+        <p></p>
+      </div>
+    <% end %>
+
+<!-- <% if current_user %>
+  <div class="left-sidebar">
+
+  </div>
+<% end %> -->
+
+
+
+
     <main>
+    <% if current_user %>
+      <div class="right-column">
+    <% end %>
 
    <% if flash[:notice] %>
       <p class="notice"><%=  flash[:notice]%></p>
@@ -160,6 +174,9 @@
     <%=tag("div", :id => 'current_matches', :data => {:matches_location => @matches_array})%>
 <!-- ========== Google Maps End ============== -->
 
+<% if current_user %>
+  </div>
+<% end %>
     </main>
 
 </body>
