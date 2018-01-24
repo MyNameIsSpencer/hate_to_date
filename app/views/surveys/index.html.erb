@@ -10,12 +10,12 @@
 
 
 <div id="main-container" class="container">
-<% @surveys.each_slice(3) do |survey_3| %>
+<% @surveys.each_slice(4) do |survey_4| %>
 
       <div class="row">
-        <%survey_3.each do |survey| %>
+        <%survey_4.each do |survey| %>
         <div class = "survey">
-      <div id="main-content" class="col-xs-4">
+      <div id="main-content" class="col-xs-12 col-sm-6 col-md-3">
 
 <% if @user_surveys.include?(survey)%>
  <%survey.results.each do |result|  %>
