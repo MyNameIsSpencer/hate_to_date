@@ -28,6 +28,7 @@ tml {
 }
 
 header {
+  height: 80px;
   z-index: 10;
   box-sizing: border-box;
   margin: 0;
@@ -68,6 +69,11 @@ main label {
   color: black;
 }
 
+header form {
+  text-align: right;
+  display:inline;
+}
+
 // START
 @keyframes slideInLeft {
   from {
@@ -79,12 +85,31 @@ main label {
     transform: translate3d(0, 0, 0);
   }
 }
-// END
 
-// .logo h1 {
-//   text-decoration: none;
-// }
+.header-right-stacked {
+  display: inline;
+  float: right;
+}
 
+.button-search{
+    margin-left: -5px;
+    height: 23px;
+    /* padding: 4px 5px; */
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555555;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.search-text{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 .logo {
   padding-left:2%;
@@ -118,11 +143,21 @@ td {
   vertical-align: middle;
 }
 
-.search_and_status{
+.searcher{
+  margin-top: 10px;
   float:left;
-  // display: block;
+  display: inline;
   align-content: center;
   padding: 1em;
+}
+
+.statuser{
+  margin-top: 10px;
+  float:right;
+  display: inline;
+  align-content: center;
+  padding: 1em;
+  margin-right: 10px;
 }
 
 span.caret {
@@ -138,6 +173,7 @@ a.dropdown-toggle.navbar-text {
 
 .dropdown.navbar-right {
     text-decoration: none;
+    display: inline-block;
     color: black;
     right: 2em;
     top: 1em;
@@ -145,6 +181,7 @@ a.dropdown-toggle.navbar-text {
 
 .navbar {
   margin-bottom: 10px;
+  display:inline;
 
 }
 .col-xs-6 > span{

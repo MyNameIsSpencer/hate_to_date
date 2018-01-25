@@ -4,6 +4,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt" rel="stylesheet">
 
+<!-- ========== Font Awesome ========== -->
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
     <style>
 
       /* Always set the map height explicitly to define the size of the div
@@ -35,21 +39,26 @@
       <h1 class="logo"> Hate Date</h1>
 
 
-      <nav class="navbar">
+
+
+        <div style="padding-bottom: 20px">
+
+        <!-- ========= Hamburger Start ========== -->
+        <!-- <div class=""> -->
+
+        <!-- </div> -->
+        <!-- ========= Hamburger End ========== -->
+
         <% if current_user %>
-        <div class="search_and_status">
+        <div class="searcher">
 
           <%= form_tag find_user_path, :method => 'get' do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" %>
-              <%= submit_tag "Search", :title => nil %>
+              <%= text_field_tag :search, params[:search], placeholder: "Pet Peeves" , class: "search-text" %>
+
+              <%= button_tag(type: "submit", class: "button-search") do %>
+              <i class="glyphicon glyphicon-search"></i>
+                <% end %>
               <%end %>
-
-
-        <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
-           <%= f.label :status %>
-          <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
-          <%end %>
-
         <%end %>
 
       </div>
@@ -82,7 +91,17 @@
 
 				<%end  %>
 			</ul>
-      </nav>
+
+      <% if current_user %>
+      <div class="statuser">
+
+      <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
+        <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
+        <%end %>
+      </div>
+      <%end %>
+
+    </div>
     </header>
 
 
