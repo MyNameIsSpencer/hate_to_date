@@ -11,7 +11,16 @@ addEventListener('DOMContentLoaded', function(){
     connected:    () => {
       messages.innerText = ""
       userMessages.forEach(function(message){
-        messages.append(message[1] + ": " + message[0] + "\n")
+        var nameHolder = document.createElement('div')
+        nameHolder.className = "name"
+        var textHolder = document.createElement('div')
+        textHolder.className = "text"
+        nameHolder.innerText = message[1] + ":"
+        textHolder.innerText = message[0]
+        var messageHolder = document.createElement('div')
+        messageHolder.append(nameHolder)
+        messageHolder.append(textHolder)
+        messages.append(messageHolder)
         if (message[4]===false){
         $.ajax({
           url: 'read_message',
@@ -24,7 +33,16 @@ addEventListener('DOMContentLoaded', function(){
     },
     disconnected: () => {messages.append('disconnected\n');},
     received:  data  => {
-      messages.append(`${data.username}: ${data.message}\n`)
+      var nameHolder = document.createElement('div')
+      nameHolder.className = "name"
+      var textHolder = document.createElement('div')
+      textHolder.className = "text"
+      nameHolder.innerText = data.username + ":"
+      textHolder.innerText = data.message
+      var messageHolder = document.createElement('div')
+      messageHolder.append(nameHolder)
+      messageHolder.append(textHolder)
+      messages.append(messageHolder)
       $.ajax({
         url: 'read_message',
         dataType: 'json',

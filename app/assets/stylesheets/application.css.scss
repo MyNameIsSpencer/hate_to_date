@@ -117,10 +117,13 @@ a.dropdown-toggle.navbar-text {
 }
 
 #messages {
-  border:1px solid black;
+  border:2px solid black;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   font-weight: .6;
+  border-radius: 20px
+
+
 
 }
 
@@ -172,6 +175,14 @@ main {
 }
 header {
   max-height: 10%
+}
+
+.name, .text {
+  display: inline-block;
+}
+.name {
+  color: purple;
+  margin-right: 0.5rem
 }
 
 @media (max-width: 720px) {

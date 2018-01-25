@@ -27,7 +27,7 @@ They are <%= user.status %>!</p>
 <%end %>
 <%single_sent_messages = @sent_messages.where("receiver_id =?", user.id ) %>
 <% if single_sent_messages.any?{|message| message.read == false} %>
-<p><b>Your messages have not yet been read</b></p>
+<p><b>Your messages have not been read yet</b></p>
 <%else %>
 <br>
 <%end %>
