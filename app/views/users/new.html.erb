@@ -7,7 +7,7 @@
 <center>
   <div class="form-row register">
     <div class="login-fields">
-      <h1 class = "logo register">Signup Form</h1>
+      <h1 class = "logo register">Sign Up</h1>
 <div class = "first_step">
 
 <%= form_for @user do |f|%>
@@ -45,12 +45,12 @@
     <%= f.text_field :pet_peeves %>
   </div>
   <div class="field">
-    <%= f.label :fsa %>
-    <%= f.collection_select :fsa_id, Fsa.order('name ASC').all, :id, :name, prompt: true %>
-  </div>
-  <div class="field">
     <%= f.label :phone %>
     <%= f.telephone_field :phone, :maxlength =>10, :placeholder => "5555555555" %>
+  </div>
+  <div class="field">
+    <%= f.label :fsa %>
+    <%= f.collection_select :fsa_id, Fsa.order('name ASC').all, :id, :name, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :keep_profile_private %>

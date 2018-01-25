@@ -8,19 +8,16 @@
     <h1 class="login"> HateDate</h1>
     <div class="login-fields">
       <%= form_tag session_path do %>
-    <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
-    <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "Password" %>
-    <div class="action"> <%= submit_tag "Log in", class:"login-button" %>
-
-  </div>
-  </div>
-
-
+      <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
+      <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "Password" %>
+    <div class="action">
+      <%= submit_tag "Log in", class:"login-button" %>
   </div>
   <%end %>
-
-  <div>
+</div>
+</div>
 </center>
+<div>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initFirstMap&libraries=geometry"
 async defer></script>
 
