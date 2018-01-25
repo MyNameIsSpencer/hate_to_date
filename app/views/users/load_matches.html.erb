@@ -19,9 +19,15 @@
 <button type="submit" name="ticket_master" id="ticketMaster">Book Event</button> <br>
 They are <%= user.status %>!</p>
 <%= link_to("Visit Profile", user_path(user.id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user.id)) %>
-<% messages = @received_messages.where("user_id =?", user.id ) %>
-<% if messages.any?{|message| message.read == false} %>
+<% single_received_messages = @received_messages.where("user_id =?", user.id ) %>
+<% if single_received_messages.any?{|message| message.read == false} %>
 <p><b>You have unread messages</b></p>
+<%else %>
+<br>
+<%end %>
+<%single_sent_messages = @sent_messages.where("receiver_id =?", user.id ) %>
+<% if single_sent_messages.any?{|message| message.read == false} %>
+<p><b>Your messages have not yet been read</b></p>
 <%else %>
 <br>
 <%end %>
