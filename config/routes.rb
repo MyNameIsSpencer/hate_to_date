@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   patch 'user/:id/block_user' => 'users#block_user', :as => :block_user
   get 'find_user' => 'users#find_user', :as => :find_user
   get '/about_us' => 'surveys#about_us'
+  patch 'read_message' => 'messages#read', :as => :read_message
 end

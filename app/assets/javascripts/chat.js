@@ -9,14 +9,27 @@ addEventListener('DOMContentLoaded', function(){
     var sender = data["sender"]
     const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [sender.id, parseInt($("#receiver").val())]}, {
     connected:    () => {
+      messages.innerText = ""
       userMessages.forEach(function(message){
         messages.append(message[1] + ": " + message[0] + "\n")
+        $.ajax({
+          url: 'read_message',
+          dataType: 'json',
+          method: "PATCH",
+          data:{id: message[3]}
+        })
       })
     },
     disconnected: () => {messages.append('disconnected\n');},
     received:  data  => {
       messages.append(`${data.username}: ${data.message}\n`)
-        console.log('Received data from server:', data);
+      $.ajax({
+        url: 'read_message',
+        dataType: 'json',
+        method: "PATCH",
+        data:{id: data.id}
+      })
+
     }
   })
 
@@ -25,14 +38,17 @@ addEventListener('DOMContentLoaded', function(){
     const message = text_message.value
     const username = user.value
     const receiver = $("#receiver").val()
-    chats_channel.send({username, message})
-    text_message.value=""
     $.ajax({
       url: 'messages#create',
       dataType: 'json',
       data: {body: message, receiver: receiver},
       method: "POST"
-    })
+    }).done(function(data)
+      {
+        const id = data;
+        chats_channel.send({username, message, id})
+        text_message.value=""
+      })
     })
   })
 })
