@@ -20,20 +20,18 @@
 They are <%= user.status %>!</p>
 <%= link_to("Visit Profile", user_path(user.id)) %> | <%= link_to("Chat Now!", chat_room_path(:receiver => user.id)) %>
 <% single_received_messages = @received_messages.where("user_id =?", user.id ) %>
-<% if single_received_messages.any?{|message| message.read == false} %>
-<p><b>You have unread messages</b></p>
-<%else %>
-<br>
-<%end %>
 <%single_sent_messages = @sent_messages.where("receiver_id =?", user.id ) %>
-<% if single_sent_messages.any?{|message| message.read == false} %>
-<p><b>Your messages have not been read yet</b></p>
-<%else %>
-<br>
+<% if single_received_messages.any?{|message| message.read == false} %>
+<p class='chat_note'><b>You have unread messages</b></p>
+<%elsif single_sent_messages.any?{|message| message.read == false}%>
+<p class='chat_note'><b>Your messages have not been read yet</b></p>
 <%end %>
+<br>
 <%= link_to("Block User", block_user_path(:receiver => user.id), method: :patch, :data => {:confirm => 'Are you sure?  Blocks cannot be Undone.'}) %>
 <%count+=1 %>
+
 </div>
+<br>
 <%end %>
 <% end %>
 

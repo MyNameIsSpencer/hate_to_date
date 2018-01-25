@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
     @message.receiver_id= params[:receiver]
     @message.save unless User.find(params[:receiver]).blocks.include?(current_user.id)
     respond_to do |format|
+      format.html
       format.json {render :json => @message.id}
     end
   end
