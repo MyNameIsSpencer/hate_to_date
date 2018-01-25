@@ -12,12 +12,14 @@ addEventListener('DOMContentLoaded', function(){
       messages.innerText = ""
       userMessages.forEach(function(message){
         messages.append(message[1] + ": " + message[0] + "\n")
+        if (message[4]===false){
         $.ajax({
           url: 'read_message',
           dataType: 'json',
           method: "PATCH",
           data:{id: message[3]}
         })
+      }
       })
     },
     disconnected: () => {messages.append('disconnected\n');},

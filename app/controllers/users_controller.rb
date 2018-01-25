@@ -65,6 +65,7 @@ def load_matches
   @users = User.all
   @results = Result.all
   @surveys = Survey.all
+  @received_messages = Message.where("receiver_id = ?", current_user.id)
 end
 
 def meetups
