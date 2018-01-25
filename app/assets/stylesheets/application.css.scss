@@ -165,3 +165,18 @@ a.dropdown-toggle.navbar-text {
 .footer a{
   color: red
 }
+
+main {
+  margin: 10% 5%;
+  margin-bottom: 0
+}
+header {
+  max-height: 10%
+}
+
+@media (max-width: 720px) {
+  header{
+    left: 0;
+    width: 3rem
+  }
+}
