@@ -6,8 +6,7 @@ addEventListener('DOMContentLoaded', function(){
     data: {receiver: parseInt($("#receiver").val())}
   }).done(function(data){
     var userMessages = data["message"]
-    var sender = data["sender"]
-    const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [sender.id, parseInt($("#receiver").val())]}, {
+    const chats_channel = App.cable.subscriptions.create({channel: 'ChatsChannel', room: [data["sender"], parseInt($("#receiver").val())]}, {
     connected:    () => {
       messages.innerText = ""
       userMessages.forEach(function(message){
