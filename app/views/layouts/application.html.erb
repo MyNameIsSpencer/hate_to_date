@@ -112,11 +112,32 @@
         <nav>
           <ul>
 
-            <li class="left-menu-icons"><%= image_tag("notepadSurveys3.jpeg")%></li>
-            <li class="left-menu-icons"><%= image_tag("profileFill.png")%></li>
-            <li class="left-menu-icons"><%= image_tag("matchWhiteB.png")%></li>
-            <li class="left-menu-icons"><%= image_tag("meetupFill.png")%></li>
-            <li class="left-menu-icons"><%= image_tag("logoutPurp.jpeg")%></li>
+
+
+
+            <li class="left-menu-icons"><%= link_to surveys_path do %>
+              <%= image_tag('notepadSurveys3.jpeg') %>
+            <% end %></li>
+            <li class="left-menu-icons"><%= link_to user_path(current_user) do %>
+              <%= image_tag('profileFill.png') %>
+            <% end %></li>
+            <li class="left-menu-icons"><%= link_to user_matches_path(current_user) do %>
+              <%= image_tag('matchWhiteB.png') %>
+            <% end %></li>
+            <li class="left-menu-icons"><%= link_to user_meetups_path(current_user) do %>
+              <%= image_tag('meetupFill.png') %>
+            <% end %></li>
+            <li class="left-menu-icons"><%= link_to :logout, method: :delete do %>
+              <%= image_tag('logoutPurp.jpeg') %>
+            <% end %></li>
+
+
+
+                <li><%= link_to("Surveys", surveys_path)%></li>
+                <li><%= link_to("Profile", user_path(current_user))%></li>
+                <li><%= link_to("Matches", user_matches_path(current_user))%></li>
+                <li><%= link_to("Meetups", user_meetups_path(current_user)) %></li>
+                <li><%= link_to "Logout", :logout, method: :delete%></li>
 
 
           </ul>
@@ -125,12 +146,6 @@
     <% end %>
 
 
-
-    <li><%= link_to("Surveys", surveys_path)%></li>
-    <li><%= link_to("Profile", user_path(current_user))%></li>
-    <li><%= link_to("Matches", user_matches_path(current_user))%></li>
-    <li><%= link_to("Meetups", user_meetups_path(current_user)) %></li>
-    <li><%= link_to "Logout", :logout, method: :delete%></li>
 
 
 
