@@ -10,15 +10,20 @@ document.addEventListener("DOMContentLoaded", function() {
   var survey_id = parseInt(window.location.pathname.replace('/surveys/', ''))
   var userId= $("#user").val()
 
+
   function makeSelection(count){
 
   // shovels the user's choice into a results array
     result.push(event.target.className);
-    questionCounter ++
+    questionCounter ++;
+    document.cookie= survey_id+"="+questionCounter+";"
+    console.log(questionCounter);
+    console.log(document.cookie);
     // if the user has made all choices, he is redirected away from the survey page
     if (questionCounter < count){
       pictureMaker()
     } else {
+      document.cookie = survey_id+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       $.ajax({
       method: "POST",
       url: "/users/"+userId+"/results",//issue is here
@@ -29,8 +34,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
   }
-  var pictureMaker = function loadPictures(){
+  var pictureMaker = function loadPictures(answers){
     imageHolder.innerHTML = ""
+    var cookies = document.cookie.split(" ");
+    console.log("Arguments = "+arguments);
+    console.log(cookies);
+    for(i=0;i<cookies.length;i++){
+      if(cookies[i].endsWith(";"))
+        {var correction = cookies[i].replace(";","");
+        cookies[i]=correction}
+    }
+    console.log(cookies);
+    if(answers && answers[0]==true)
+    {questionCounter=answers[1]}
+
     $.ajax({
       url: "/surveys/"+survey_id+"/load_pictures",
       method: 'GET',
@@ -70,14 +87,36 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   }
 
+
 if (button){
   button.addEventListener('click', function(event){
     event.preventDefault()
-    pictureMaker()
+    var check = false;
+    if(document.cookie && document.cookie.includes(""+survey_id+"="))
+    {
+      console.log("gotcha!");
+      var positionIndex = document.cookie.indexOf(""+survey_id+"=")+ (""+survey_id+"=").length;
+      var position = document.cookie.substr(positionIndex,2);
+
+      if(position.charAt(1)===";")
+      {position=position.slice(0,1)}
+
+      position =parseInt(position);
+      console.log(position);
+      var positionString = ""+survey_id+"="+position;
+      console.log(positionString);
+      var check = confirm("Want to return to where you left off?");
+      var answers = [check, position];
+      var updated_cookie = document.cookie.replace(positionString, "");
+      document.cookie = updated_cookie;
+      console.log(document.cookie);
+    }
+    pictureMaker(answers||[false, questionCounter]);
     $( "#map" ).css({ display: "hidden" });
     button.style.display = "none"
   });
 }
+
 
 var overlays = document.querySelectorAll('.overlay')
 overlays.forEach(function(overlay){

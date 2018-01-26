@@ -40,7 +40,7 @@ header {
   // z-index: 12;
   //display: inline-grid;
   opacity: .99;
-  margin-top: -350px;
+  margin-top: -400px;
   // margin-left: 35%;
   // margin-right: 35%;
   width: 250px;
@@ -58,13 +58,25 @@ header {
   //  Dark Purple colour #280b33
 }
 
+.form-row.register{
+  // height:360px;
+  // width:350px;
+  height: max-content;
+  min-width: min-content;
+}
+
+
+
 .login-fields {
-  height: 20px;
-  width: 30%;
-  display: grid;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: -52%;
+  width: fit-content;
+  display: inline-grid;
+  margin: 1%;
+  padding: 1%;
+}
+
+.first_step {
+  display: inline-grid;
+  text-align: center;
 }
 
 .map-background {
@@ -169,3 +181,18 @@ h1 + img {
     border: 2px darkgray ridge;
 }
 
+h1.logo.register {
+    padding: 0px;
+    text-align: center;
+    animation:none;
+    display: inline-block;
+}
+
+form.new_user {
+  display: inline-grid;
+}
+
+.field {
+  display: inline-grid;
+  margin-bottom: 10px;
+}
