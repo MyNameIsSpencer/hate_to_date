@@ -3,24 +3,19 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 document.addEventListener('DOMContentLoaded', function(){
-var first_step = document.querySelector('.first_step');
-var second_step = document.querySelector('.second_step');
-var next = document.querySelector('.next');
-var input = document.querySelector('#user_name');
+  var first_step = document.querySelector('.first_step');
+  var second_step = document.querySelector('.second_step');
+  var next = document.querySelector('.next');
+  var input = document.querySelector('#user_name');
 
-var userModal = document.querySelector('.user_modal');
+  var userModal = document.querySelector('.user_modal');
 
-if(next){
-  next.addEventListener('click', function(e)
-  {
-    e.preventDefault();
-    first_step.style.display = 'none';
-    second_step.style.display = 'block';
-
-
-  })
-}
-
-
+  if(next){
+    next.addEventListener('click', function(e){
+      e.preventDefault();
+      first_step.style.display = 'none';
+      second_step.style.display = 'block';
+    })
+  }
 
 })

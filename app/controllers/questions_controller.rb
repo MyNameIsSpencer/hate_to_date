@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
       format.html
       format.json { render :json => @pictures }
     end
-
   end
 
 end
