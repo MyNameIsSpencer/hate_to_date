@@ -1,8 +1,6 @@
-<h1></h1>
 <% if current_user %>
   <h1 class="welcome-user">Welcome <%= current_user.name %>!</h1>
 <% end %>
-
 
 <h4> About Me</h4>
 <%if @user.avatar_file_size %>
@@ -19,12 +17,12 @@
 <% if @found_users %>
 
   <%@found_users.each do |user| %>
-  <% if user.privacy == false  %>
-  <p><%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
-  <% else %>
-    <p>Another user has the pet peeve "<%= params[:search] %>"</p>
+    <% if user.privacy == false  %>
+      <p><%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+    <% else %>
+      <p>Another user has the pet peeve "<%= params[:search] %>"</p>
+    <% end %>
   <% end %>
-<% end %>
 <% end %>
 
 
