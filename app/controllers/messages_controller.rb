@@ -24,8 +24,12 @@ class MessagesController < ApplicationController
   end
 
   def read
+    @user = current_user
     @message=Message.find(params[:id])
-    @message.update(read: true) if @message.receiver_id == current_user.id
+    if @message.receiver_id == @user.id
+      @message.read = true
+      @message.save
+    end
   end
 
 end
