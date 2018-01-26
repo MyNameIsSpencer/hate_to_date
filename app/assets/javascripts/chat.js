@@ -22,13 +22,13 @@ addEventListener('DOMContentLoaded', function(){
         messageHolder.append(textHolder)
         messages.append(messageHolder)
         if (message[4]===false){
-        $.ajax({
-          url: 'read_message',
-          dataType: 'json',
-          method: "PATCH",
-          data:{id: message[3]}
-        })
-      }
+          $.ajax({
+            url: 'read_message',
+            dataType: 'json',
+            method: "PATCH",
+            data:{id: message[3]}
+          })
+        }
       })
     },
     disconnected: () => {messages.append('disconnected\n');},
@@ -49,22 +49,20 @@ addEventListener('DOMContentLoaded', function(){
         method: "PATCH",
         data:{id: data.id}
       })
-
     }
   })
 
-  form_message.addEventListener("submit", e => {
-    e.preventDefault();
-    const message = text_message.value
-    const username = user.value
-    const receiver = $("#receiver").val()
-    $.ajax({
-      url: 'messages#create',
-      dataType: 'json',
-      data: {body: message, receiver: receiver},
-      method: "POST"
-    }).done(function(data)
-      {
+    form_message.addEventListener("submit", e => {
+      e.preventDefault();
+      const message = text_message.value
+      const username = user.value
+      const receiver = $("#receiver").val()
+      $.ajax({
+        url: 'messages#create',
+        dataType: 'json',
+        data: {body: message, receiver: receiver},
+        method: "POST"
+      }).done(function(data){
         const id = data;
         chats_channel.send({username, message, id})
         text_message.value=""

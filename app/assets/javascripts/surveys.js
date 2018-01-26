@@ -20,15 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
       pictureMaker()
     } else {
       $.ajax({
-      method: "POST",
-      url: "/users/"+userId+"/results",//issue is here
-      data: { results: { survey_id: survey_id, answers: result } },
-    }).done(function(data){
+        method: "POST",
+        url: "/users/"+userId+"/results",//issue is here
+        data: { results: { survey_id: survey_id, answers: result } },
+      }).done(function(data){
         window.location.replace('/users/'+userId+'/matches')
-    })
-
+      })
     }
   }
+
   var pictureMaker = function loadPictures(){
     imageHolder.innerHTML = ""
     $.ajax({
@@ -70,28 +70,26 @@ document.addEventListener("DOMContentLoaded", function() {
     })
   }
 
-if (button){
-  button.addEventListener('click', function(event){
-    event.preventDefault()
-    pictureMaker()
-    $( "#map" ).css({ display: "hidden" });
-    button.style.display = "none"
-  });
-}
+  if (button){
+    button.addEventListener('click', function(event){
+      event.preventDefault()
+      pictureMaker()
+      $( "#map" ).css({ display: "hidden" });
+      button.style.display = "none"
+    });
+  }
 
-var overlays = document.querySelectorAll('.overlay')
-overlays.forEach(function(overlay){
-  overlay.addEventListener('click', function(e){
-    alert('Survey already completed today.  Please select another survey.')
+  var overlays = document.querySelectorAll('.overlay')
+  overlays.forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      alert('Survey already completed today.  Please select another survey.')
+    })
   })
-})
 
-if(logo){
-  logo.addEventListener('click', function(event)
-{
-    window.location.replace('/about_us');
-})
-}
-
+  if(logo){
+    logo.addEventListener('click', function(event){
+      window.location.replace('/about_us');
+    })
+  }
 
 });
