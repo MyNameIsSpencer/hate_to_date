@@ -88,48 +88,42 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 
-if (button){
-  button.addEventListener('click', function(event){
-    event.preventDefault()
-    var check = false;
-    if(document.cookie && document.cookie.includes(""+survey_id+"="))
-    {
-      console.log("gotcha!");
-      var positionIndex = document.cookie.indexOf(""+survey_id+"=")+ (""+survey_id+"=").length;
-      var position = document.cookie.substr(positionIndex,2);
+  if (button){
+    button.addEventListener('click', function(event){
+      event.preventDefault()
+      var check = false;
+      if(document.cookie && document.cookie.includes(""+survey_id+"=")){
+        console.log("gotcha!");
+        var positionIndex = document.cookie.indexOf(""+survey_id+"=")+ (""+survey_id+"=").length;
+        var position = document.cookie.substr(positionIndex,2);
 
-      if(position.charAt(1)===";")
-      {position=position.slice(0,1)}
+        if(position.charAt(1)===";"){
+          position=position.slice(0,1)
+        }
+        position =parseInt(position);
+        var positionString = ""+survey_id+"="+position;
+        var check = confirm("Want to return to where you left off?");
+        var answers = [check, position];
+        var updated_cookie = document.cookie.replace(positionString, "");
+        document.cookie = updated_cookie;
+      }
+      pictureMaker(answers||[false, questionCounter]);
+      $( "#map" ).css({ display: "hidden" });
+      button.style.display = "none"
+    });
+  }
 
-      position =parseInt(position);
-      console.log(position);
-      var positionString = ""+survey_id+"="+position;
-      console.log(positionString);
-      var check = confirm("Want to return to where you left off?");
-      var answers = [check, position];
-      var updated_cookie = document.cookie.replace(positionString, "");
-      document.cookie = updated_cookie;
-      console.log(document.cookie);
-    }
-    pictureMaker(answers||[false, questionCounter]);
-    $( "#map" ).css({ display: "hidden" });
-    button.style.display = "none"
+
+  var overlays = document.querySelectorAll('.overlay')
+  overlays.forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      alert('Survey already completed today.  Please select another survey.')
+    })
   });
-}
-
-
-var overlays = document.querySelectorAll('.overlay')
-overlays.forEach(function(overlay){
-  overlay.addEventListener('click', function(e){
-    alert('Survey already completed today.  Please select another survey.')
-
-  })
 
   if(logo){
     logo.addEventListener('click', function(event){
       window.location.replace('/about_us');
     })
   }
-
-});
 })
