@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def find_user
     @user = current_user
-    @found_users = User.where("pet_peeves = ?", params[:search])
+    @found_users = User.where("pet_peeves ILIKE ?", "%#{params[:search]}%")
     render :show
   end
 

@@ -18,9 +18,9 @@
 
   <%@found_users.each do |user| %>
     <% if user.privacy == false  %>
-      <p><%=user.name %> has the pet peeve "<%= params[:search] %>"</p>
+      <p><%=user.name %> has the pet peeve "<%= user.pet_peeves %>"</p>
     <% else %>
-      <p>Another user has the pet peeve "<%= params[:search] %>"</p>
+      <p>Another user has the pet peeve "<%= user.pet_peeves %>"</p>
     <% end %>
   <% end %>
 <% end %>
