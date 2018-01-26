@@ -20,7 +20,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application"  %>
-    <meta property="og:image" content="http://hatedate.herokuapp.com/images/HateDateFront.png" />
+    <%= tag :meta, property: 'og:image', content: image_url("HateDateFront.png") %>
   </head>
 
 
