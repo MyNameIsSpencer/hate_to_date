@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117170448) do
+ActiveRecord::Schema.define(version: 20180125195957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180117170448) do
     t.integer "user_id"
     t.integer "receiver_id"
     t.text "body"
+    t.boolean "read", default: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(version: 20180117170448) do
     t.text "description"
     t.text "pet_peeves"
     t.integer "income"
-    t.string "status", default: "offline"
+    t.string "status", default: "Offline"
     t.integer "blocks", default: [], array: true
   end
 

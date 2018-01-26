@@ -2,7 +2,7 @@
 
 <div>
 <%= form_for @user, url: user_url(@user.id) do |f|%>
-<div class="field">
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
@@ -18,13 +18,10 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-</div>
-<br>
-<div>
-
-<div class="field">
-  <%= f.label :avatar %><br>
-  <%= f.file_field :avatar %>
+  <br>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
   <div class="field">
     <%= f.label :description %>
@@ -48,6 +45,6 @@
   </div>
   <div id = "create_user_part_2">
   <%= f.submit %>
-</div>
-  <%end %>
+  </div>
+<%end %>
 </div>
