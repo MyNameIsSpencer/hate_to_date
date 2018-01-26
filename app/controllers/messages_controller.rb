@@ -17,6 +17,15 @@ class MessagesController < ApplicationController
     @message.user_id=current_user.id
     @message.receiver_id= params[:receiver]
     @message.save unless User.find(params[:receiver]).blocks.include?(current_user.id)
+    respond_to do |format|
+      format.html
+      format.json {render :json => @message.id}
+    end
+  end
+
+  def read
+    @message=Message.find(params[:id])
+    @message.update(read: true) if @message.receiver_id == current_user.id
   end
 
 end

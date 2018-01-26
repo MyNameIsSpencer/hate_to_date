@@ -11,8 +11,7 @@
 <div class = "first_step">
 
 <%= form_for @user do |f|%>
-
-<div class="field">
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
@@ -28,13 +27,13 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-<button class="next">Next</button>
+  <button class="next">Next</button>
 </div>
 
 <div class = "second_step">
-<div class="field">
-  <%= f.label :avatar %><br>
-  <%= f.file_field :avatar %>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
   <div class="field">
     <%= f.label :description %>
@@ -58,8 +57,8 @@
   </div>
   <div id = "create_user_part_2">
   <%= f.submit %>
-</div>
-  <%end %>
+  </div>
+<%end %>
 </div>
 </div>
 </div>
@@ -67,17 +66,17 @@
 
 
   <% if @user.errors.any?  %>
-  <h1> Error </h1>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+  <h1> Error </h1>
+  <div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
   <% end %>
+  </ul>
+  </div>
+<% end %>
 </row>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initFirstMap&libraries=geometry"

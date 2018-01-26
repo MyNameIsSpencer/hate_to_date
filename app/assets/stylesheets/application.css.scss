@@ -117,11 +117,16 @@ a.dropdown-toggle.navbar-text {
 }
 
 #messages {
-  border:1px solid black;
+  border:2px solid black;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   font-weight: .6;
+  border-radius: 20px;
+}
 
+.chat_note{
+  display: inline-block;
+  margin: 0
 }
 
 .about_container{
@@ -164,4 +169,27 @@ a.dropdown-toggle.navbar-text {
 
 .footer a{
   color: red
+}
+
+main {
+  margin: 10% 5%;
+  margin-bottom: 0
+}
+header {
+  max-height: 10%
+}
+
+.name, .text {
+  display: inline-block;
+}
+.name {
+  color: purple;
+  margin-right: 0.5rem
+}
+
+@media (max-width: 720px) {
+  header{
+    left: 0;
+    width: 3rem
+  }
 }

@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       document.cookie = survey_id+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       $.ajax({
-      method: "POST",
-      url: "/users/"+userId+"/results",//issue is here
-      data: { results: { survey_id: survey_id, answers: result } },
-    }).done(function(data){
+        method: "POST",
+        url: "/users/"+userId+"/results",//issue is here
+        data: { results: { survey_id: survey_id, answers: result } },
+      }).done(function(data){
         window.location.replace('/users/'+userId+'/matches')
-    })
-
+      })
     }
   }
+
   var pictureMaker = function loadPictures(answers){
     imageHolder.innerHTML = ""
     var cookies = document.cookie.split(" ");
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var image1 = document.createElement('img')
       var image1title = document.createElement('span')
       var image1holder = document.createElement('div')
-      image1holder.className = "survey col-xs-6"
+      image1holder.className = "survey col-xs-12 col-sm-6"
       image1.className = "left"
       image1.src = data[0]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height"]["url"];
       image1.alt = data[3]
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var image2 = document.createElement('img')
       var image2title = document.createElement('span')
       var image2holder = document.createElement('div')
-      image2holder.className = "survey col-xs-6"
+      image2holder.className = "survey col-xs-12 col-sm-6"
       image2.className = "right"
       image2.src = data[1]["data"][Math.floor(Math.random()*5)]["images"]["fixed_height"]["url"];
       image2.alt = data[4]
@@ -122,15 +122,13 @@ var overlays = document.querySelectorAll('.overlay')
 overlays.forEach(function(overlay){
   overlay.addEventListener('click', function(e){
     alert('Survey already completed today.  Please select another survey.')
+
   })
-})
 
-if(logo){
-  logo.addEventListener('click', function(event)
-{
-    window.location.replace('/about_us');
-})
-}
-
+  if(logo){
+    logo.addEventListener('click', function(event){
+      window.location.replace('/about_us');
+    })
+  }
 
 });

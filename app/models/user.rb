@@ -30,9 +30,9 @@ class User < ApplicationRecord
     @other_user_results.each do |survey_result|
       count = 0.00
       survey_result.answers.each_with_index do |each_answer, index|
-          if each_answer == result.answers[index]
-            count += 1
-          end
+        if each_answer == result.answers[index]
+          count += 1
+        end
       end
       compatibility = count /survey_result.answers.length
       all_matches[survey_result.user_id] = [compatibility, survey_result.created_at]
@@ -41,37 +41,37 @@ class User < ApplicationRecord
     return best
   end
 
-def best_matches(all_matches)
-  best_matches = {}
-  all_matches.each do |user_id, compatibility|
+  def best_matches(all_matches)
+    best_matches = {}
+    all_matches.each do |user_id, compatibility|
     # compares match compatibility to the reference
-    if compatibility[0] >= 0.75
-      best_matches[user_id]=compatibility
+      if compatibility[0] >= 0.75
+        best_matches[user_id]=compatibility
+      end
     end
+    return best_matches
   end
-  return best_matches
-end
 
-def user_matches
-  user_matches =[]
-  self.results.each do |result|
-    match = User.find(self.match_generator(result).keys)
-    user_matches << match
+  def user_matches
+    user_matches =[]
+    self.results.each do |result|
+      match = User.find(self.match_generator(result).keys)
+      user_matches << match
+    end
+    user_matches.flatten!
+    return user_matches
   end
-  user_matches.flatten!
-  return user_matches
-end
 
-def delete_user_results
-  Result.all.each do |result|
-    result.matches.map! do |match|
-      if match[0].to_i == self.id
-        result.matches.delete(match)
-        result.save
-        return result
+  def delete_user_results
+    Result.all.each do |result|
+      result.matches.map! do |match|
+        if match[0].to_i == self.id
+          result.matches.delete(match)
+          result.save
+          return result
+        end
       end
     end
   end
-end
 
 end
