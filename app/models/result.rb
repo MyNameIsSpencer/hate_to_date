@@ -2,7 +2,6 @@ class Result < ApplicationRecord
   belongs_to :survey
   belongs_to :user
 
-
   def make_matches(best_matches)
     best_matches.each do |user_id, compatibility|
       combo = []
@@ -16,6 +15,5 @@ class Result < ApplicationRecord
     end
     return self.matches
   end
-
 
 end
