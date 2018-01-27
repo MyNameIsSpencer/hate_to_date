@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
     result.push(event.target.className);
     questionCounter ++;
     document.cookie= survey_id+"="+questionCounter+";"
-    console.log("questionCounter");
+    // console.log("questionCounter");
 
-    console.log(questionCounter);
-    console.log("document.cookie");
+    // console.log(questionCounter);
+    // console.log("document.cookie");
 
-    console.log(document.cookie);
+    // console.log(document.cookie);
     // if the user has made all choices, he is redirected away from the survey page
     if (questionCounter < count){
       pictureMaker()
@@ -41,15 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
   var pictureMaker = function loadPictures(answers){
     imageHolder.innerHTML = ""
     var cookies = document.cookie.split(" ");
-    console.log("Arguments = "+arguments);
-    console.log(cookies);
+    // console.log("Arguments = "+arguments);
+    // console.log(cookies);
     for(i=0;i<cookies.length;i++){
       if(cookies[i].endsWith(";"))
         {var correction = cookies[i].replace(";","");
         cookies[i]=correction}
     }
-    console.log(cookies);
-    console.log(answers);
+    // console.log(cookies);
+    // console.log(answers);
     if(answers && answers[0]==true)
     {questionCounter=answers[1]}
 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault()
       var check = false;
       if(document.cookie && document.cookie.includes(""+survey_id+"=")){
-        console.log("gotcha!");
+        // console.log("gotcha!");
         var positionIndex = document.cookie.indexOf(""+survey_id+"=")+ (""+survey_id+"=").length;
         var position = document.cookie.substr(positionIndex,2);
 
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         position =parseInt(position);
         var positionString = ""+survey_id+"="+position;
         var check = confirm("Want to return to where you left off?");
-        console.log(check);
+        // console.log(check);
         var answers = [check, position];
         var updated_cookie = document.cookie.replace(positionString, "");
         document.cookie = updated_cookie;
