@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         position =parseInt(position);
         var positionString = ""+survey_id+"="+position;
         var check = confirm("Want to return to where you left off?");
-        // console.log(check);
+        console.log(check);
         var answers = [check, position];
         var updated_cookie = document.cookie.replace(positionString, "");
         document.cookie = updated_cookie;
