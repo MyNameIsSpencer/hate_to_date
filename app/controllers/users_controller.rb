@@ -18,17 +18,22 @@ class UsersController < ApplicationController
   end
 
   def show
+    if User.exists?(id: params[:id])
     @users = User.all
-    @user = User.find(params[:id])
-    unless current_user.user_matches.include?(@user) || @user ==current_user
-      redirect_to new_session_path
-    end
-    if  @user.blocks.include?(current_user.id)
-      flash[:notice] = "Cannot access profile.  You have been blocked."
+      @user = User.find(params[:id])
+      unless current_user.user_matches.include?(@user) || @user ==current_user
+        redirect_to new_session_path
+      end
+      if  @user.blocks.include?(current_user.id)
+        flash[:notice] = "Cannot access profile.  You have been blocked."
+        redirect_to user_matches_url(current_user.id)
+      end
+      @results = Result.all
+      @surveys= Survey.all
+    else
+      flash[:notice] = "User does not exist"
       redirect_to user_matches_url(current_user.id)
     end
-    @results = Result.all
-    @surveys= Survey.all
   end
 
   def find_user
