@@ -52,7 +52,7 @@ body {
 }
 
 main{
-  margin-top: 105px;
+  margin-top: 64px;
   background-color: white;
 }
 
@@ -100,7 +100,7 @@ header form {
 }
 
 .left-column > nav {
-  margin-top: 20px;
+  margin-top: 50px;
   float: left;
 }
 
@@ -201,6 +201,7 @@ span.caret {
 }
 
 a.dropdown-toggle.navbar-text {
+    top: -20px;
     position: relative;
     color: black;
 }
@@ -286,7 +287,7 @@ a.dropdown-toggle.navbar-text {
 }
 
 main {
-  margin: 10% 5%;
+  // margin: 10% 5%;
   margin-bottom: 0
 }
 header {
