@@ -17,7 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
     result.push(event.target.className);
     questionCounter ++;
     document.cookie= survey_id+"="+questionCounter+";"
+    console.log("questionCounter");
+
     console.log(questionCounter);
+    console.log("document.cookie");
+
     console.log(document.cookie);
     // if the user has made all choices, he is redirected away from the survey page
     if (questionCounter < count){
@@ -45,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cookies[i]=correction}
     }
     console.log(cookies);
+    console.log(answers);
     if(answers && answers[0]==true)
     {questionCounter=answers[1]}
 
