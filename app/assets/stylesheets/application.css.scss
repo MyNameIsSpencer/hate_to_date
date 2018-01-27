@@ -116,8 +116,8 @@ header form {
 }
 
 .left-menu-icons > a img {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
 }
 
 .header-right-stacked {
@@ -302,9 +302,34 @@ header {
   margin-right: 0.5rem
 }
 
-@media (max-width: 720px) {
-  header{
-    left: 0;
-    width: 3rem
+@media (min-width: 951px) {
+
+  .left-menu-icons > a img {
+    height: 60px;
+    width: 60px;
   }
+}
+
+@media (max-width: 950px) {
+
+  .left-menu-icons > a img {
+    height: 45px;
+    width: 45px;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .left-menu-icons > a img {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .left-column {
+    display: none;
+  }
+
 }
