@@ -336,6 +336,11 @@ header {
 
 @media (max-width: 550px) {
 
+  .right-column {
+    float: none;
+    width: 100%;
+  }
+
   .logo {
     font-size: 18px;
     width: 100px;
