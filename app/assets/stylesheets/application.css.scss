@@ -187,9 +187,47 @@ header {
   margin-right: 0.5rem
 }
 
+// .user_message {
+//   background: blue;
+//   color: white;
+//   margin: 0.1em 0 0.1em auto;
+//   border-radius: 0.8em;
+//   width:fit-content;
+//   padding: 0.3em;
+// }
+//
+// .receiver_message {
+//   background: grey;
+//   color: black;
+//   margin: 0.1em auto 0.1em 0;
+//   border-radius: 0.8em;
+//   width:fit-content;
+//   padding: 0.3em;
+// }
 @media (max-width: 720px) {
   header{
     left: 0;
     width: 3rem
+  }
+  .name {
+    color: inherit;
+    margin-right: 0.5rem
+  }
+  .user_message {
+    background: blue;
+    color: white;
+    margin: 0.1em 0 0.1em auto;
+    border-radius: 0.8em;
+    width:fit-content;
+    padding: 0.3em;
+  }
+
+  .receiver_message {
+    background: grey;
+    color: black;
+    margin: 0.1em auto 0.1em 0;
+    border-radius: 0.8em;
+    width:fit-content;
+    padding: 0.3em;
   }
 }
