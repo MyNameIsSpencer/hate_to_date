@@ -324,6 +324,10 @@ header {
 
 @media (max-width: 720px) {
 
+  .logo {
+    font-size: 25px;
+  }
+
   .left-menu-icons > a img {
     height: 30px;
     width: 30px;
@@ -331,6 +335,11 @@ header {
 }
 
 @media (max-width: 550px) {
+
+  .logo {
+    font-size: 18px;
+    width: 100px;
+  }
 
   .left-column {
     float: none;
@@ -367,23 +376,3 @@ header {
   }
 
 }
-
-
-
-
-
-
-
-// .footer {
-//     position: fixed;
-//     left: 0;
-//     bottom: 0;
-//     width: 100%;
-//     background: linear-gradient(to bottom right, purple, rebeccapurple);
-//     color: white;
-//     text-align: center;
-//     font-size: 25px;
-//     z-index: 100;
-//     font-family: 'Rock Salt', cursive;
-//     margin-top: 100px
-// }
