@@ -336,6 +336,10 @@ header {
 
 @media (max-width: 720px) {
 
+  .form-box {
+    margin-left: 25%;
+  }
+
   .logo {
     font-size: 25px;
   }
@@ -347,6 +351,10 @@ header {
 }
 
 @media (max-width: 550px) {
+
+  .form-box {
+    margin-left: 12%;
+  }
 
   .right-column {
     float: none;
