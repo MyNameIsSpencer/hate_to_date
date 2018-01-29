@@ -17,8 +17,8 @@ initFirstMap = function() {
 
 
 // Create Map
-  var map;
-    map = new google.maps.Map(document.getElementById('map'), {
+  var map1;
+    map1 = new google.maps.Map(document.getElementById('map1'), {
       center: {lat: 43.647219, lng: -79.387905},
       zoom: 12,
       styles: purple
@@ -57,7 +57,7 @@ initFirstMap = function() {
          fillColor: 'deeppink',
          fillOpacity: 0.05,
          center: {lat: later, lng: longer},
-         map: map,
+         map1: map1,
          radius: count * 100
        });
      }

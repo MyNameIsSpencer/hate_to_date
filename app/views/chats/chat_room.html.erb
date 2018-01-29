@@ -1,5 +1,5 @@
 <h1>Chat Room</h1>
-Logged in:
+<div id='logged-in-text'>Logged in:</div>
 <div id="logged_in"></div>
 <p>Chatting with <%= @receiver.name %> Status: <%=@receiver.status%> </p>
 <%= form_tag '/messages', id: 'form_message'  do %>
