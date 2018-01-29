@@ -110,25 +110,25 @@
 
 
 // ===== Not Master Start
-  .login-fields {
-    height: 20px;
-    width: 30%;
-    display: grid;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    // margin-left: -52%;
-  }
+  // .login-fields {
+  //   height: 20px;
+  //   width: 30%;
+  //   display: grid;
+  //   margin-bottom: 10px;
+  //   margin-top: 10px;
+  //   // margin-left: -52%;
+  // }
 // ===== Not Master End
 
 
 
 // ===== Master Start
-  // .login-fields {
-  //   width: fit-content;
-  //   display: inline-grid;
-  //   margin: 1%;
-  //   padding: 1%;
-  // }
+  .login-fields {
+    width: fit-content;
+    display: inline-grid;
+    margin: 1%;
+    padding: 1%;
+  }
 
   .first_step {
     display: inline-grid;
