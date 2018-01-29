@@ -65,10 +65,12 @@ h1, h2, h3, h4, p {
   color: black;
 }
 
-.right-column a:first-of-type{
+.right-column>a:first-of-type{
   padding-left: 20px
 }
-
+.matches a:first-of-type{
+  padding-left: 20px
+}
 .matches a:last-of-type{
   padding-left: 20px
 }
