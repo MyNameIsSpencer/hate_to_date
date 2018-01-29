@@ -2,6 +2,7 @@ class ChatsChannel < ApplicationCable::Channel
 
   def subscribed
     @room = params[:room].sort
+    # used to stream the correct room between 2 users
     stream_from "chat_#{@room[0]}_#{@room[1]}"
   end
 

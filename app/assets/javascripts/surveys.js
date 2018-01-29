@@ -2,6 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function() {
+  // Sets up needed variables from objects on the page
   var button = document.querySelector('#start_survey')
   var logo = document.querySelector('#logo_click')
   var questionCounter = 0
@@ -10,25 +11,19 @@ document.addEventListener("DOMContentLoaded", function() {
   var survey_id = parseInt(window.location.pathname.replace('/surveys/', ''))
   var userId= $("#user").val()
 
-
   function makeSelection(count){
 
   // shovels the user's choice into a results array
     result.push(event.target.className);
     questionCounter ++;
     document.cookie= survey_id+"="+questionCounter+";"
-    // console.log("questionCounter");
 
-    // console.log(questionCounter);
-    // console.log("document.cookie");
-
-    // console.log(document.cookie);
     // if the user has made all choices, he is redirected away from the survey page
-    if (questionCounter < count){
+    if (questionCounter < count){ // loads next question if survey notyet complete
       pictureMaker()
     } else {
       document.cookie = survey_id+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      $.ajax({
+      $.ajax({  // once survey completed creates results
         method: "POST",
         url: "/users/"+userId+"/results",//issue is here
         data: { results: { survey_id: survey_id, answers: result } },
@@ -53,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if(answers && answers[0]==true)
     {questionCounter=answers[1]}
 
-    $.ajax({
+    $.ajax({  // gets the images required for the survey question
       url: "/surveys/"+survey_id+"/load_pictures",
       method: 'GET',
       dataType: 'json',
       data: { number: questionCounter}
-    }).done(function(data){
+    }).done(function(data){  // creates and appends both images to view
       var image1 = document.createElement('img')
       var image1title = document.createElement('span')
       var image1holder = document.createElement('div')
@@ -89,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
       image2.addEventListener('click', function(event){
         makeSelection(data[2])
       });
+      // as makeSelection function includes pictureMaker variable this function gets repeated until survey has been completed
     })
   }
 
@@ -108,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
         position =parseInt(position);
         var positionString = ""+survey_id+"="+position;
         var check = confirm("Want to return to where you left off?");
-        console.log(check);
+        console.log(check);  // need this line for heroku
         var answers = [check, position];
         var updated_cookie = document.cookie.replace(positionString, "");
         document.cookie = updated_cookie;
@@ -119,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-
+  // Adds overlays to block surveys already completed today
   var overlays = document.querySelectorAll('.overlay')
   overlays.forEach(function(overlay){
     overlay.addEventListener('click', function(e){
