@@ -148,6 +148,43 @@ a.dropdown-toggle.navbar-text {
 
 }
 
+#questions{
+  margin-top: 10%
+}
+
+#questions col-sm-6{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .row{
+    text-align: center;
+  }
+
+  .col-xs-12{
+    display: inline;
+    float: none;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col-xs-12 span {
+    top: -7rem
+  }
+
+}
+//
+// .col-xs-12 >span{
+//  text-decoration: none;
+//  background: black;
+//  color: white;
+//  position: absolute;
+//  left: 3rem;
+//  padding: 1px;
+//  top: 1.5rem;
+//  margin: auto;}
 
 .footer {
     position: fixed;
@@ -204,10 +241,13 @@ header {
 //   width:fit-content;
 //   padding: 0.3em;
 // }
+
+
 @media (max-width: 720px) {
   header{
     left: 0;
-    width: 3rem
+    width: 3rem;
+    // display: none
   }
   .name {
     color: inherit;
