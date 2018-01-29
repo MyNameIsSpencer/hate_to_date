@@ -44,6 +44,7 @@ addEventListener('DOMContentLoaded', function(){
           readMessage (message[3])
         }
       })
+      messages.scrollTop = messages.scrollHeight;
     },
 
     disconnected: () => {messages.append('disconnected\n');},
@@ -52,6 +53,7 @@ addEventListener('DOMContentLoaded', function(){
       // similar to loading messages on connected just using a different data paramter from the form being submitted
       loadMessage (data.username, data.message)
       readMessage (data.id)
+      messages.scrollTop = messages.scrollHeight;
     }
   })
   // This form creates the message instance when submitted and sends to chat div

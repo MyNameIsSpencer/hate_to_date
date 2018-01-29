@@ -2,6 +2,7 @@
 <div id='logged-in-text'>Logged in:</div>
 <div id="logged_in"></div>
 <p>Chatting with <%= @receiver.name %> Status: <%=@receiver.status%> </p>
+<div id="messages"></div>
 <%= form_tag '/messages', id: 'form_message'  do %>
   Enter your message:
   <%= text_field_tag :text_message %>
@@ -10,7 +11,6 @@
   <%= submit_tag 'Chat' , data: {disable_with: false}%>
 <% end %>
 
-<div id="messages"></div>
 
 
 
