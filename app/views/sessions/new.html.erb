@@ -3,20 +3,18 @@
 
 </div>
 
-<center>
-  <div class="form-row">
-    <h1 class="login"> HateDate</h1>
-    <div class="login-fields">
-      <%= form_tag session_path do %>
-      <%= text_field_tag :email, params[:email] ,placeholder: "Email", class: 'form-control form-control-lg',id:"colFormLabel"%>
-      <%= password_field_tag :password, params[:password], class:"form-control form-control-lg",id:"colFormLabelLg",placeholder: "Password" %>
-    <div class="action">
-      <%= submit_tag "Log in", class:"login-button" %>
-  </div>
-  <%end %>
+<!-- ==== Spencer Branch Start ==== -->
+<div class="form-box">
+  <h1 class="login"> HateDate</h1>
+  <%= form_tag session_path do %>
+  <%= text_field_tag :email, params[:email], placeholder: "Email", class: 'form-of-login' %>
+  <%= password_field_tag :password, params[:password], placeholder: "Password", class: 'form-of-login' %>
+  <div> <%= submit_tag "Log in", id: "login-button" %>
+  <% end %>
 </div>
-</div>
-</center>
+<!-- ==== Spencer Branch End ==== -->
+
+
 <div>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["Google_key"]%>&callback=initFirstMap&libraries=geometry"
 async defer></script>
@@ -36,5 +34,5 @@ async defer></script>
 
 <!-- ========== Google Maps ============== -->
   <div class="padded-map">
-    <div id="map"></div>
+    <div id="map1"></div>
   </div>

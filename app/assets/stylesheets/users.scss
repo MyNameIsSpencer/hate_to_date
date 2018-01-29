@@ -1,61 +1,82 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html {
-  background-color: white;
-  color: black;
-}
-
-main{
-  margin-top: 105px
-}
-
-header {
-  z-index: 10;
-  box-sizing: border-box;
-  margin: 0;
-  top: 0px;
-  left: 0;
-  display: block;
-  text-align: center;
-  // margin-bottom: 1rem;
-  background: linear-gradient(to bottom right, purple, pink);
-
-  position: fixed;
-  width: 100%
-  // box-shadow: 5px 10px 8px #888888;
-}
 
 #radButton {
   margin-bottom: 10px;
 }
 
-.form-control {
-
+#map1 {
+  margin-top: 0%;
+  height: 650px;
 }
 
-.form-row {
-  // position: relative;
-  /* display: inline-block; */
-  // z-index: 12;
-  //display: inline-grid;
-  opacity: .99;
-  margin-top: -400px;
-  // margin-left: 35%;
-  // margin-right: 35%;
+#radInput {
+  margin-left: 20px;
+}
+
+#logged-in-text {
+  color: black;
+  padding-left: 20px;
+}
+
+#form_message {
+  color: black;
+  padding-left: 20px;
+}
+
+.field {
+  color: black;
+}
+
+.padded-map {
+  padding: 20px;
+  background-color: #280b33;
+  // height: 100%;
+}
+
+.form-box {
+  position: fixed;
+  margin-left: 35%;
   width: 250px;
-  height: 200px;
-  align-self: center;
-  // height: 20%;
-  // background-color: grey;
+  height: 210px;
   background: linear-gradient(to bottom right, purple, pink);
   border: 3px solid #280b33;
   border-radius: 25px;
-  top: 60%;
-  left: 39%;
-  // z-index: 10;
-  // height: 30%;
-  //  Dark Purple colour #280b33
+  top: 35%;
+}
+
+.login {
+  padding-right: 10%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: lavenderblush;
+  text-align: center;
+  font-family: 'Rock Salt', cursive;
+}
+
+.form-of-login {
+  margin-left: 20px;
+  height: 30px;
+  width: 202px;
+  margin-bottom: 10px;
+}
+
+#login-button {
+  margin-left: 20px;
+  height: 35px;
+  width: 202px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  background: linear-gradient(to bottom right, purple, rebeccapurple);
+  color: white;
+  border: 2px solid #280b33;
+}
+
+
+.login-fields > form {
+    display: inline-block;
+    text-align: center;
 }
 
 .form-row.register{
@@ -66,29 +87,39 @@ header {
 }
 
 
+// ===== Not Master Start
+  .login-fields {
+    height: 20px;
+    width: 30%;
+    display: grid;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    // margin-left: -52%;
+  }
+// ===== Not Master End
 
-.login-fields {
-  width: fit-content;
-  display: inline-grid;
-  margin: 1%;
-  padding: 1%;
-}
 
-.first_step {
-  display: inline-grid;
-  text-align: center;
-}
+
+// ===== Master Start
+  // .login-fields {
+  //   width: fit-content;
+  //   display: inline-grid;
+  //   margin: 1%;
+  //   padding: 1%;
+  // }
+
+  .first_step {
+    display: inline-grid;
+    text-align: center;
+  }
+// ===== Master End
+
 
 .map-background {
-  margin-top: -25px;
-  margin-right: -10px;
-  margin-left: -10px;
-  height: fit-content;
-}
-
-.padded-map {
-  padding: 20px;
-  background-color: #280b33;
+  // margin-top: -25px;
+  // margin-right: -10px;
+  // margin-left: -10px;
+  // height: fit-content;
 }
 
 .header-buttons {
@@ -110,6 +141,7 @@ h1 {
   margin: 0;
 }
 .logo {
+  margin-top:12px;
   color: lavenderblush;
   float: left;
   width:33.3333%;
@@ -129,24 +161,7 @@ h1 {
   color: lavenderblush;
 }
 
-.login {
-  margin-top: 10px;
-  //padding-left: 3%;
-  color: lavenderblush;
-  //float: left;
-  // width:33.3333%;
-  text-align: center;
-  font-family: 'Rock Salt', cursive;
 
-
-}
-
-// .action {
-//   height: 30px;
-//   width: 200px;
-//   margin-bottom: 10px;
-//   // margin-bottom: 200px;
-// }
 
 h1 + img {
     display: block;
@@ -155,22 +170,6 @@ h1 + img {
     border: 2px solid black;
 
 }
-
-.login-button {
-  height: 35px;
-  width: 205px;
-  margin-bottom: 0px;
-  font-size: 20px;
-  background: linear-gradient(to bottom right, purple, rebeccapurple);
-  color: white;
-  border: 2px solid #280b33;
-}
-
-.form-control {
-    height: 30px;
-    width: 200px;
-    margin-bottom: 5px;
-  }
 
   .login-page .logo {
     animation-name: slideInLeft;
