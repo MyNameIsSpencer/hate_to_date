@@ -22,10 +22,15 @@ class UsersController < ApplicationController
     @users = User.all
       @user = User.find(params[:id])
       unless current_user.user_matches.include?(@user) || @user ==current_user
+        flash[:notice] = "You can only your matches profile."
         redirect_to new_session_path
       end
       if  @user.blocks.include?(current_user.id)
         flash[:notice] = "Cannot access profile.  You have been blocked."
+        redirect_to user_matches_url(current_user.id)
+      end
+      if current_user.blocks.include?(@user.id)
+        flash[:notice] = "Cannot access profile.  You have blocked this user."
         redirect_to user_matches_url(current_user.id)
       end
       @results = Result.all

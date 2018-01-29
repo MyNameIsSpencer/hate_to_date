@@ -198,8 +198,9 @@ h1 + img {
     animation-duration: 0.5s;
   }
 
-  img.user_avatar {
+.user_avatar {
     border: 2px darkgray ridge;
+    margin-left: 20px;
 }
 
 h1.logo.register {
@@ -217,4 +218,9 @@ form.new_user {
 .field {
   display: inline-grid;
   margin-bottom: 10px;
+}
+.notice{
+  margin-top: 3em;
+  color: red;
+  font-weight: bold;
 }
