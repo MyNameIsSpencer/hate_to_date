@@ -53,30 +53,31 @@
       </div>
 
 
-      <ul class="nav navbar-nav navbar-right">
-				<% if current_user %>
+      <% if current_user %>
+      <!-- <ul class="nav navbar-nav navbar-right"> -->
 				<!-- signed in items -->
-					<div class="dropdown navbar-right">
-						<a class="dropdown-toggle navbar-text" data-toggle="dropdown">Hello, <%= current_user.name  %>! <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-              <li class="dropdown-item"><%=  link_to("Surveys", surveys_path)%></li>
-							<li class="dropdown-item"><%= link_to("Profile Page", user_path(current_user))%></li>
-							<li class="dropdown-item"><%= link_to("Matches", user_matches_path(current_user))%></li>
-							<li class="dropdown-item"><%= link_to("Meetups", user_meetups_path(current_user)) %></li>
-							<li class="dropdown-item"><%= link_to "Logout", :logout, method: :delete%></li>
-						</ul>
-					</div>
-
+					<!-- <div class="dropdown navbar-right"> -->
+						<!-- <a class="dropdown-toggle navbar-text" data-toggle="dropdown">Hello, <%= current_user.name  %>! <span class="caret"></span></a> -->
+						<!-- <ul class="dropdown-menu"> -->
+              <!-- <li class="dropdown-item"><%=  link_to("Surveys", surveys_path)%></li> -->
+							<!-- <li class="dropdown-item"><%= link_to("Profile Page", user_path(current_user))%></li> -->
+							<!-- <li class="dropdown-item"><%= link_to("Matches", user_matches_path(current_user))%></li> -->
+							<!-- <li class="dropdown-item"><%= link_to("Meetups", user_meetups_path(current_user)) %></li> -->
+							<!-- <li class="dropdown-item"><%= link_to "Logout", :logout, method: :delete%></li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+        <!-- </ul> -->
 				<%else  %>
-				<!-- Signed out items -->
-        <div class="dropdown navbar-right">
-          <a class="dropdown-toggle navbar-text" data-toggle="dropdown">Hello, Stranger! <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><%=  link_to("Surveys", surveys_path)%></li>
-            <li class="dropdown-item"><%= link_to "Register", new_user_path %></li>
-            <li class="dropdown-item"><%=  link_to "Login", :login%></li>
+
+        <div id="navbar-signed-out">
+          <ul>
+            <li class="signed-out-item"><%=  link_to("Surveys", surveys_path)%></li>
+            <li class="signed-out-item"><%=  link_to("Register", new_user_path)%></li>
+            <li class="signed-out-item"><%=  link_to("Login", :login)%></li>
           </ul>
         </div>
+
+
         <!-- <a href="http://www.google.com"><img src="http://www.google.com/intl/en_ALL/images/logo.gif"/></a> -->
 
 				<%end  %>
@@ -86,6 +87,7 @@
       <div class="statuser">
 
       <%= form_for current_user, url: change_status_path(current_user.id)  do |f|%>
+        <%= f.label :status, 'Set Status' %>
         <%= f.select :status, ['Online', 'Away', 'Busy','On The Phone', 'At Work','At School'].sort, {}, {:onChange=>"this.form.submit()"} %>
         <%end %>
       </div>
@@ -105,19 +107,20 @@
 
 
             <li class="left-menu-icons"><%= link_to surveys_path do %>
-              <%= image_tag('notepadSurveys3.jpeg') %>
-            <% end %></li>
+              <%= image_tag('notepadSurveys3.jpeg', title: 'Surveys') %>
+            <% end %>
+            </li>
             <li class="left-menu-icons"><%= link_to user_path(current_user) do %>
-              <%= image_tag('profileFill.png') %>
+              <%= image_tag('profileFill.png', title: 'Profile') %>
             <% end %></li>
             <li class="left-menu-icons"><%= link_to user_matches_path(current_user) do %>
-              <%= image_tag('matchWhiteB.png') %>
+              <%= image_tag('matchWhiteB.png', title: 'Matches') %>
             <% end %></li>
             <li class="left-menu-icons"><%= link_to user_meetups_path(current_user) do %>
-              <%= image_tag('meetupFill.png') %>
+              <%= image_tag('meetupFill.png', title: 'Meetups') %>
             <% end %></li>
             <li class="left-menu-icons"><%= link_to :logout, method: :delete do %>
-              <%= image_tag('logoutPurp.jpeg') %>
+              <%= image_tag('logoutPurp.jpeg', title: 'Logout') %>
             <% end %></li>
 
 

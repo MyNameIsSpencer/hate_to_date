@@ -11,6 +11,7 @@
 <% if @user == current_user %>
   <p> Is Your Profile private? <%= "Yes" if @user.privacy == true %><%= "No" if @user.privacy == false %></p>
   <%= link_to("Edit Profile", edit_user_path(current_user)) %>
+  |
   <%= link_to("Delete Profile", user_path(current_user), method: :delete, data: {confirm: "Are you sure?"}) %>
 <%end %>
 
