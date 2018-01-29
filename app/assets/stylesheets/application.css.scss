@@ -324,9 +324,13 @@ a.dropdown-toggle.navbar-text {
   margin-right: auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .row{
     text-align: center;
+
+  }
+  #questions{
+    margin-top: 0
   }
 
   .col-xs-12{
