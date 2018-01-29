@@ -2,7 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 document.addEventListener("DOMContentLoaded", function(){
-
+  // calls on Ticket Master API for events nearby based on survey that matched users through topic variable
   var button2 = document.querySelectorAll("#ticketMaster")
   if (button2){
     button2.forEach(function(button2Each){
@@ -24,5 +24,5 @@ document.addEventListener("DOMContentLoaded", function(){
       })
     })
   }
-  
+
 })

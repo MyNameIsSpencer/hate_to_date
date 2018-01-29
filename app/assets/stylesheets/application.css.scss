@@ -275,6 +275,43 @@ a.dropdown-toggle.navbar-text {
 
 }
 
+#questions{
+  margin-top: 10%
+}
+
+#questions col-sm-6{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 767px) {
+  .row{
+    text-align: center;
+  }
+
+  .col-xs-12{
+    display: inline;
+    float: none;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col-xs-12 span {
+    top: -7rem
+  }
+
+}
+//
+// .col-xs-12 >span{
+//  text-decoration: none;
+//  background: black;
+//  color: white;
+//  position: absolute;
+//  left: 3rem;
+//  padding: 1px;
+//  top: 1.5rem;
+//  margin: auto;}
 
 .footer {
     position: fixed;
@@ -316,6 +353,50 @@ header {
 .name {
   color: purple;
   margin-right: 0.5rem
+}
+
+// .user_message {
+//   background: blue;
+//   color: white;
+//   margin: 0.1em 0 0.1em auto;
+//   border-radius: 0.8em;
+//   width:fit-content;
+//   padding: 0.3em;
+// }
+//
+// .receiver_message {
+//   background: grey;
+//   color: black;
+//   margin: 0.1em auto 0.1em 0;
+//   border-radius: 0.8em;
+//   width:fit-content;
+//   padding: 0.3em;
+// }
+
+
+@media (max-width: 720px) {
+  
+  .name {
+    color: inherit;
+    margin-right: 0.5rem
+  }
+  .user_message {
+    background: blue;
+    color: white;
+    margin: 0.1em 0 0.1em auto;
+    border-radius: 0.8em;
+    width:fit-content;
+    padding: 0.3em;
+  }
+
+  .receiver_message {
+    background: grey;
+    color: black;
+    margin: 0.1em auto 0.1em 0;
+    border-radius: 0.8em;
+    width:fit-content;
+    padding: 0.3em;
+  }
 }
 
 @media (min-width: 951px) {
