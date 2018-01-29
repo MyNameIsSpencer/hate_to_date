@@ -78,7 +78,29 @@
     display: inline-block;
     text-align: center;
 }
-
+.form-row {
+  // position: relative;
+  /* display: inline-block; */
+  // z-index: 12;
+  //display: inline-grid;
+  opacity: .99;
+  margin-top: -400px;
+  // margin-left: 35%;
+  // margin-right: 35%;
+  width: 250px;
+  height: 200px;
+  align-self: center;
+  // height: 20%;
+  // background-color: grey;
+  background: linear-gradient(to bottom right, purple, pink);
+  border: 3px solid #280b33;
+  border-radius: 25px;
+  top: 60%;
+  left: 39%;
+  // z-index: 10;
+  // height: 30%;
+  //  Dark Purple colour #280b33
+}
 .form-row.register{
   // height:360px;
   // width:350px;
