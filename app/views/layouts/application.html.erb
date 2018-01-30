@@ -21,7 +21,7 @@
 
     <title>HateDate</title>
     <%= csrf_meta_tags %>
-    <link rel="shortcut icon" href="/favicon.ico" /> 
+    <link rel="shortcut icon" href="/favicon.ico" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application"  %>
     <%= tag :meta, property: 'og:image', content: image_url("/HateDateFront.png") %>
@@ -119,7 +119,7 @@
             <li class="left-menu-icons"><%= link_to user_meetups_path(current_user) do %>
               <%= image_tag('meetupFill.png', title: 'Meetups') %>
             <% end %></li>
-            <li class="left-menu-icons"><%= link_to :logout, method: :delete do %>
+            <li class="left-menu-icons"><%= link_to :logout, data: { confirm: "Are you sure you want to Logout?" }, method: :delete do %>
               <%= image_tag('logoutPurp.jpeg', title: 'Logout') %>
             <% end %></li>
 
